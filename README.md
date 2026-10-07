@@ -1,7 +1,7 @@
 # Spotify Review Triage
 
 A multi-agent LLM pipeline over 660,622 Spotify app reviews (May 2022 to Nov 2023). It classifies every review, verifies a sample, groups complaints into issues, ranks them, and writes a recommendation.
-Final deliverable for the MBA 290T final assignment. Status: Phase 1 (prepare) only. Everything below the Phase 1 section is not built yet.
+Final deliverable for the MBA 290T final assignment. Status: Phase 1 (prepare) done; Phase 2 (labels and classifier design) built, paid comparison not yet run.
 
 **Business question:** Where should Spotify put next quarter's product effort: access, usability, playback, or billing/support?
 (Downloads and catalog issues are folded into the nearest of these four areas; see DECISIONS.md.)
@@ -41,5 +41,25 @@ Check the ingestion file offline:
 uv run python vendor/check_submission.py profile --full data_raw/spotify_reviews_18months.csv --out /tmp/ingestion.json
 cmp /tmp/ingestion.json grading/ingestion.json
 ```
+
+## Phase 2: labels and classifier design
+
+Versioned files in `prompts/` (hashes pinned in `prompts/VERSIONS.json`; a changed prompt must become a new version):
+
+- `labels_v1.md`: the 8 topics, 5 intents (precedence), 1 to 5 severity, sentiment, entities, quote and needs_review rules, plus the extra rules in DECISIONS D21.
+- `examples_v1.jsonl`: 15 worked examples from development rows, each with a one-line reason.
+- `enrich_v1.md`: classifier role prompt (definitions + examples). `verify_v1.md`: independent verifier role prompt (definitions only, never sees the first labels).
+
+Code: `spp/labels.py` (schema, prompt assembly, validation), `spp/providers.py` (model allowlist; OpenAI and Anthropic adapters), `spp/budget.py` (dated rates, shared spend ledger, rate limiter, backoff), `spp/runner.py` (batches of at most 50, retry invalid output once, then quarantine), `spp/evaluate.py` (scoring), `spp/compare.py`.
+
+Compare candidate models on the 94-row development reference (`evals/dev_reference_v1.jsonl`, labeled by the assistant, never the golden 50):
+
+```sh
+uv run python -m spp compare                     # plan only: batches and worst-case cost, no calls
+uv run python -m spp compare --confirm --budget 2 # paid: needs keys in .env, capped at $2
+uv run python -m spp compare --report evals/phase2/<run>   # rescore saved outputs offline
+```
+
+The golden 50 (`golden_50_to_label.csv`) is labeled by hand and only used for the final eval; its IDs and texts are refused as development input and a test checks none appear in the prompts.
 
 Design decisions are in [DECISIONS.md](DECISIONS.md).

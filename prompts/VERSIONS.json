@@ -1,0 +1,9 @@
+{
+  "note": "sha256 of each versioned prompt file. Editing a file means a new version (new file name and label_config), not an in-place change.",
+  "files": {
+    "labels_v1.md": "383b132d15d44198ae72846f67a98f56aa42c8c56d31190d025ee5e30de3ab5c",
+    "examples_v1.jsonl": "81a7bd7dc07d209b06dbf68ef479b048b0ee2c9a1476dd045f9993397337088e",
+    "enrich_v1.md": "bac78c171c7db1adbf54d1fb24b891e427e09eda5b790a0d590c50d4980ca003",
+    "verify_v1.md": "1305dcaed10a6247a8ff07e1692eeaf01f286d2379eba784293d787e79fe9110"
+  }
+}
