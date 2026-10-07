@@ -1,0 +1,23 @@
+# secrets
+.env
+.env.*
+!.env.example
+
+# data: never commit dataset CSVs (see data_raw/README_PLACEMENT.md)
+data_raw/*
+!data_raw/README_PLACEMENT.md
+
+# run outputs and state
+runs/
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+*.db
+
+# python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+.DS_Store

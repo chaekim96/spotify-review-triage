@@ -1,0 +1,21 @@
+[project]
+name = "spotify-review-triage"
+version = "0.1.0"
+description = "Multi-agent LLM pipeline that classifies Spotify app reviews, ranks issues, and recommends next-quarter product priority."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "python-dotenv>=1.2.4",
+]
+
+[tool.uv]
+package = false  # run from the repo root: uv run python -m spp ...
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+]
