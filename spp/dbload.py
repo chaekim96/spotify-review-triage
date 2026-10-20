@@ -18,7 +18,7 @@ SCHEMA = Path(__file__).resolve().parents[1] / "db" / "schema.sql"
 def db_load(run_dir, dsn=None, log=print):
     import psycopg
     from dotenv import load_dotenv
-    load_dotenv()
+    load_dotenv(Path(__file__).resolve().parents[1] / ".env")
     dsn = dsn or os.environ.get("SUPABASE_DB_URL")
     if not dsn:
         raise SystemExit("SUPABASE_DB_URL is not set in .env")

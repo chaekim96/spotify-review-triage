@@ -39,8 +39,8 @@ def run_pilot(budget_usd=1.0, log=print):
     from .providers import get_spec
 
     csv_path = ROOT / "data_raw" / "cost_100.csv"
-    specs = {"primary": get_spec("luna-none"), "fallback": get_spec("sonnet-low"), "verify": get_spec("haiku"),
-             "group": get_spec("luna-low"), "memo": get_spec("sonnet-low")}
+    specs = {"primary": get_spec("luna-none"), "fallback": None, "verify": get_spec("luna-low"),
+             "group": get_spec("luna-low"), "memo": get_spec("luna-low")}  # OpenAI-only (DECISIONS D32)
     downstream_cache = ROOT / "runs" / "pilot_downstream_cache"
     summary = {}
     for run_id in ("pilot_cold", "pilot_warm"):
@@ -85,7 +85,7 @@ def run_pilot(budget_usd=1.0, log=print):
             "failed_requests": sum(c["outcome"] == "failed" for c in calls),
             "result_cache_hits": enr.get("result_cache_hits_from_cache_db", 0), "cache_aliases_within_run": enr["cache_aliases"],
             "spent_usd": str(ctx["ledger"].spent), "workers": 1, "batch_size": 50,
-            "configs": {k: {"model": s.model, "effort": s.effort} for k, s in specs.items()},
+            "configs": {k: ({"model": s.model, "effort": s.effort} if s else None) for k, s in specs.items()},
         }
     _save_pilot_evidence(summary)
     return summary

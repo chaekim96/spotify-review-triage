@@ -34,12 +34,12 @@ def main(argv=None):
     r.add_argument("--scope-n", type=int, help="declared number of nonempty reviews to classify (default: all)")
     r.add_argument("--include", type=Path, nargs="*", default=[], help="CSVs whose IDs are always in scope")
     r.add_argument("--primary", default="luna-none")
-    r.add_argument("--fallback", default="sonnet-low")
+    r.add_argument("--fallback", default="none", help="allowlisted fallback config, or none")
     r.add_argument("--fallback-fraction", type=float, default=0.02)
-    r.add_argument("--verifier", default="haiku")
+    r.add_argument("--verifier", default="luna-low")
     r.add_argument("--verify-fraction", type=float, default=0.01)
     r.add_argument("--group-model", default="luna-low")
-    r.add_argument("--memo-model", default="sonnet-low")
+    r.add_argument("--memo-model", default="luna-low")
     r.add_argument("--workers", type=int, default=1)
     r.add_argument("--batch-size", type=int, default=50)
     r.add_argument("--rpm", type=float, default=120, help="shared requests-per-minute limit across workers")
@@ -106,7 +106,7 @@ def main(argv=None):
         print(json.dumps({k: v for k, v in synthetic.planted_error_test(args.run_dir, out).items() if k != "planted_rows"}, indent=2))
         if args.confirm:
             from dotenv import load_dotenv
-            load_dotenv()
+            load_dotenv(Path(__file__).resolve().parents[1] / ".env")
             ctx = pipeline.make_ctx(args.run_dir, args.budget, 60)
             ctx["ledger"].spent = 0  # separate small cap for the synthetic test
             rep = synthetic.injection_test(get_spec(args.model), ctx, out)
@@ -165,7 +165,7 @@ def _compare(args):
         return 0
     from dotenv import load_dotenv
 
-    load_dotenv()
+    load_dotenv(Path(__file__).resolve().parents[1] / ".env")
     import time as _t
     out = args.out or Path("evals/phase2") / _t.strftime("%Y%m%dT%H%M%SZ", _t.gmtime())
     summary, choice = compare.run(args.configs, items, refs, args.batch_size, args.budget, out)
@@ -208,7 +208,7 @@ def _pipeline_cmd(args):
             print("PLAN ONLY: the pilot runs cost_100.csv cold then warm (about $0.05 expected). Add --confirm to run it.")
             return 0
         from dotenv import load_dotenv
-        load_dotenv()
+        load_dotenv(Path(__file__).resolve().parents[1] / ".env")
         print(json.dumps(cost.run_pilot(args.budget), indent=2))
         return 0
 
@@ -221,7 +221,7 @@ def _pipeline_cmd(args):
         return 0
     if paid:
         from dotenv import load_dotenv
-        load_dotenv()
+        load_dotenv(Path(__file__).resolve().parents[1] / ".env")
     texts = None
     def get_texts():
         nonlocal texts
