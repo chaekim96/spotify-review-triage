@@ -22,7 +22,7 @@ def _setup(tmp_path, rate_factor=1):
         w.writerow(cost.USAGE_COLS)
         w.writerow(["pilot_cold", "r1", "enrich", "gpt-6-luna", "luna-none", "succeeded", 50, 3000, 2000, 0, 4000, 0, 3.0])
         w.writerow(["pilot_cold", "r2", "enrich", "gpt-6-luna", "luna-none", "succeeded", 50, 3000, 2000, 0, 4000, 0, 3.0])
-        w.writerow(["pilot_cold", "r3", "verify", "claude-haiku-4-5", "haiku", "succeeded", 20, 2500, 0, 0, 1500, "", 4.0])
+        w.writerow(["pilot_cold", "r3", "verify", "claude-haiku-4-5-20251001", "haiku", "succeeded", 20, 2500, 0, 0, 1500, "", 4.0])
         w.writerow(["pilot_cold", "r4", "group", "gpt-6-luna", "luna-low", "succeeded", 40, 2000, 0, 0, 800, 300, 5.0])
         w.writerow(["pilot_cold", "r5", "memo", "claude-sonnet-5-5", "sonnet-low", "succeeded", 0, 3000, 0, 0, 1500, "", 20.0])
     summary = tmp_path / "s.json"

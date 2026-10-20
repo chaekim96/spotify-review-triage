@@ -29,7 +29,7 @@ ALLOWLIST = {
     for s in (
         ModelSpec("luna-none", "openai", "gpt-6-luna", "none", 120, 300, "primary"),
         ModelSpec("luna-low", "openai", "gpt-6-luna", "low", 120, 3000, "primary"),
-        ModelSpec("haiku", "anthropic", "claude-haiku-4-5", "default", 120, 300, "primary"),
+        ModelSpec("haiku", "anthropic", "claude-haiku-4-5-20251001", "default", 120, 300, "primary"),
         ModelSpec("sonnet-low", "anthropic", "claude-sonnet-5-5", "low", 120, 3000, "fallback"),
     )
 }
