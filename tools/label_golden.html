@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Golden 50 Labeler</title>
+<style>
+:root { --bg:#f6f6f4; --panel:#fff; --ink:#1c1e20; --muted:#666c72; --line:#dfe0dc; --accent:#1d7f4d; --soft:#e2f2e9; --warn:#b3471a; --sel:#ffe9a8; }
+@media (prefers-color-scheme: dark) { :root { --bg:#131517; --panel:#1c1f22; --ink:#ebeced; --muted:#9aa0a6; --line:#2d3136; --accent:#3dbd7c; --soft:#1c3328; --warn:#e48a55; --sel:#5a4a12; } }
+* { box-sizing: border-box; }
+body { margin:0; background:var(--bg); color:var(--ink); font:15px/1.5 -apple-system, system-ui, sans-serif; }
+.wrap { max-width:1150px; margin:0 auto; padding:16px; display:grid; grid-template-columns: 1fr 300px; gap:16px; }
+@media (max-width: 860px) { .wrap { grid-template-columns: 1fr; } }
+.panel { background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:16px; }
+h1 { font-size:18px; margin:0 0 4px; } .muted { color:var(--muted); font-size:13px; }
+.review { font-size:17px; line-height:1.55; white-space:pre-wrap; padding:14px; border:1px dashed var(--line); border-radius:8px; margin:10px 0; user-select:text; }
+.row { display:flex; flex-wrap:wrap; gap:6px; align-items:center; margin:8px 0 14px; }
+label.h { display:block; font-weight:600; margin-top:6px; }
+.opt { border:1px solid var(--line); background:var(--panel); color:var(--ink); border-radius:999px; padding:5px 12px; cursor:pointer; font:inherit; font-size:14px; }
+.opt.on { background:var(--accent); border-color:var(--accent); color:#fff; }
+input[type=text], textarea { width:100%; font:inherit; padding:8px; border:1px solid var(--line); border-radius:6px; background:var(--panel); color:var(--ink); }
+textarea { min-height:56px; }
+.btn { font:inherit; padding:8px 14px; border-radius:8px; border:1px solid var(--accent); background:var(--accent); color:#fff; cursor:pointer; }
+.btn.ghost { background:transparent; color:var(--accent); }
+.err { color:var(--warn); margin:8px 0; } .ok { color:var(--accent); margin:8px 0; }
+.grid50 { display:grid; grid-template-columns: repeat(10, 1fr); gap:4px; margin-top:8px; }
+.cell { font-size:11px; text-align:center; padding:4px 0; border-radius:4px; border:1px solid var(--line); cursor:pointer; }
+.cell.done { background:var(--soft); color:var(--accent); border-color:var(--accent); } .cell.cur { outline:2px solid var(--ink); }
+.rules p { margin:6px 0; font-size:13px; } .rules b { color:var(--ink); }
+.sev small { display:block; font-size:11px; color:var(--muted); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="panel">
+    <h1>Golden 50 hand labeling <span class="muted" id="pos"></span></h1>
+    <div class="muted">You choose every label; nothing is pre-filled. Saves to <code>data_raw/golden_50_to_label.csv</code>. <kbd>Ctrl</kbd>+<kbd>Enter</kbd> = save and next.</div>
+    <div class="review" id="text"></div>
+
+    <label class="h">Topic</label><div class="row" id="topic"></div>
+    <label class="h">Intent <span class="muted">(first that applies: cancellation → complaint → request → praise → unclear)</span></label><div class="row" id="intent"></div>
+    <label class="h">Severity</label><div class="row sev" id="severity"></div>
+    <label class="h">Sentiment <span class="muted" id="sentVal">not set</span></label>
+    <div class="row" id="sentiment"></div>
+    <label class="h">Evidence quote <span class="muted">(select text in the review above, then click "Use selection")</span></label>
+    <div class="row"><button class="opt" id="useSel">Use selection</button><button class="opt" id="useAll">Use whole review</button></div>
+    <textarea id="quote" placeholder="Exact copy from the review"></textarea>
+    <label class="h">Entities <span class="muted">(comma-separated, as written; leave empty for none; no personal names)</span></label>
+    <input type="text" id="entities" placeholder="e.g. spotify premium, YouTube">
+    <label class="h"><input type="checkbox" id="needs"> needs_review (not enough context to label confidently)</label>
+    <div id="msg"></div>
+    <div class="row"><button class="btn ghost" id="prev">← Previous</button><button class="btn" id="save">Save and next →</button></div>
+  </div>
+  <div class="panel rules">
+    <b>Progress</b> <span class="muted" id="count"></span>
+    <div class="grid50" id="cells"></div>
+    <p style="margin-top:14px"><b>Topic rules</b></p>
+    <p>Several problems: highest severity wins; tie → first specific one. Positive review → first praised feature; general praise = <b>other</b>.</p>
+    <p>Paid plan mentioned ≠ billing. A control is <b>billing</b> only if the review says it's premium-only/paywalled; otherwise <b>usability</b> (lyrics availability → <b>catalog</b>).</p>
+    <p>Ads → <b>usability</b>. Crashes, lag, connection → <b>playback</b>. "Not working / bad app" with nothing specific → <b>other</b>.</p>
+    <p><b>Intent</b>: boycott slogan with no product complaint or stated leaving → <b>unclear</b>.</p>
+    <p><b>Severity</b>: stars, angry tone, a crash alone or cancellation intent never raise it. Hedged harm stays below 5 and sets needs_review.</p>
+    <p class="muted">Full guide: prompts/labels_v1.md</p>
+  </div>
+</div>
+<script>
+const TOPICS=["access","usability","playback","downloads","catalog","billing","support","other"];
+const INTENTS=["cancellation","complaint","request","praise","unclear"];
+const SEV={1:"no problem / praise / request",2:"dislike, annoyance, ads",3:"degraded, workaround remains",4:"core task blocked",5:"explicit serious money/privacy/data harm"};
+const SENT=["-1","-0.8","-0.5","-0.3","0","0.3","0.5","0.8","1"];
+let rows=[], i=0, cur={};
+const $=s=>document.querySelector(s);
+function pills(el, opts, key, labelFn){ el.innerHTML=""; opts.forEach(o=>{ const b=document.createElement("button"); b.className="opt"+(String(cur[key])===String(o)?" on":""); b.innerHTML=labelFn?labelFn(o):o; b.onclick=()=>{cur[key]=o; render();}; el.appendChild(b); }); }
+function render(){
+  const r=rows[i]; $("#pos").textContent=`${i+1} of ${rows.length}`; $("#text").textContent=r.review_text;
+  pills($("#topic"),TOPICS,"topic"); pills($("#intent"),INTENTS,"intent");
+  pills($("#severity"),[1,2,3,4,5],"severity",s=>`${s}<small>${SEV[s]}</small>`);
+  pills($("#sentiment"),SENT,"sentiment"); $("#sentVal").textContent = cur.sentiment===undefined||cur.sentiment===""?"not set":cur.sentiment;
+  const done=rows.filter(x=>x.topic).length; $("#count").textContent=`${done}/${rows.length} labeled`;
+  $("#cells").innerHTML=rows.map((x,k)=>`<div class="cell${x.topic?" done":""}${k===i?" cur":""}" data-k="${k}">${k+1}</div>`).join("");
+  document.querySelectorAll(".cell").forEach(c=>c.onclick=()=>go(+c.dataset.k));
+}
+function load(k){ i=k; const r=rows[i];
+  cur={topic:r.topic||undefined,intent:r.intent||undefined,severity:r.severity||undefined,sentiment:r.sentiment===""?undefined:r.sentiment};
+  $("#quote").value=r.evidence_quote||""; $("#entities").value=(r.entities||[]).join(", "); $("#needs").checked=r.needs_review==="true"; $("#msg").innerHTML=""; render(); window.scrollTo(0,0); }
+function go(k){ if(k>=0&&k<rows.length) load(k); }
+$("#useSel").onclick=()=>{ const s=window.getSelection().toString(); if(s) $("#quote").value=s; };
+$("#useAll").onclick=()=>{ $("#quote").value=rows[i].review_text; };
+$("#prev").onclick=()=>go(i-1);
+async function save(){
+  const labels={topic:cur.topic,intent:cur.intent,severity:cur.severity,sentiment:cur.sentiment,evidence_quote:$("#quote").value,
+    entities:$("#entities").value.split(",").map(s=>s.trim()).filter(Boolean),needs_review:$("#needs").checked};
+  const res=await fetch("/api/save",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({review_id:rows[i].review_id,labels})});
+  const j=await res.json();
+  if(!res.ok){ $("#msg").innerHTML=`<div class="err">${j.errors.join("; ")}</div>`; return; }
+  Object.assign(rows[i],{topic:labels.topic,intent:labels.intent,severity:String(labels.severity),sentiment:String(labels.sentiment),entities:labels.entities,evidence_quote:labels.evidence_quote,needs_review:labels.needs_review?"true":"false"});
+  if(j.labeled===j.total){ $("#msg").innerHTML=`<div class="ok">All ${j.total} saved. You can close this tab and stop the helper (Ctrl+C).</div>`; render(); return; }
+  const next=rows.findIndex((x,k)=>k>i&&!x.topic); go(next>=0?next:rows.findIndex(x=>!x.topic));
+}
+$("#save").onclick=save;
+document.addEventListener("keydown",e=>{ if(e.key==="Enter"&&(e.ctrlKey||e.metaKey)){ e.preventDefault(); save(); } });
+fetch("/api/rows").then(r=>r.json()).then(d=>{ rows=d; const first=rows.findIndex(x=>!x.topic); load(first>=0?first:0); });
+</script>
+</body>
+</html>
