@@ -1,0 +1,12 @@
+{
+  "base_url": "https://spotify-review-triage.vercel.app",
+  "checked": [
+    "ranking",
+    "claims",
+    "areas",
+    "completed count",
+    "memo"
+  ],
+  "problems": [],
+  "status": "pass"
+}

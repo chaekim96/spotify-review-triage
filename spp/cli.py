@@ -264,6 +264,10 @@ def _pipeline_cmd(args):
         elif stage == "memo":
             analysis.memo(args.run_dir, get_texts(), get_spec(args.memo_model), ctx, cache_dir=cache)
             print(f"memo written: {args.run_dir / 'outputs' / 'memo.md'}")
+    conn = store.connect_pipeline(args.run_dir / "state.sqlite")
+    with conn:
+        pipeline.save_spent(conn, ctx)  # persist group/memo spend too
+    conn.close()
     print(f"spent in this run folder: ${ctx['ledger'].spent:.4f} of ${args.budget}")
     return 0
 

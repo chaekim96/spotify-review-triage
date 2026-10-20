@@ -6,6 +6,7 @@ import json
 import os
 import re
 import time
+from decimal import Decimal
 from pathlib import Path
 
 from . import store
@@ -32,7 +33,8 @@ def db_load(run_dir, dsn=None, log=print):
     recs = load_records(conn, completed_only=False)
     statuses = store.status_counts(conn)
     scope_n = conn.execute("SELECT COUNT(*) FROM scope").fetchone()[0]
-    spent = store.get_meta(conn, "spent_usd")
+    # measured API spend = sum of every logged call's cost (enrich, verify, group, memo)
+    spent = str(sum(Decimal(json.loads(r)["cost_usd"]) for (r,) in conn.execute("SELECT row FROM calls")))
     calls = dict(conn.execute("SELECT role || ':' || outcome, COUNT(*) FROM calls GROUP BY 1"))
     conn.close()
     with open(out / "membership.csv", newline="", encoding="utf-8") as f:
@@ -56,6 +58,7 @@ def db_load(run_dir, dsn=None, log=print):
     }
     rows = [r for r in recs.values() if r["status"] == "completed"]
     with psycopg.connect(dsn, autocommit=False) as pg, pg.cursor() as cur:
+        cur.execute("SET lock_timeout = '20s'; SET statement_timeout = '5min'")
         cur.execute(SCHEMA.read_text())
         with cur.copy("COPY records (review_id, source_sha256, status, reason, topic, intent, sentiment, severity, entities, "
                       "evidence_quote, needs_review, label_config, cache_source_id, issue_id) FROM STDIN") as cp:
@@ -95,8 +98,14 @@ def dashboard_check(base_url, run_dir):
     out = Path(run_dir) / "outputs"
 
     def get(path):
-        with urllib.request.urlopen(base_url.rstrip("/") + path, timeout=30) as r:
-            return json.loads(r.read())
+        for attempt in range(3):  # serverless cold starts can time out once
+            try:
+                with urllib.request.urlopen(base_url.rstrip("/") + path, timeout=30) as r:
+                    return json.loads(r.read())
+            except OSError:
+                if attempt == 2:
+                    raise
+                time.sleep(3)
     with open(out / "ranking.csv", newline="", encoding="utf-8") as f:
         saved_rank = [{k: r[k] for k in ("rank", "issue_id", "complaint_count", "severity_sum", "mean_severity", "priority_score")} for r in csv.DictReader(f)]
     with open(out / "claims.csv", newline="", encoding="utf-8") as f:
