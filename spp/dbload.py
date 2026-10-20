@@ -19,9 +19,13 @@ def db_load(run_dir, dsn=None, log=print):
     import psycopg
     from dotenv import load_dotenv
     load_dotenv(Path(__file__).resolve().parents[1] / ".env")
-    dsn = dsn or os.environ.get("SUPABASE_DB_URL")
     if not dsn:
-        raise SystemExit("SUPABASE_DB_URL is not set in .env")
+        # the Vercel-Supabase integration writes POSTGRES_URL_NON_POOLING into dashboard/.env.local (git-ignored)
+        from dotenv import dotenv_values
+        vercel_env = dotenv_values(Path(__file__).resolve().parents[1] / "dashboard" / ".env.local")
+        dsn = os.environ.get("SUPABASE_DB_URL") or vercel_env.get("POSTGRES_URL_NON_POOLING")
+    if not dsn:
+        raise SystemExit("No database URL: set SUPABASE_DB_URL in .env or connect Supabase through Vercel")
     run_dir = Path(run_dir)
     out = run_dir / "outputs"
     conn = store.connect_pipeline(run_dir / "state.sqlite")

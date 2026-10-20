@@ -4,7 +4,7 @@ import postgres from "postgres";
 
 let sql;
 export function db() {
-  if (!sql) sql = postgres(process.env.DATABASE_URL, { ssl: "require", max: 1, prepare: false, idle_timeout: 5 });
+  if (!sql) sql = postgres(process.env.POSTGRES_URL || process.env.DATABASE_URL, { ssl: "require", max: 1, prepare: false, idle_timeout: 5 });
   return sql;
 }
 

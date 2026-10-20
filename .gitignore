@@ -23,3 +23,6 @@ __pycache__/
 .DS_Store
 node_modules/
 .vercel/
+dashboard/.agents/
+dashboard/.claude/
+dashboard/skills-lock.json
