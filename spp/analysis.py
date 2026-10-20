@@ -13,7 +13,7 @@ from decimal import ROUND_HALF_UP, Decimal
 from pathlib import Path
 
 from . import store
-from .atomic import atomic_write_json, atomic_write_text
+from .atomic import atomic_write_bytes, atomic_write_json, atomic_write_text
 from .labels import PROMPTS_DIR, TOPICS
 from .pipeline import load_records
 from .runner import logged_call
@@ -358,7 +358,10 @@ def export(run_dir, grading_dir, ingestion_src):
             reason = "not_classified_run_incomplete" if rid in scope else "not_classified_outside_declared_scope"
             row = {"review_id": rid, "source_sha256": r["source_sha256"], "status": "quarantined", "reason": reason}
         lines.append(json.dumps(row, ensure_ascii=False))
-    atomic_write_text(g / "records.jsonl", "\n".join(lines) + "\n")
+    import gzip
+    (g / "records.jsonl").unlink(missing_ok=True)
+    # gzip (allowed by the contract) keeps the 660,622-line file under GitHub's size limit; mtime=0 makes it reproducible
+    atomic_write_bytes(g / "records.jsonl.gz", gzip.compress(("\n".join(lines) + "\n").encode("utf-8"), mtime=0))
     atomic_write_text(g / "calls.jsonl", "".join(json.dumps({k: c[k] for k in CALL_FIELDS}, ensure_ascii=False) + "\n" for c in calls))
     for name in ("membership.csv", "ranking.csv", "claims.csv"):
         shutil.copyfile(out_dir / name, g / name)
