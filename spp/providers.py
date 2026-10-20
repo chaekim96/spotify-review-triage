@@ -83,7 +83,7 @@ def _parse(text):
         return None
 
 
-def _call_openai(spec, system, user, max_out):
+def _call_openai(spec, system, user, max_out, schema=BATCH_SCHEMA, name="review_labels"):
     import openai
 
     t0 = time.perf_counter()
@@ -95,7 +95,7 @@ def _call_openai(spec, system, user, max_out):
             reasoning={"effort": spec.effort},
             max_output_tokens=max_out,
             store=False,
-            text={"format": {"type": "json_schema", "name": "review_labels", "schema": BATCH_SCHEMA, "strict": True}},
+            text={"format": {"type": "json_schema", "name": name, "schema": schema, "strict": True}},
         )
     except (openai.RateLimitError, openai.APITimeoutError, openai.APIConnectionError, openai.InternalServerError) as e:
         return CallResult(False, True, None, {}, None, time.perf_counter() - t0, None, f"{type(e).__name__}: {e}")
@@ -110,7 +110,7 @@ def _call_openai(spec, system, user, max_out):
     return CallResult(True, False, _parse(resp.output_text), usage, resp.id, time.perf_counter() - t0, resp.status)
 
 
-def _call_anthropic(spec, system, user, max_out):
+def _call_anthropic(spec, system, user, max_out, schema=BATCH_SCHEMA, name=None):
     import anthropic
 
     t0 = time.perf_counter()
@@ -119,7 +119,7 @@ def _call_anthropic(spec, system, user, max_out):
         max_tokens=max_out,
         system=system,
         messages=[{"role": "user", "content": user}],
-        output_config={"format": {"type": "json_schema", "schema": BATCH_SCHEMA}},
+        output_config={"format": {"type": "json_schema", "schema": schema}},
     )
     if spec.effort != "default":
         kwargs["output_config"]["effort"] = spec.effort
@@ -138,9 +138,9 @@ def _call_anthropic(spec, system, user, max_out):
     return CallResult(True, False, _parse(text), usage, msg._request_id or msg.id, time.perf_counter() - t0, msg.stop_reason)
 
 
-def call(spec, system, user, max_out):
+def call(spec, system, user, max_out, schema=BATCH_SCHEMA, name="review_labels"):
     if spec.provider == "openai":
-        return _call_openai(spec, system, user, max_out)
+        return _call_openai(spec, system, user, max_out, schema, name)
     if spec.provider == "anthropic":
-        return _call_anthropic(spec, system, user, max_out)
+        return _call_anthropic(spec, system, user, max_out, schema, name)
     raise ValueError(spec.provider)

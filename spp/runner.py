@@ -94,3 +94,35 @@ def classify_batch(spec, role, batch, ctx, phase="initial", call_fn=None):
         if rid not in completed:
             quarantined[rid] = {"reason": ";".join(reasons.get(rid, ["unknown"])), "attempts": attempts[rid]}
     return completed, quarantined, logs
+
+
+def logged_call(spec, role, system, user, schema, name, max_out, ctx, review_ids, cfg, call_fn=None):
+    """One structured call for the group or memo role, with the same budget reservation, bounded backoff
+    and call logging as enrichment. Returns (parsed JSON or None, call-log rows)."""
+    call_fn = call_fn or providers.call
+    logs = []
+    for attempt in range(1, MAX_TRANSPORT_ATTEMPTS + 1):
+        reserve = worst_case_cost(spec.model, estimate_tokens(system + user), max_out, ctx["rates"])
+        token = ctx["ledger"].reserve(reserve, note=f"{role} {spec.name}")
+        ctx["limiter"].wait()
+        res = call_fn(spec, system, user, max_out, schema, name)
+        cost = usage_cost(spec.model, res.usage, ctx["rates"]) if res.usage else 0
+        ctx["ledger"].settle(token, cost, note=res.request_id or "no-request-id")
+        ok = res.ok and res.parsed is not None
+        logs.append({
+            "request_id": res.request_id or f"local-{uuid.uuid4()}", "role": role, "review_ids": list(review_ids),
+            "model": spec.model, "phase": "initial", "outcome": "succeeded" if ok else "failed", "label_config": cfg,
+            "input_tokens": (res.usage.get("input", 0) + res.usage.get("cached_input", 0) + res.usage.get("cache_write", 0)) if res.usage else 0,
+            "output_tokens": res.usage.get("output", 0) if res.usage else 0,
+            "config": spec.name, "effort": spec.effort, "usage": res.usage, "cost_usd": str(cost), "reserved_usd": str(reserve),
+            "latency_s": round(res.latency_s, 3), "finish": res.finish, "error": res.error or (None if ok else "unparseable_output"),
+            "transport_attempt": attempt, "max_output_tokens": max_out, "t": time.time(),
+        })
+        if ok:
+            return res.parsed, logs
+        if res.ok or not res.retryable:
+            if attempt >= 2:
+                break  # one retry for unparseable output, as for enrichment
+            continue
+        time.sleep(backoff_delay(attempt))
+    return None, logs

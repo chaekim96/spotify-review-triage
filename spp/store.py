@@ -58,3 +58,30 @@ def status_counts(conn) -> dict:
     counts = {s: 0 for s in STATUSES}
     counts.update(dict(conn.execute("SELECT status, COUNT(*) FROM records GROUP BY status")))
     return counts
+
+
+PIPELINE_SCHEMA = """
+CREATE TABLE IF NOT EXISTS scope (
+    review_id TEXT PRIMARY KEY            -- reviews this run is declared to classify
+);
+CREATE TABLE IF NOT EXISTS calls (
+    request_id TEXT PRIMARY KEY,
+    role       TEXT NOT NULL,
+    phase      TEXT,
+    outcome    TEXT NOT NULL,
+    row        TEXT NOT NULL               -- full JSON call-log row
+);
+CREATE TABLE IF NOT EXISTS verify (
+    review_id    TEXT PRIMARY KEY,
+    labels       TEXT NOT NULL,            -- JSON labels from the verifier (never shown the first labels)
+    label_config TEXT NOT NULL
+);
+CREATE INDEX IF NOT EXISTS records_seq ON records(seq);
+"""
+
+
+def connect_pipeline(db_path) -> sqlite3.Connection:
+    conn = connect(db_path)
+    conn.executescript(PIPELINE_SCHEMA)
+    conn.execute("PRAGMA busy_timeout=30000")
+    return conn

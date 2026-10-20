@@ -25,10 +25,53 @@ def main(argv=None):
     c.add_argument("--out", type=Path, help="run folder (default evals/phase2/<UTC timestamp>)")
     c.add_argument("--confirm", action="store_true", help="make the paid calls")
     c.add_argument("--report", type=Path, metavar="RUN_DIR", help="rescore a saved run offline; no calls")
+    r = sub.add_parser("run", help="Run pipeline stages on a prepared run folder. Paid stages need --confirm.")
+    r.add_argument("--csv", required=True, type=Path)
+    r.add_argument("--run-dir", required=True, type=Path)
+    r.add_argument("--stages", default="scope,enrich,verify,group,rank,memo",
+                   help="comma list from scope,enrich,verify,group,rank,memo")
+    r.add_argument("--scope-n", type=int, help="declared number of nonempty reviews to classify (default: all)")
+    r.add_argument("--include", type=Path, nargs="*", default=[], help="CSVs whose IDs are always in scope")
+    r.add_argument("--primary", default="luna-none")
+    r.add_argument("--fallback", default="sonnet-low")
+    r.add_argument("--fallback-fraction", type=float, default=0.02)
+    r.add_argument("--verifier", default="haiku")
+    r.add_argument("--verify-fraction", type=float, default=0.01)
+    r.add_argument("--group-model", default="luna-low")
+    r.add_argument("--memo-model", default="sonnet-low")
+    r.add_argument("--workers", type=int, default=1)
+    r.add_argument("--batch-size", type=int, default=50)
+    r.add_argument("--rpm", type=float, default=120, help="shared requests-per-minute limit across workers")
+    r.add_argument("--budget", type=float, required=True, help="hard USD cap for all spend in this run folder")
+    r.add_argument("--phase", choices=["initial", "resume"], help="enrichment phase label (default: auto)")
+    r.add_argument("--stop-after-batches", type=int, help="interrupt deliberately after N enrichment requests")
+    r.add_argument("--confirm", action="store_true", help="allow paid model calls")
+
+    k = sub.add_parser("checkpoint", help="Snapshot completed IDs (no model call)")
+    k.add_argument("--run-dir", required=True, type=Path)
+    k.add_argument("--name", required=True, choices=["checkpoint_before", "checkpoint_after"])
+
+    rr = sub.add_parser("rerank", help="Regenerate ranking, claims and aggregates from saved files (no model call)")
+    rr.add_argument("--run-dir", required=True, type=Path)
+
+    ex = sub.add_parser("export", help="Write the grading/ folder from a run folder (no model call)")
+    ex.add_argument("--run-dir", required=True, type=Path)
+    ex.add_argument("--grading-dir", type=Path, default=Path("grading"))
+    ex.add_argument("--ingestion", type=Path, default=Path("grading/ingestion.json"))
+
+    st = sub.add_parser("status", help="Show record counts, spend and calls for a run folder")
+    st.add_argument("--run-dir", required=True, type=Path)
+
+    co = sub.add_parser("cost", help="Cost calculator: offline replay (default) or the paid pilot")
+    co.add_argument("action", choices=["replay", "pilot"], nargs="?", default="replay")
+    co.add_argument("--budget", type=float, default=1.0)
+    co.add_argument("--confirm", action="store_true")
     args = parser.parse_args(argv)
 
     if args.command == "compare":
         return _compare(args)
+    if args.command in ("run", "checkpoint", "rerank", "export", "status", "cost"):
+        return _pipeline_cmd(args)
 
     if args.command == "prepare":
         run_dir = args.run_dir or Path("runs") / args.csv.stem
@@ -81,6 +124,92 @@ def _compare(args):
     out = args.out or Path("evals/phase2") / _t.strftime("%Y%m%dT%H%M%SZ", _t.gmtime())
     summary, choice = compare.run(args.configs, items, refs, args.batch_size, args.budget, out)
     print((out / "report.md").read_text())
+    return 0
+
+
+def _pipeline_cmd(args):
+    import json
+    from . import analysis, pipeline, store
+
+    if args.command == "checkpoint":
+        n = pipeline.checkpoint(args.run_dir, args.run_dir / "checkpoints" / f"{args.name}.json")
+        print(f"{args.name}: {n} completed IDs")
+        return 0
+    if args.command == "rerank":
+        rows, claims, _, _ = analysis.rank(args.run_dir)
+        import hashlib
+        digest = hashlib.sha256((args.run_dir / "outputs" / "ranking.csv").read_bytes()).hexdigest()
+        print(f"{len(rows)} ranked issues, {len(claims)} claims; ranking.csv sha256 {digest}")
+        return 0
+    if args.command == "export":
+        print(analysis.export(args.run_dir, args.grading_dir, args.ingestion))
+        return 0
+    if args.command == "status":
+        conn = store.connect_pipeline(args.run_dir / "state.sqlite")
+        print(json.dumps({"statuses": store.status_counts(conn),
+                          "scope": conn.execute("SELECT COUNT(*) FROM scope").fetchone()[0],
+                          "cache_aliases": conn.execute("SELECT COUNT(*) FROM records WHERE cache_source_id IS NOT NULL").fetchone()[0],
+                          "calls_by_role": dict(conn.execute("SELECT role || ':' || outcome, COUNT(*) FROM calls GROUP BY 1")),
+                          "spent_usd": store.get_meta(conn, "spent_usd")}, indent=2))
+        return 0
+    if args.command == "cost":
+        from . import cost
+        if args.action == "replay":
+            cost.replay()
+            print((cost.COST / "report.md").read_text())
+            return 0
+        if not args.confirm:
+            print("PLAN ONLY: the pilot runs cost_100.csv cold then warm (about $0.05 expected). Add --confirm to run it.")
+            return 0
+        from dotenv import load_dotenv
+        load_dotenv()
+        print(json.dumps(cost.run_pilot(args.budget), indent=2))
+        return 0
+
+    # run
+    from .providers import get_spec
+    stages = [x.strip() for x in args.stages.split(",") if x.strip()]
+    paid = {"enrich", "verify", "group", "memo"} & set(stages)
+    if paid and not args.confirm:
+        print(f"PLAN ONLY: stages {sorted(paid)} make paid calls; nothing was called. Add --confirm (cap ${args.budget}).")
+        return 0
+    if paid:
+        from dotenv import load_dotenv
+        load_dotenv()
+    texts = None
+    def get_texts():
+        nonlocal texts
+        if texts is None:
+            texts = pipeline.load_texts(args.csv)
+        return texts
+    ctx = pipeline.make_ctx(args.run_dir, args.budget, args.rpm)
+    cache = args.run_dir / "downstream_cache"
+    for stage in stages:
+        if stage == "scope":
+            n = pipeline.set_scope(args.run_dir, args.csv, n=args.scope_n, include_csvs=args.include)
+            print(f"scope: {n} reviews declared")
+        elif stage == "enrich":
+            out = pipeline.enrich(args.run_dir, get_texts(), get_spec(args.primary), get_spec(args.fallback) if args.fallback != "none" else None,
+                                  ctx, phase=args.phase, workers=args.workers, batch_size=args.batch_size,
+                                  fallback_fraction=args.fallback_fraction, stop_after_batches=args.stop_after_batches)
+            if out["interrupted"]:
+                print("enrichment stopped early (interrupt, budget or --stop-after-batches); later stages skipped. Rerun to resume.")
+                return 0
+        elif stage == "verify":
+            pipeline.verify(args.run_dir, get_texts(), get_spec(args.verifier), ctx, args.verify_fraction, workers=args.workers)
+            rep = pipeline.verify_report(args.run_dir)
+            from .atomic import atomic_write_json
+            atomic_write_json(args.run_dir / "outputs" / "verification.json", rep)
+            print("verification:", {k: rep[k] for k in ("n_verified", "topic_agreement", "intent_agreement", "severity_exact", "severity_within_1")})
+        elif stage == "group":
+            analysis.group(args.run_dir, get_texts(), get_spec(args.group_model), ctx, cache_dir=cache)
+        elif stage == "rank":
+            rows, claims, _, _ = analysis.rank(args.run_dir)
+            print(f"rank: {len(rows)} issues; top 5: " + ", ".join(f"{r['issue_id']}={r['priority_score']}" for r in rows[:5]))
+        elif stage == "memo":
+            analysis.memo(args.run_dir, get_texts(), get_spec(args.memo_model), ctx, cache_dir=cache)
+            print(f"memo written: {args.run_dir / 'outputs' / 'memo.md'}")
+    print(f"spent in this run folder: ${ctx['ledger'].spent:.4f} of ${args.budget}")
     return 0
 
 
