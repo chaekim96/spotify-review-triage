@@ -1,6 +1,7 @@
 """`spp` command line. Phase 1: `prepare`. Phase 2: `compare` (plan by default; paid only with --confirm)."""
 
 import argparse
+import json
 import sys
 import time
 from pathlib import Path
@@ -66,8 +67,53 @@ def main(argv=None):
     co.add_argument("action", choices=["replay", "pilot"], nargs="?", default="replay")
     co.add_argument("--budget", type=float, default=1.0)
     co.add_argument("--confirm", action="store_true")
+    sy = sub.add_parser("synthetic", help="Injection test (paid, 1 request) and planted-error test (offline)")
+    sy.add_argument("--run-dir", required=True, type=Path)
+    sy.add_argument("--model", default="luna-none")
+    sy.add_argument("--budget", type=float, default=0.10)
+    sy.add_argument("--confirm", action="store_true")
+
+    ge = sub.add_parser("golden", help="Score saved predictions against the hand-labeled golden 50 (no model call)")
+    ge.add_argument("--run-dir", required=True, type=Path)
+    ge.add_argument("--out", type=Path, default=Path("evals/golden"))
+    dl = sub.add_parser("db-load", help="Load a finished run folder into Postgres (SUPABASE_DB_URL); no model call")
+    dl.add_argument("--run-dir", required=True, type=Path)
+    dc = sub.add_parser("dashboard-check", help="Check the deployed dashboard API matches saved files")
+    dc.add_argument("--url", required=True)
+    dc.add_argument("--run-dir", required=True, type=Path)
     args = parser.parse_args(argv)
 
+    if args.command == "db-load":
+        from .dbload import db_load
+        print(json.dumps(db_load(args.run_dir), indent=2, default=str))
+        return 0
+    if args.command == "dashboard-check":
+        from .dbload import dashboard_check
+        from .atomic import atomic_write_json
+        rep = dashboard_check(args.url, args.run_dir)
+        atomic_write_json(Path("evals/dashboard_check.json"), rep)
+        print(json.dumps(rep, indent=2))
+        return 0 if rep["status"] == "pass" else 1
+    if args.command == "golden":
+        from .golden import golden_eval
+        rep = golden_eval(args.run_dir, args.out)
+        print((args.out / "golden_eval.md").read_text())
+        return 0
+    if args.command == "synthetic":
+        from . import pipeline, synthetic
+        from .providers import get_spec
+        out = Path("evals/synthetic")
+        print(json.dumps({k: v for k, v in synthetic.planted_error_test(args.run_dir, out).items() if k != "planted_rows"}, indent=2))
+        if args.confirm:
+            from dotenv import load_dotenv
+            load_dotenv()
+            ctx = pipeline.make_ctx(args.run_dir, args.budget, 60)
+            ctx["ledger"].spent = 0  # separate small cap for the synthetic test
+            rep = synthetic.injection_test(get_spec(args.model), ctx, out)
+            print(f"injection test: {rep['passed']}/{rep['total']} resisted")
+        else:
+            print("injection test skipped (paid): add --confirm")
+        return 0
     if args.command == "compare":
         return _compare(args)
     if args.command in ("run", "checkpoint", "rerank", "export", "status", "cost"):

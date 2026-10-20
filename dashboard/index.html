@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spotify Review Triage</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+<style>
+:root {
+  --bg: #f7f7f5; --panel: #ffffff; --ink: #1b1d1f; --muted: #646a70; --line: #e3e4e1;
+  --accent: #1d8a52; --accent-soft: #e3f3ea; --warn: #b4531f; --bar: #1d8a52; --bar-bg: #edeeeb;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #121416; --panel: #1b1e21; --ink: #ecedee; --muted: #9aa1a8; --line: #2c3035;
+    --accent: #3fbf7f; --accent-soft: #1d3329; --warn: #e48a55; --bar: #3fbf7f; --bar-bg: #262a2e;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #121416; --panel: #1b1e21; --ink: #ecedee; --muted: #9aa1a8; --line: #2c3035;
+  --accent: #3fbf7f; --accent-soft: #1d3329; --warn: #e48a55; --bar: #3fbf7f; --bar-bg: #262a2e;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.5 Inter, system-ui, sans-serif; }
+header, main { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+header { padding-top: 28px; padding-bottom: 8px; }
+h1 { font-size: 24px; margin: 0 0 4px; }
+h2 { font-size: 17px; margin: 0 0 12px; }
+.sub { color: var(--muted); margin: 0; }
+.grid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); margin: 16px 0; }
+.card, section { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; }
+.card { padding: 14px; }
+.card .k { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .04em; }
+.card .v { font-size: 22px; font-weight: 700; margin-top: 2px; font-variant-numeric: tabular-nums; }
+section { padding: 18px; margin: 16px 0; overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+th, td { text-align: left; padding: 7px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { color: var(--muted); font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: .03em; }
+td.n, th.n { text-align: right; }
+.bar { height: 10px; background: var(--bar-bg); border-radius: 5px; min-width: 120px; }
+.bar > i { display: block; height: 100%; background: var(--bar); border-radius: 5px; }
+.pill { display: inline-block; padding: 1px 8px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); font-size: 12px; font-weight: 600; }
+a, button.link { color: var(--accent); cursor: pointer; background: none; border: 0; padding: 0; font: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.memo { max-width: 760px; }
+.memo code, .ids code { font-size: 12.5px; }
+.note { color: var(--muted); font-size: 13px; }
+#detail { position: fixed; inset: auto 16px 16px auto; width: min(520px, calc(100vw - 32px)); max-height: 70vh; overflow: auto;
+  background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 16px; box-shadow: 0 10px 30px rgba(0,0,0,.18); display: none; }
+#detail .close { float: right; }
+.err { color: var(--warn); }
+</style>
+</head>
+<body>
+<header>
+  <h1>Spotify Review Triage</h1>
+  <p class="sub">Where should Spotify put next quarter's product effort: access, usability, playback, or billing/support?
+  Every number below is read from the saved pipeline outputs in Postgres; the recommendation was generated once, offline.</p>
+</header>
+<main>
+  <div class="grid" id="kpis"></div>
+
+  <section>
+    <h2>AI recommendation <span class="pill" id="recArea"></span></h2>
+    <div class="memo" id="memo">Loading…</div>
+    <p class="ids note" id="recIds"></p>
+  </section>
+
+  <section>
+    <h2>Effort areas (complaint and cancellation records)</h2>
+    <table id="areas"><thead><tr><th>Area</th><th class="n">Complaints</th><th class="n">Severity sum</th><th class="n">Mean severity</th>
+      <th class="n">Cancellation intent</th><th>Share of total severity</th></tr></thead><tbody></tbody></table>
+    <p class="note">Areas fold the 8 label topics: usability includes catalog, playback includes downloads, billing/support combines both.
+      Cancellation intent is stated intent in the text, not measured churn.</p>
+  </section>
+
+  <section>
+    <h2>Issue ranking (baseline: priority = severity sum)</h2>
+    <table id="ranking"><thead><tr><th class="n">Rank</th><th>Issue</th><th>Name</th><th>Area</th><th class="n">Complaints</th>
+      <th class="n">Severity sum</th><th class="n">Mean severity</th></tr></thead><tbody></tbody></table>
+  </section>
+
+  <p class="note" id="scope"></p>
+</main>
+<div id="detail"><button class="link close" onclick="hide()">close</button><div id="detailBody"></div></div>
+<script>
+const $ = s => document.querySelector(s);
+const fmt = n => Number(n).toLocaleString("en-US");
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+async function get(path) { const r = await fetch(path); if (!r.ok) throw new Error(path + " " + r.status); return r.json(); }
+function hide() { $("#detail").style.display = "none"; }
+function show(html) { $("#detailBody").innerHTML = html; $("#detail").style.display = "block"; }
+
+async function openIssue(id) {
+  const d = await get("/api/issue?id=" + encodeURIComponent(id));
+  if (d.error) return show(`<p class="err">${esc(d.error)}</p>`);
+  const i = d.issue;
+  show(`<h2>${esc(i.issue_id)}: ${esc(i.name)}</h2><p class="note">${esc(i.description)}<br>Area ${esc(i.area)}, topic ${esc(i.topic)}; keywords: ${esc(i.keywords.join(", "))}</p>
+    <p>Claims: ${d.claims.map(c => `<code>${esc(c.claim_id)}</code> ${esc(c.metric)} = <b>${esc(c.value)}</b>`).join("; ")}</p>
+    <table><thead><tr><th>Review</th><th>Intent</th><th class="n">Sev</th><th>Evidence quote</th></tr></thead><tbody>
+    ${d.reviews.map(r => `<tr><td><button class="link" onclick="openReview('${esc(r.review_id)}')">${esc(r.review_id.slice(0, 8))}</button></td>
+      <td>${esc(r.intent)}</td><td class="n">${r.severity}</td><td>${esc(r.evidence_quote)}</td></tr>`).join("")}</tbody></table>
+    <p class="note">Up to 25 highest-severity original records shown.</p>`);
+}
+async function openReview(id) {
+  const r = await get("/api/review?id=" + encodeURIComponent(id));
+  if (r.error) return show(`<p class="err">${esc(r.error)}</p>`);
+  show(`<h2>Review <code>${esc(r.review_id)}</code></h2><table>
+    ${["topic","intent","sentiment","severity","needs_review","issue_id","label_config","cache_source_id"].map(k =>
+      `<tr><th>${k}</th><td>${k === "issue_id" && r[k] ? `<button class="link" onclick="openIssue('${esc(r[k])}')">${esc(r[k])}</button>` : esc(r[k])}</td></tr>`).join("")}
+    <tr><th>entities</th><td>${esc((r.entities || []).join(", "))}</td></tr>
+    <tr><th>evidence</th><td>“${esc(r.evidence_quote)}”</td></tr></table>`);
+}
+function linkify(html) {
+  return html
+    .replace(/\b([A-Z]+-\d{2})\b/g, '<button class="link" onclick="openIssue(\'$1\')">$1</button>')
+    .replace(/\b([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})\b/g, '<button class="link" onclick="openReview(\'$1\')">$1</button>');
+}
+
+(async () => {
+  try {
+    const [{ summary: s, areas }, ranking, rec] = await Promise.all([get("/api/summary"), get("/api/ranking"), get("/api/recommendation")]);
+    const st = s.statuses_all_660622 || {};
+    const kpis = [
+      ["Reviews in file", fmt((st.completed || 0) + (st.quarantined || 0) + (st.pending || 0))],
+      ["Declared scope", fmt(s.scope_reviews)],
+      ["Classified (in scope)", fmt(s.completed_in_scope)],
+      ["Reused exact-text results", fmt(s.cache_aliases)],
+      ["Complaint + cancellation", fmt(s.complaint_or_cancellation)],
+      ["Ranked issues", fmt(s.issue_count)],
+      ["Verifier topic agreement", s.verification && s.verification.topic_agreement != null ? (100 * s.verification.topic_agreement).toFixed(1) + "%" : "n/a"],
+      ["API spend (measured)", "$" + Number(s.spent_usd || 0).toFixed(2)],
+    ];
+    $("#kpis").innerHTML = kpis.map(([k, v]) => `<div class="card"><div class="k">${k}</div><div class="v">${v}</div></div>`).join("");
+    const maxShare = Math.max(...areas.map(a => Number(a.share_of_severity_pct)));
+    $("#areas tbody").innerHTML = areas.map(a => `<tr><td>${esc(a.area)}</td><td class="n">${fmt(a.complaint_count)}</td><td class="n">${fmt(a.severity_sum)}</td>
+      <td class="n">${esc(a.mean_severity)}</td><td class="n">${fmt(a.cancellation_count)}</td>
+      <td><div class="bar" title="${esc(a.share_of_severity_pct)}%"><i style="width:${100 * Number(a.share_of_severity_pct) / maxShare}%"></i></div> ${esc(a.share_of_severity_pct)}%</td></tr>`).join("");
+    $("#ranking tbody").innerHTML = ranking.map(r => `<tr><td class="n">${r.rank}</td>
+      <td><button class="link" onclick="openIssue('${esc(r.issue_id)}')">${esc(r.issue_id)}</button></td><td>${esc(r.name)}</td><td>${esc(r.area)}</td>
+      <td class="n">${fmt(r.complaint_count)}</td><td class="n">${fmt(r.severity_sum)}</td><td class="n">${esc(r.mean_severity)}</td></tr>`).join("");
+    const R = rec.recommendation;
+    if (R) {
+      $("#recArea").textContent = R.recommended_area;
+      $("#memo").innerHTML = linkify(marked.parse(R.memo_markdown.replace(/^# .*\n/, "")));
+      $("#recIds").innerHTML = `Model ${esc(R.model_config)}, generated ${esc(R.generated_utc)}. Cited claims: ` +
+        rec.cited_claims.map(c => `<code title="${esc(c.issue_id)} ${esc(c.metric)}">${esc(c.claim_id)}=${esc(c.value)}</code>`).join(" ") +
+        `. Evidence reviews: ${R.evidence_review_ids.map(id => `<button class="link" onclick="openReview('${id}')">${id.slice(0, 8)}</button>`).join(" ")}`;
+    }
+    $("#scope").textContent = `Scope: ${fmt(s.scope_reviews)} of 660,622 reviews were classified (a declared, seeded sample within the $10 budget); `
+      + `the rest are recorded as not classified. App-store reviewers are self-selected, so shares describe reviews, not all users.`;
+  } catch (e) {
+    $("#memo").innerHTML = `<p class="err">Could not load data: ${esc(e.message)}</p>`;
+  }
+})();
+</script>
+</body>
+</html>
