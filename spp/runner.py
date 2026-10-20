@@ -9,7 +9,7 @@ from .budget import backoff_delay, estimate_tokens, usage_cost, worst_case_cost
 from .labels import label_config, system_prompt, unknown_ids, user_message, validate_batch
 
 MAX_BATCH = 50
-MAX_TRANSPORT_ATTEMPTS = 4  # per request, for 429 / 5xx / timeouts / connection errors
+MAX_TRANSPORT_ATTEMPTS = 6  # per request, for 429 / 5xx / timeouts / connection errors
 INVALID_OUTPUT_RETRIES = 1  # the contract-style rule: retry invalid output once, then quarantine
 
 
@@ -46,7 +46,7 @@ def _request(spec, role, batch, ctx, phase, call_fn):
         logs.append(row)
         if res.ok or not res.retryable:
             return res, logs
-        time.sleep(backoff_delay(attempt))
+        time.sleep(backoff_delay(attempt, base=2.0, cap=60.0))
     return None, logs
 
 

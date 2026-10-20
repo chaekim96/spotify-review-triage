@@ -60,6 +60,9 @@ def main(argv=None):
     ex.add_argument("--grading-dir", type=Path, default=Path("grading"))
     ex.add_argument("--ingestion", type=Path, default=Path("grading/ingestion.json"))
 
+    rq = sub.add_parser("requeue", help="Return reviews quarantined only by transport errors (e.g. 429) to pending (no model call)")
+    rq.add_argument("--run-dir", required=True, type=Path)
+
     st = sub.add_parser("status", help="Show record counts, spend and calls for a run folder")
     st.add_argument("--run-dir", required=True, type=Path)
 
@@ -116,7 +119,7 @@ def main(argv=None):
         return 0
     if args.command == "compare":
         return _compare(args)
-    if args.command in ("run", "checkpoint", "rerank", "export", "status", "cost"):
+    if args.command in ("run", "checkpoint", "rerank", "export", "status", "cost", "requeue"):
         return _pipeline_cmd(args)
 
     if args.command == "prepare":
@@ -189,6 +192,12 @@ def _pipeline_cmd(args):
         return 0
     if args.command == "export":
         print(analysis.export(args.run_dir, args.grading_dir, args.ingestion))
+        return 0
+    if args.command == "requeue":
+        conn = store.connect_pipeline(args.run_dir / "state.sqlite")
+        with conn:
+            n = conn.execute("UPDATE records SET status='pending', reason=NULL WHERE status='quarantined' AND reason LIKE 'transport_failed%'").rowcount
+        print(f"requeued {n} reviews quarantined by transport errors; their failed calls stay in the log")
         return 0
     if args.command == "status":
         conn = store.connect_pipeline(args.run_dir / "state.sqlite")
