@@ -1,0 +1,57 @@
+{
+  "checkpoints": [
+    {
+      "distinct_texts_labeled_by_model": 500,
+      "enrich_cost_usd": 0.0217,
+      "usd_per_1000_texts": 0.0434,
+      "succeeded_requests": 10,
+      "failed_requests": 49
+    },
+    {
+      "distinct_texts_labeled_by_model": 10000,
+      "enrich_cost_usd": 0.441,
+      "usd_per_1000_texts": 0.0439,
+      "succeeded_requests": 232,
+      "failed_requests": 385
+    },
+    {
+      "distinct_texts_labeled_by_model": 50000,
+      "enrich_cost_usd": 2.2207,
+      "usd_per_1000_texts": 0.0444,
+      "succeeded_requests": 1190,
+      "failed_requests": 385
+    }
+  ],
+  "final_texts_labeled_by_model": 78725,
+  "by_role": {
+    "enrich": {
+      "requests": 2305,
+      "failed": 385,
+      "cost_usd": 3.8431,
+      "input_tokens": 9801012,
+      "output_tokens": 6006948
+    },
+    "verify": {
+      "requests": 22,
+      "failed": 0,
+      "cost_usd": 0.425,
+      "input_tokens": 89434,
+      "output_tokens": 67115
+    },
+    "group": {
+      "requests": 24,
+      "failed": 0,
+      "cost_usd": 0.0183,
+      "input_tokens": 124762,
+      "output_tokens": 11658
+    },
+    "memo": {
+      "requests": 3,
+      "failed": 0,
+      "cost_usd": 0.0746,
+      "input_tokens": 13318,
+      "output_tokens": 4800
+    }
+  },
+  "total_api_cost_usd": 4.361
+}

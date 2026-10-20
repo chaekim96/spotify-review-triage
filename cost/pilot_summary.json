@@ -24,25 +24,25 @@
         "model": "claude-haiku-4-5-20251001"
       }
     },
-    "enrich_requests": 3,
+    "enrich_requests": 4,
     "failed_requests": 0,
-    "requests": 8,
+    "requests": 9,
     "result_cache_hits": 0,
-    "spent_usd": "0.04157162",
+    "spent_usd": "0.04101566",
     "stage_seconds": {
-      "enrich": 65.51,
-      "group": 17.75,
-      "memo": 12.96,
-      "prepare": 0.05,
+      "enrich": 53.61,
+      "group": 13.92,
+      "memo": 15.44,
+      "prepare": 0.06,
       "rank": 0.01,
-      "verify": 16.6
+      "verify": 15.49
     },
     "statuses": {
       "completed": 100,
       "pending": 0,
       "quarantined": 0
     },
-    "wall_seconds": 112.89,
+    "wall_seconds": 98.52,
     "workers": 1
   },
   "pilot_warm": {
@@ -72,14 +72,14 @@
     },
     "enrich_requests": 0,
     "failed_requests": 0,
-    "requests": 1,
+    "requests": 0,
     "result_cache_hits": 100,
-    "spent_usd": "0.022196",
+    "spent_usd": "0",
     "stage_seconds": {
       "enrich": 0.0,
       "group": 0.0,
-      "memo": 12.14,
-      "prepare": 0.07,
+      "memo": 0.01,
+      "prepare": 0.04,
       "rank": 0.0,
       "verify": 0.0
     },
@@ -88,7 +88,7 @@
       "pending": 0,
       "quarantined": 0
     },
-    "wall_seconds": 12.23,
+    "wall_seconds": 0.07,
     "workers": 1
   }
 }

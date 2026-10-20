@@ -221,5 +221,8 @@ def replay(rates_path=COST / "rates.csv", usage_path=COST / "usage.csv", assumpt
                      f"{r['verify']} | {r['group']} | {r['memo']} | {r['total_usd']} | {r['est_minutes']} | {flag} (${A['budget_usd'][r['target']]}) |")
     lines += ["", "Local compute (laptop CPU, SQLite) is not billed and is not included above; its cost is unknown, not zero.",
               "Formulas: item_cost = billed_units x usd_per_token (per-million price / 1,000,000); input, cached input, cache writes and output are separate buckets; reasoning tokens are already inside output.", ""]
+    measured = Path(rates_path).parent / "full_run_measured.md"
+    if measured.exists():  # measured refreshes from the real run (fixed evidence, not recomputed from assumptions)
+        lines += ["", measured.read_text().strip()]
     atomic_write_text(out_path, "\n".join(lines) + "\n")
     return {"cold_total": cold_total, "warm_total": warm_total, "scenarios": scen_rows}

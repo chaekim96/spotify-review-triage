@@ -1,0 +1,10 @@
+pass 1: 100000 pending in scope, 78220 distinct texts to send, 199 routed to fallback, 1565 requests, phase=initial, workers=16
+  20 batches, spent $0.0242, 111s
+  40 batches, spent $0.0242, 208s
+  60 batches, spent $0.0591, 264s
+  80 batches, spent $0.0979, 311s
+  100 batches, spent $0.1442, 360s
+  120 batches, spent $0.1865, 396s
+  140 batches, spent $0.2308, 435s
+{"phase": "initial", "interrupted": true, "wall_seconds": 462.79, "spent_usd_total": "0.25320468", "statuses": {"pending": 640076, "completed": 18777, "quarantined": 1769}, "cache_aliases": 13033, "result_cache_hits_from_cache_db": 0, "completed_by_model": 5744, "quarantined": 1756, "requests": 517, "batches": 150}
+enrichment stopped early (interrupt, budget or --stop-after-batches); later stages skipped. Rerun to resume.

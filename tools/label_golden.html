@@ -34,7 +34,7 @@ textarea { min-height:56px; }
 <div class="wrap">
   <div class="panel">
     <h1>Golden 50 hand labeling <span class="muted" id="pos"></span></h1>
-    <div class="muted">You choose every label; nothing is pre-filled. Saves to <code>data_raw/golden_50_to_label.csv</code>. <kbd>Ctrl</kbd>+<kbd>Enter</kbd> = save and next.</div>
+    <div class="muted">Fast mode: you choose topic, intent, severity, sentiment and needs_review; the evidence quote is saved as the whole review and entities as []. Keys: topic <kbd>1</kbd>-<kbd>8</kbd>, intent <kbd>Q</kbd><kbd>W</kbd><kbd>E</kbd><kbd>R</kbd><kbd>T</kbd>, severity <kbd>A</kbd>-<kbd>G</kbd> (1-5), sentiment <kbd>Z</kbd><kbd>X</kbd><kbd>C</kbd><kbd>V</kbd><kbd>B</kbd><kbd>M</kbd><kbd>,</kbd><kbd>.</kbd><kbd>/</kbd> (-1 to 1), <kbd>N</kbd> needs_review, <kbd>Enter</kbd> save and next.</div>
     <div class="review" id="text"></div>
 
     <label class="h">Topic</label><div class="row" id="topic"></div>
@@ -42,11 +42,6 @@ textarea { min-height:56px; }
     <label class="h">Severity</label><div class="row sev" id="severity"></div>
     <label class="h">Sentiment <span class="muted" id="sentVal">not set</span></label>
     <div class="row" id="sentiment"></div>
-    <label class="h">Evidence quote <span class="muted">(select text in the review above, then click "Use selection")</span></label>
-    <div class="row"><button class="opt" id="useSel">Use selection</button><button class="opt" id="useAll">Use whole review</button></div>
-    <textarea id="quote" placeholder="Exact copy from the review"></textarea>
-    <label class="h">Entities <span class="muted">(comma-separated, as written; leave empty for none; no personal names)</span></label>
-    <input type="text" id="entities" placeholder="e.g. spotify premium, YouTube">
     <label class="h"><input type="checkbox" id="needs"> needs_review (not enough context to label confidently)</label>
     <div id="msg"></div>
     <div class="row"><button class="btn ghost" id="prev">← Previous</button><button class="btn" id="save">Save and next →</button></div>
@@ -70,7 +65,8 @@ const SEV={1:"no problem / praise / request",2:"dislike, annoyance, ads",3:"degr
 const SENT=["-1","-0.8","-0.5","-0.3","0","0.3","0.5","0.8","1"];
 let rows=[], i=0, cur={};
 const $=s=>document.querySelector(s);
-function pills(el, opts, key, labelFn){ el.innerHTML=""; opts.forEach(o=>{ const b=document.createElement("button"); b.className="opt"+(String(cur[key])===String(o)?" on":""); b.innerHTML=labelFn?labelFn(o):o; b.onclick=()=>{cur[key]=o; render();}; el.appendChild(b); }); }
+const KEYS={topic:"12345678",intent:"qwert",severity:"asdfg",sentiment:"zxcvbm,./"};
+function pills(el, opts, key, labelFn){ el.innerHTML=""; opts.forEach(o=>{ const b=document.createElement("button"); b.className="opt"+(String(cur[key])===String(o)?" on":""); b.innerHTML=(labelFn?labelFn(o):o)+` <span class="muted">[${KEYS[key][opts.indexOf(o)].toUpperCase()}]</span>`; b.onclick=()=>{cur[key]=o; render();}; el.appendChild(b); }); }
 function render(){
   const r=rows[i]; $("#pos").textContent=`${i+1} of ${rows.length}`; $("#text").textContent=r.review_text;
   pills($("#topic"),TOPICS,"topic"); pills($("#intent"),INTENTS,"intent");
@@ -82,14 +78,12 @@ function render(){
 }
 function load(k){ i=k; const r=rows[i];
   cur={topic:r.topic||undefined,intent:r.intent||undefined,severity:r.severity||undefined,sentiment:r.sentiment===""?undefined:r.sentiment};
-  $("#quote").value=r.evidence_quote||""; $("#entities").value=(r.entities||[]).join(", "); $("#needs").checked=r.needs_review==="true"; $("#msg").innerHTML=""; render(); window.scrollTo(0,0); }
+  $("#needs").checked=r.needs_review==="true"; $("#msg").innerHTML=""; render(); window.scrollTo(0,0); }
 function go(k){ if(k>=0&&k<rows.length) load(k); }
-$("#useSel").onclick=()=>{ const s=window.getSelection().toString(); if(s) $("#quote").value=s; };
-$("#useAll").onclick=()=>{ $("#quote").value=rows[i].review_text; };
 $("#prev").onclick=()=>go(i-1);
 async function save(){
-  const labels={topic:cur.topic,intent:cur.intent,severity:cur.severity,sentiment:cur.sentiment,evidence_quote:$("#quote").value,
-    entities:$("#entities").value.split(",").map(s=>s.trim()).filter(Boolean),needs_review:$("#needs").checked};
+  const labels={topic:cur.topic,intent:cur.intent,severity:cur.severity,sentiment:cur.sentiment,evidence_quote:rows[i].review_text,
+    entities:[],needs_review:$("#needs").checked};
   const res=await fetch("/api/save",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({review_id:rows[i].review_id,labels})});
   const j=await res.json();
   if(!res.ok){ $("#msg").innerHTML=`<div class="err">${j.errors.join("; ")}</div>`; return; }
@@ -98,7 +92,14 @@ async function save(){
   const next=rows.findIndex((x,k)=>k>i&&!x.topic); go(next>=0?next:rows.findIndex(x=>!x.topic));
 }
 $("#save").onclick=save;
-document.addEventListener("keydown",e=>{ if(e.key==="Enter"&&(e.ctrlKey||e.metaKey)){ e.preventDefault(); save(); } });
+document.addEventListener("keydown",e=>{
+  if(e.target.tagName==="INPUT"&&e.target.type==="text") return;
+  if(e.key==="Enter"){ e.preventDefault(); save(); return; }
+  const k=e.key.toLowerCase();
+  if(k==="n"){ $("#needs").checked=!$("#needs").checked; return; }
+  const lists={topic:TOPICS,intent:INTENTS,severity:[1,2,3,4,5],sentiment:SENT};
+  for(const [key,keys] of Object.entries(KEYS)){ const j=keys.indexOf(k); if(j>=0&&j<lists[key].length){ cur[key]=lists[key][j]; render(); return; } }
+});
 fetch("/api/rows").then(r=>r.json()).then(d=>{ rows=d; const first=rows.findIndex(x=>!x.topic); load(first>=0?first:0); });
 </script>
 </body>

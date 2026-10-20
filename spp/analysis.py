@@ -25,7 +25,8 @@ AREAS = {  # DECISIONS D24: the 8 contract topics folded into the 4 business are
     "playback": "playback", "downloads": "playback", "billing": "billing/support", "support": "billing/support",
     "other": "unassigned (general)",
 }
-PACK_PER_TOPIC = 40
+PACK_PER_TOPIC = 80
+GROUP_PROMPT = "group_v2"  # v1 keywords were long literal phrases that left large catch-alls (DECISIONS D34)
 MIN_FOR_MODEL = 8
 MEMO_TOP_ISSUES = 12
 mean_string = checker.mean_string
@@ -89,8 +90,8 @@ def group(run_dir, texts, spec, ctx, cache_dir=None, log=print):
     by_topic = defaultdict(list)
     for rid, r in complaints.items():
         by_topic[r["topic"]].append(rid)
-    system = (PROMPTS_DIR / "group_v1.md").read_text(encoding="utf-8")
-    cfg = f"{spec.model}+{spec.effort}+group-v1"
+    system = (PROMPTS_DIR / f"{GROUP_PROMPT}.md").read_text(encoding="utf-8")
+    cfg = f"{spec.model}+{spec.effort}+{GROUP_PROMPT.replace('_', '-')}"
     issues, model_calls, cache_hits = [], 0, 0
     for topic in TOPICS:
         rids = sorted(by_topic.get(topic, []))
@@ -98,9 +99,9 @@ def group(run_dir, texts, spec, ctx, cache_dir=None, log=print):
             continue
         defs = []
         if len(rids) >= MIN_FOR_MODEL:
-            pack = sorted(random.Random(f"group-v1:{topic}").sample(rids, min(PACK_PER_TOPIC, len(rids))))
+            pack = sorted(random.Random(f"{GROUP_PROMPT}:{topic}").sample(rids, min(PACK_PER_TOPIC, len(rids))))
             user = json.dumps({"topic": topic, "complaints": [
-                {"review_id": r, "quote": complaints[r]["evidence_quote"], "text": texts[r][:300]} for r in pack]}, ensure_ascii=False)
+                {"review_id": r, "quote": complaints[r]["evidence_quote"], "text": texts[r][:200]} for r in pack]}, ensure_ascii=False)
             key = "group-" + hashlib.sha256((cfg + system + user).encode()).hexdigest()[:24]
 
             def run_model():
@@ -110,7 +111,7 @@ def group(run_dir, texts, spec, ctx, cache_dir=None, log=print):
             parsed, hit = _cached(cache_dir, key, run_model)
             cache_hits += hit
             model_calls += not hit
-            for i, it in enumerate((parsed or {}).get("issues", [])[:6], 1):
+            for i, it in enumerate((parsed or {}).get("issues", [])[:7], 1):
                 kws = [k.strip().lower() for k in it["keywords"] if k.strip()]
                 if kws:
                     defs.append({"issue_id": f"{topic.upper()}-{i:02d}", "topic": topic, "name": it["name"].strip(),
@@ -133,12 +134,14 @@ def assign(complaints, texts, issues):
     by_topic = defaultdict(list)
     for d in issues:
         by_topic[d["topic"]].append(d)
+    # a keyword must start at a word boundary ("ads" must not match inside "downloads"); stems like "shuffl" still match
+    pats = {d["issue_id"]: re.compile("|".join(r"(?<![a-z0-9])" + re.escape(k) for k in d["keywords"])) for d in issues if d["keywords"]}
     out = {}
     for rid, r in complaints.items():
         low = texts[rid].lower()
         chosen = None
         for d in by_topic[r["topic"]]:
-            if d["keywords"] and any(k in low for k in d["keywords"]):
+            if d["keywords"] and pats[d["issue_id"]].search(low):
                 chosen = d["issue_id"]
                 break
         out[rid] = chosen or f"{r['topic'].upper()}-99"

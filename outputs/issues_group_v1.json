@@ -1,0 +1,605 @@
+[
+  {
+    "description": "Users report being unable to log in or sign in to their accounts, often despite trying again or using correct credentials.",
+    "issue_id": "ACCESS-01",
+    "keywords": [
+      "can't login",
+      "cant log in",
+      "unable to login",
+      "not able to login",
+      "log back in",
+      "sign in",
+      "login problem",
+      "doesn't login"
+    ],
+    "name": "Login failures",
+    "source": "model:gpt-6-luna+low+group-v1",
+    "topic": "access"
+  },
+  {
+    "description": "Users say their phone number is rejected or prompts them to check it when they try to access an account.",
+    "issue_id": "ACCESS-02",
+    "keywords": [
+      "check your phone number",
+      "different number",
+      "with number",
+      "mobile number",
+      "my no. for login",
+      "phone nambar login issue"
+    ],
+    "name": "Phone number rejected",
+    "source": "model:gpt-6-luna+low+group-v1",
+    "topic": "access"
+  },
+  {
+    "description": "Users report being logged out and having to log in again, including after updates or while traveling.",
+    "issue_id": "ACCESS-03",
+    "keywords": [
+      "logged out",
+      "logged me out",
+      "logout of my account",
+      "log in every time",
+      "different country"
+    ],
+    "name": "Logged out repeatedly",
+    "source": "model:gpt-6-luna+low+group-v1",
+    "topic": "access"
+  },
+  {
+    "description": "Users say their account was disabled, lost, hacked, or cannot be retrieved.",
+    "issue_id": "ACCESS-04",
+    "keywords": [
+      "account was disabled",
+      "can't retrieve",
+      "lost my account",
+      "hacks my account",
+      "username doesn't exist"
+    ],
+    "name": "Account unavailable or lost",
+    "source": "model:gpt-6-luna+low+group-v1",
+    "topic": "access"
+  },
+  {
+    "description": "Users report trouble creating an account or completing registration.",
+    "issue_id": "ACCESS-05",
+    "keywords": [
+      "sign up",
+      "takes a lot of time to sign up",
+      "age restrictions for registration",
+      "difficult to setup"
+    ],
+    "name": "Sign-up difficulties",
+    "source": "model:gpt-6-luna+low+group-v1",
+    "topic": "access"
+  },
+  {
+    "description": "Users report being denied access because of their country or location.",
+    "issue_id": "ACCESS-06",
+    "keywords": [
+      "403 error",
+      "being an iranian",
+      "blocking a whole nations access",
+      "music abroad"
+    ],
+    "name": "Access blocked by location",
+    "source": "model:gpt-6-luna+low+group-v1",
+    "topic": "access"
+  },
+  {
+    "description": "Complaints labeled access that match none of the named access issues.",
+    "issue_id": "ACCESS-99",
+    "keywords": [],
+    "name": "Other access complaints",
+    "source": "code catch-all",
+    "topic": "access"
+  },
+  {
+    "description": "Users report frequent, lengthy, or intrusive ads interrupting listening, including in the free experience.",
+    "issue_id": "USABILITY-01",
+    "keywords": [
+      "ads",
+      "adds",
+      "advertise",
+      "advertisement",
+      "too many ads"
+    ],
+    "name": "Excessive advertisements",
+    "source": "model:gpt-6-luna+low+group-v1",
+    "topic": "usability"
+  },
+  {
+    "description": "Users say they cannot freely skip, seek, repeat, shuffle, or return to a previous track.",
+    "issue_id": "USABILITY-02",
+    "keywords": [
+      "skips",
+      "6 skips",
+      "previous track",
+      "drag the timer",
+      "no shuffling",
+      "no repeat",
+      "seeking"
+    ],
+    "name": "Restricted playback controls",
+    "source": "model:gpt-6-luna+low+group-v1",
+    "topic": "usability"
+  },
+  {
+    "description": "Users report that unselected or random songs play instead of the music they chose.",
+    "issue_id": "USABILITY-03",
+    "keywords": [
+      "random songs",
+      "unselected songs",
+      "songs you didn't choose",
+      "songs i don't even want",
+      "won't play my playlists"
+    ],
+    "name": "Unwanted music playback",
+    "source": "model:gpt-6-luna+low+group-v1",
+    "topic": "usability"
+  },
+  {
+    "description": "Users say playlists or liked songs are missing, unavailable, or not working as expected.",
+    "issue_id": "USABILITY-04",
+    "keywords": [
+      "liked songs",
+      "playlist is not working",
+      "all of them are gone",
+      "can't use it at all"
+    ],
+    "name": "Playlist and library access",
+    "source": "model:gpt-6-luna+low+group-v1",
+    "topic": "usability"
+  },
+  {
+    "description": "Users describe interface elements or app functions as difficult to use, access, or control.",
+    "issue_id": "USABILITY-05",
+    "keywords": [
+      "cant close the recomendation",
+      "difficult to add local songs",
+      "buttons on the widget are too small",
+      "find song function",
+      "new ui sucks",
+      "no way ti remove podcasts"
+    ],
+    "name": "Difficult interface and features",
+    "source": "model:gpt-6-luna+low+group-v1",
+    "topic": "usability"
+  },
+  {
+    "description": "Complaints labeled usability that match none of the named usability issues.",
+    "issue_id": "USABILITY-99",
+    "keywords": [],
+    "name": "Other usability complaints",
+    "source": "code catch-all",
+    "topic": "usability"
+  },
+  {
+    "description": "Audio starts but pauses, stops mid-track, freezes, or skips during playback.",
+    "issue_id": "PLAYBACK-01",
+    "keywords": [
+      "stops playing",
+      "keep stopping",
+      "suddenly stopped",
+      "randomly pauses",
+      "stops streaming",
+      "keeps skipping",
+      "stops on certain songs",
+      "stopping in the middle"
+    ],
+    "name": "Playback stops or skips",
+    "source": "model:gpt-6-luna+low+group-v1",
+    "topic": "playback"
+  },
+  {
+    "description": "Songs, playlists, radio, or full tracks cannot be started or played as expected.",
+    "issue_id": "PLAYBACK-02",
+    "keywords": [
+      "won't play",
+      "wont work",
+      "music is not working",
+      "cannot be started",
+      "only preveiws",
+      "only play a snippet",
+      "unavailable for listening",
+      "don't play"
+    ],
+    "name": "Songs fail to play",
+    "source": "model:gpt-6-luna+low+group-v1",
+    "topic": "playback"
+  },
+  {
+    "description": "The app crashes, freezes, or becomes unresponsive, often when opening or starting playback.",
+    "issue_id": "PLAYBACK-03",
+    "keywords": [
+      "crashes everytime",
+      "app crashes",
+      "constantly crashes",
+      "crashes sometimes",
+      "not responding",
+      "gets hanging",
+      "keeps loading",
+      "not opening"
+    ],
+    "name": "App crashes or hangs",
+    "source": "model:gpt-6-luna+low+group-v1",
+    "topic": "playback"
+  },
+  {
+    "description": "Playback or app access fails because the service reports no connection or does not work without internet.",
+    "issue_id": "PLAYBACK-04",
+    "keywords": [
+      "without wifi",
+      "no internet available",
+      "no network connection",
+      "need internet",
+      "offline",
+      "internet is working",
+      "full network"
+    ],
+    "name": "Connection and offline playback",
+    "source": "model:gpt-6-luna+low+group-v1",
+    "topic": "playback"
+  },
+  {
+    "description": "Audio has an unexpected playback behavior or an abnormal volume level on a device.",
+    "issue_id": "PLAYBACK-05",
+    "keywords": [
+      "audio keeps skipping",
+      "randomly change to another podcast",
+      "really quiet on bluetooth",
+      "doesn't change when changing the volume",
+      "keeps playing even when the volume is turned off"
+    ],
+    "name": "Playback behavior or sound",
+    "source": "model:gpt-6-luna+low+group-v1",
+    "topic": "playback"
+  },
+  {
+    "description": "Complaints labeled playback that match none of the named playback issues.",
+    "issue_id": "PLAYBACK-99",
+    "keywords": [],
+    "name": "Other playback complaints",
+    "source": "code catch-all",
+    "topic": "playback"
+  },
+  {
+    "description": "Users say downloaded music or podcasts will not play or load when offline or without a connection.",
+    "issue_id": "DOWNLOADS-01",
+    "keywords": [
+      "can't play downloaded",
+      "can't listen to my downloaded",
+      "play offline",
+      "offline mode",
+      "listen offline",
+      "not available offline",
+      "offline listening",
+      "offline loading"
+    ],
+    "name": "Offline playback fails",
+    "source": "model:gpt-6-luna+low+group-v1",
+    "topic": "downloads"
+  },
+  {
+    "description": "Users report saved downloads being deleted or disappearing, so they have to download their music again.",
+    "issue_id": "DOWNLOADS-02",
+    "keywords": [
+      "delete your saved music",
+      "downloads just load",
+      "re download",
+      "redownload",
+      "deleted while",
+      "downloaded music",
+      "downloaded songs",
+      "disappeared"
+    ],
+    "name": "Downloads disappear or reset",
+    "source": "model:gpt-6-luna+low+group-v1",
+    "topic": "downloads"
+  },
+  {
+    "description": "Users say songs or playlists do not download, or downloads remain stuck loading or take too long.",
+    "issue_id": "DOWNLOADS-03",
+    "keywords": [
+      "not downloading",
+      "can't download",
+      "cant download",
+      "download option not available",
+      "taking hours to download",
+      "loads and doesn't do anything",
+      "download songs",
+      "download music"
+    ],
+    "name": "Downloads fail or stall",
+    "source": "model:gpt-6-luna+low+group-v1",
+    "topic": "downloads"
+  },
+  {
+    "description": "Users report local files not showing up in Spotify even though the files are on their device.",
+    "issue_id": "DOWNLOADS-04",
+    "keywords": [
+      "local files",
+      "not showing up",
+      "disappeared from spotify",
+      "not on my device"
+    ],
+    "name": "Local files missing",
+    "source": "model:gpt-6-luna+low+group-v1",
+    "topic": "downloads"
+  },
+  {
+    "description": "Users report downloads going to the wrong storage location or consuming cellular data unexpectedly.",
+    "issue_id": "DOWNLOADS-05",
+    "keywords": [
+      "sd card",
+      "moving them back",
+      "downloading on data",
+      "downloaded 5 gigs",
+      "destroying my data"
+    ],
+    "name": "Download storage and data issues",
+    "source": "model:gpt-6-luna+low+group-v1",
+    "topic": "downloads"
+  },
+  {
+    "description": "Complaints labeled downloads that match none of the named downloads issues.",
+    "issue_id": "DOWNLOADS-99",
+    "keywords": [],
+    "name": "Other downloads complaints",
+    "source": "code catch-all",
+    "topic": "downloads"
+  },
+  {
+    "description": "Users report that song lyrics are missing, fail to load, or are not available in their language.",
+    "issue_id": "CATALOG-01",
+    "keywords": [
+      "no lyrics",
+      "lyrics are still missing",
+      "don't have lyrics",
+      "can't see the lyrics",
+      "where are the lyrics",
+      "lyrics wouldn't load",
+      "can't load song lyrics",
+      "language of lyrics"
+    ],
+    "name": "Lyrics missing or unavailable",
+    "source": "model:gpt-6-luna+low+group-v1",
+    "topic": "catalog"
+  },
+  {
+    "description": "Users say songs, albums, or remixes they expect to find are unavailable or have been removed.",
+    "issue_id": "CATALOG-02",
+    "keywords": [
+      "songs are removed",
+      "taken off",
+      "music was unavailable",
+      "not every song is on",
+      "songs is not in this app",
+      "can't get super underground remixes",
+      "deleting many albums"
+    ],
+    "name": "Music missing from catalog",
+    "source": "model:gpt-6-luna+low+group-v1",
+    "topic": "catalog"
+  },
+  {
+    "description": "Users report that recommendations or playlists repeat tracks or suggest music that does not fit their tastes.",
+    "issue_id": "CATALOG-03",
+    "keywords": [
+      "random music",
+      "same songs over and over",
+      "not according to choice",
+      "songs isn't even related",
+      "song suggestions",
+      "new music playlists",
+      "suggestions couldn't be more off"
+    ],
+    "name": "Poor music recommendations",
+    "source": "model:gpt-6-luna+low+group-v1",
+    "topic": "catalog"
+  },
+  {
+    "description": "Users say they cannot preview songs or see the tracks listed on an album.",
+    "issue_id": "CATALOG-04",
+    "keywords": [
+      "inability to preview songs",
+      "can't hear a preview",
+      "song's preview",
+      "see what songs are in a album",
+      "view the songs in a album"
+    ],
+    "name": "Song previews unavailable",
+    "source": "model:gpt-6-luna+low+group-v1",
+    "topic": "catalog"
+  },
+  {
+    "description": "Users have trouble finding a specific song or say search returns an album instead of the requested track.",
+    "issue_id": "CATALOG-05",
+    "keywords": [
+      "can't find your favourite songs",
+      "will not give you the song",
+      "hard to find new music",
+      "search for a song"
+    ],
+    "name": "Song search is ineffective",
+    "source": "model:gpt-6-luna+low+group-v1",
+    "topic": "catalog"
+  },
+  {
+    "description": "Complaints labeled catalog that match none of the named catalog issues.",
+    "issue_id": "CATALOG-99",
+    "keywords": [],
+    "name": "Other catalog complaints",
+    "source": "code catch-all",
+    "topic": "catalog"
+  },
+  {
+    "description": "Users report that ordinary playback and music-selection features require a Premium subscription, leaving the free tier heavily restricted.",
+    "issue_id": "BILLING-01",
+    "keywords": [
+      "premium",
+      "features",
+      "free version",
+      "specific song",
+      "buying premium",
+      "basic features",
+      "play the playlist",
+      "select a song",
+      "shuffle is on"
+    ],
+    "name": "Features locked behind Premium",
+    "source": "model:gpt-6-luna+low+group-v1",
+    "topic": "billing"
+  },
+  {
+    "description": "Users say the subscription or paid access costs too much or is unaffordable for them.",
+    "issue_id": "BILLING-02",
+    "keywords": [
+      "pricey",
+      "not free",
+      "pay",
+      "charges",
+      "money to spend",
+      "overpriced",
+      "visa mastercard",
+      "kids"
+    ],
+    "name": "Premium subscription is too expensive",
+    "source": "model:gpt-6-luna+low+group-v1",
+    "topic": "billing"
+  },
+  {
+    "description": "Users report being charged unexpectedly or paying for a Premium plan without receiving the expected plan change.",
+    "issue_id": "BILLING-03",
+    "keywords": [
+      "charged me",
+      "randomly charged",
+      "money back",
+      "bought it 4 times",
+      "current plan didn't change"
+    ],
+    "name": "Unexpected or failed charges",
+    "source": "model:gpt-6-luna+low+group-v1",
+    "topic": "billing"
+  },
+  {
+    "description": "Complaints labeled billing that match none of the named billing issues.",
+    "issue_id": "BILLING-99",
+    "keywords": [],
+    "name": "Other billing complaints",
+    "source": "code catch-all",
+    "topic": "billing"
+  },
+  {
+    "description": "Users say they cannot find or access a way to contact customer support or speak with someone.",
+    "issue_id": "SUPPORT-01",
+    "keywords": [
+      "impossible to reach",
+      "hard to get hold",
+      "not that easy to contact",
+      "no customer support",
+      "no customer service number",
+      "no phone support",
+      "can't report bug problems",
+      "no way for me to get help",
+      "can not speak to anyone"
+    ],
+    "name": "Hard to reach support",
+    "source": "model:gpt-6-luna+low+group-v1",
+    "topic": "support"
+  },
+  {
+    "description": "Users report that support takes a long time to respond or does not reply at all.",
+    "issue_id": "SUPPORT-02",
+    "keywords": [
+      "no response",
+      "not received any response",
+      "haven't given a response",
+      "being ignored",
+      "painfully slow",
+      "takes longer",
+      "three weeks ago"
+    ],
+    "name": "Slow or absent replies",
+    "source": "model:gpt-6-luna+low+group-v1",
+    "topic": "support"
+  },
+  {
+    "description": "Users say support staff or responses are ineffective, unprofessional, or fail to resolve their problems.",
+    "issue_id": "SUPPORT-03",
+    "keywords": [
+      "not helpful at all",
+      "zero help",
+      "support is not great",
+      "poor customer service",
+      "support staff was abrupt",
+      "refuse to fix them",
+      "null ahnung",
+      "unpassende antworten",
+      "no proper service",
+      "not resolved anything"
+    ],
+    "name": "Unhelpful support",
+    "source": "model:gpt-6-luna+low+group-v1",
+    "topic": "support"
+  },
+  {
+    "description": "Complaints labeled support that match none of the named support issues.",
+    "issue_id": "SUPPORT-99",
+    "keywords": [],
+    "name": "Other support complaints",
+    "source": "code catch-all",
+    "topic": "support"
+  },
+  {
+    "description": "Users express broad dislike or hatred of the app without describing a specific problem.",
+    "issue_id": "OTHER-01",
+    "keywords": [
+      "hate this application",
+      "hate this app",
+      "don't like this application",
+      "i hat this app",
+      "ghatiya app"
+    ],
+    "name": "General dislike",
+    "source": "model:gpt-6-luna+low+group-v1",
+    "topic": "other"
+  },
+  {
+    "description": "Users describe the app or their experience with it as bad, worst, unusable, or a waste.",
+    "issue_id": "OTHER-02",
+    "keywords": [
+      "very bad",
+      "bad experience",
+      "worst app",
+      "app sucks",
+      "not useable",
+      "waste"
+    ],
+    "name": "Poor overall experience",
+    "source": "model:gpt-6-luna+low+group-v1",
+    "topic": "other"
+  },
+  {
+    "description": "Users say a recent or new update made the app worse or ruined it.",
+    "issue_id": "OTHER-03",
+    "keywords": [
+      "update made it worse",
+      "worse update",
+      "worst update",
+      "latest update",
+      "new update",
+      "unnecessary changes"
+    ],
+    "name": "Updates made things worse",
+    "source": "model:gpt-6-luna+low+group-v1",
+    "topic": "other"
+  },
+  {
+    "description": "Complaints labeled other that match none of the named other issues.",
+    "issue_id": "OTHER-99",
+    "keywords": [],
+    "name": "Other other complaints",
+    "source": "code catch-all",
+    "topic": "other"
+  }
+]

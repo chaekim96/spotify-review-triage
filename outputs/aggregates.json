@@ -1,0 +1,128 @@
+{
+  "areas": {
+    "access": {
+      "cancellation_count": 78,
+      "complaint_count": 1481,
+      "issues": [
+        "ACCESS-01",
+        "ACCESS-02",
+        "ACCESS-03",
+        "ACCESS-04",
+        "ACCESS-05",
+        "ACCESS-06",
+        "ACCESS-99"
+      ],
+      "mean_severity": "3.813639",
+      "severity_4_plus": 1181,
+      "severity_sum": 5648,
+      "share_of_severity_pct": "5.0"
+    },
+    "billing/support": {
+      "cancellation_count": 1238,
+      "complaint_count": 7781,
+      "issues": [
+        "BILLING-01",
+        "BILLING-02",
+        "BILLING-03",
+        "BILLING-04",
+        "BILLING-05",
+        "BILLING-06",
+        "BILLING-07",
+        "BILLING-99",
+        "SUPPORT-01",
+        "SUPPORT-02",
+        "SUPPORT-03",
+        "SUPPORT-04",
+        "SUPPORT-05",
+        "SUPPORT-06",
+        "SUPPORT-99"
+      ],
+      "mean_severity": "2.791286",
+      "severity_4_plus": 201,
+      "severity_sum": 21719,
+      "share_of_severity_pct": "19.1"
+    },
+    "playback": {
+      "cancellation_count": 406,
+      "complaint_count": 6107,
+      "issues": [
+        "DOWNLOADS-01",
+        "DOWNLOADS-02",
+        "DOWNLOADS-03",
+        "DOWNLOADS-04",
+        "DOWNLOADS-05",
+        "DOWNLOADS-99",
+        "PLAYBACK-01",
+        "PLAYBACK-02",
+        "PLAYBACK-03",
+        "PLAYBACK-04",
+        "PLAYBACK-05",
+        "PLAYBACK-99"
+      ],
+      "mean_severity": "3.121664",
+      "severity_4_plus": 1032,
+      "severity_sum": 19064,
+      "share_of_severity_pct": "16.8"
+    },
+    "unassigned (general)": {
+      "cancellation_count": 911,
+      "complaint_count": 13451,
+      "issues": [
+        "OTHER-01",
+        "OTHER-02",
+        "OTHER-03",
+        "OTHER-04",
+        "OTHER-99"
+      ],
+      "mean_severity": "2.008029",
+      "severity_4_plus": 88,
+      "severity_sum": 27010,
+      "share_of_severity_pct": "23.7"
+    },
+    "usability": {
+      "cancellation_count": 1283,
+      "complaint_count": 15613,
+      "issues": [
+        "CATALOG-01",
+        "CATALOG-02",
+        "CATALOG-03",
+        "CATALOG-04",
+        "CATALOG-05",
+        "CATALOG-99",
+        "USABILITY-01",
+        "USABILITY-02",
+        "USABILITY-03",
+        "USABILITY-04",
+        "USABILITY-05",
+        "USABILITY-06",
+        "USABILITY-99"
+      ],
+      "mean_severity": "2.583424",
+      "severity_4_plus": 105,
+      "severity_sum": 40335,
+      "share_of_severity_pct": "35.5"
+    }
+  },
+  "complaint_or_cancellation_records": 44433,
+  "completed_records": 99936,
+  "intent_counts": {
+    "cancellation": 3916,
+    "complaint": 40517,
+    "praise": 42988,
+    "request": 3270,
+    "unclear": 9245
+  },
+  "issue_count": 52,
+  "scope_reviews": 100000,
+  "topic_counts": {
+    "access": 1532,
+    "billing": 8624,
+    "catalog": 7494,
+    "downloads": 1372,
+    "other": 57485,
+    "playback": 6566,
+    "support": 140,
+    "usability": 16723
+  },
+  "total_severity": 113776
+}

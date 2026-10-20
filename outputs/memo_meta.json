@@ -1,0 +1,379 @@
+{
+  "cited_claim_ids": [
+    "C0001",
+    "C0002",
+    "C0013",
+    "C0014",
+    "C0018",
+    "C0037",
+    "C0038",
+    "C0042",
+    "C0045",
+    "C0047"
+  ],
+  "config": "claude-sonnet-5-5+low+memo-v1",
+  "evidence_review_ids": [
+    "0327424f-5ab1-42d7-aefa-b021dc049420",
+    "056c340f-c7ad-42d8-a275-37e46f1f4f24",
+    "06368cfa-d76c-4244-b0fc-fba6f48dcf97",
+    "09539715-843b-4fd6-9561-cdec6b773535",
+    "0a84a621-4636-452c-a5c8-97b6c1321af2",
+    "12311b88-edeb-48fd-a014-14292c107451",
+    "147a60d0-08de-4b11-b30d-756d0a0d259a",
+    "1ec0da94-9fb5-4e1d-a77b-f30873117d6d",
+    "2137175d-9742-4ef4-9655-49ba42b7d00c",
+    "24152f1b-2e72-489c-93db-688fbba61504",
+    "2bcefe06-980a-4d4c-979f-a097c5781d5c",
+    "49533cd0-4587-40f0-96be-037ff2587b67"
+  ],
+  "inputs": {
+    "areas": [
+      {
+        "area": "access",
+        "cancellation_count": 78,
+        "complaint_count": 1481,
+        "mean_severity": "3.813639",
+        "severity_4_plus": 1181,
+        "severity_sum": 5648,
+        "share_of_severity_pct": "5.0"
+      },
+      {
+        "area": "billing/support",
+        "cancellation_count": 1238,
+        "complaint_count": 7781,
+        "mean_severity": "2.791286",
+        "severity_4_plus": 201,
+        "severity_sum": 21719,
+        "share_of_severity_pct": "19.1"
+      },
+      {
+        "area": "playback",
+        "cancellation_count": 406,
+        "complaint_count": 6107,
+        "mean_severity": "3.121664",
+        "severity_4_plus": 1032,
+        "severity_sum": 19064,
+        "share_of_severity_pct": "16.8"
+      },
+      {
+        "area": "unassigned (general)",
+        "cancellation_count": 911,
+        "complaint_count": 13451,
+        "mean_severity": "2.008029",
+        "severity_4_plus": 88,
+        "severity_sum": 27010,
+        "share_of_severity_pct": "23.7"
+      },
+      {
+        "area": "usability",
+        "cancellation_count": 1283,
+        "complaint_count": 15613,
+        "mean_severity": "2.583424",
+        "severity_4_plus": 105,
+        "severity_sum": 40335,
+        "share_of_severity_pct": "35.5"
+      }
+    ],
+    "evidence_pack": [
+      {
+        "issue_id": "USABILITY-99",
+        "quote": "my playlists were gone",
+        "review_id": "1ec0da94-9fb5-4e1d-a77b-f30873117d6d"
+      },
+      {
+        "issue_id": "USABILITY-99",
+        "quote": "all of my playlists and all of my songs have been deleted",
+        "review_id": "24152f1b-2e72-489c-93db-688fbba61504"
+      },
+      {
+        "issue_id": "OTHER-03",
+        "quote": "That 7 years + of liking songs that disappears each time a update in needed.",
+        "review_id": "0a84a621-4636-452c-a5c8-97b6c1321af2"
+      },
+      {
+        "issue_id": "OTHER-03",
+        "quote": "This app is hacking personal photos and videos",
+        "review_id": "147a60d0-08de-4b11-b30d-756d0a0d259a"
+      },
+      {
+        "issue_id": "OTHER-99",
+        "quote": "every personal information about you sold for profit",
+        "review_id": "06368cfa-d76c-4244-b0fc-fba6f48dcf97"
+      },
+      {
+        "issue_id": "OTHER-99",
+        "quote": "No privacy. This app is really collecting our data and transferring somewhere.",
+        "review_id": "12311b88-edeb-48fd-a014-14292c107451"
+      },
+      {
+        "issue_id": "USABILITY-01",
+        "quote": "I will use SoundCloud. Also I had Playlists on here that meant a lot to me",
+        "review_id": "49533cd0-4587-40f0-96be-037ff2587b67"
+      },
+      {
+        "issue_id": "USABILITY-01",
+        "quote": "It won't show any of my Playlists or library-- the screen is black and no songs are available.",
+        "review_id": "056c340f-c7ad-42d8-a275-37e46f1f4f24"
+      },
+      {
+        "issue_id": "BILLING-99",
+        "quote": "Taking money out my bank without permission",
+        "review_id": "0327424f-5ab1-42d7-aefa-b021dc049420"
+      },
+      {
+        "issue_id": "BILLING-99",
+        "quote": "they charged for 1 year and still I not got membership",
+        "review_id": "09539715-843b-4fd6-9561-cdec6b773535"
+      },
+      {
+        "issue_id": "PLAYBACK-99",
+        "quote": "I had to do a factory reset to make it usable again!",
+        "review_id": "2137175d-9742-4ef4-9655-49ba42b7d00c"
+      },
+      {
+        "issue_id": "PLAYBACK-99",
+        "quote": "i had to factory reset my phone, i ended up with 0 phone service during the holiday weekend",
+        "review_id": "2bcefe06-980a-4d4c-979f-a097c5781d5c"
+      }
+    ],
+    "intent_counts": {
+      "cancellation": 3916,
+      "complaint": 40517,
+      "praise": 42988,
+      "request": 3270,
+      "unclear": 9245
+    },
+    "scope": "100000 reviews in the declared classification scope; 99936 completed records",
+    "top_issues": [
+      {
+        "area": "usability",
+        "complaint_count": {
+          "claim_id": "C0001",
+          "value": "5340"
+        },
+        "issue_id": "USABILITY-99",
+        "mean_severity": {
+          "claim_id": "C0003",
+          "value": "2.708052"
+        },
+        "name": "Other usability complaints",
+        "rank": 1,
+        "severity_sum": {
+          "claim_id": "C0002",
+          "value": "14461"
+        },
+        "topic": "usability"
+      },
+      {
+        "area": "unassigned (general)",
+        "complaint_count": {
+          "claim_id": "C0005",
+          "value": "6052"
+        },
+        "issue_id": "OTHER-03",
+        "mean_severity": {
+          "claim_id": "C0007",
+          "value": "2.004296"
+        },
+        "name": "General dislike",
+        "rank": 2,
+        "severity_sum": {
+          "claim_id": "C0006",
+          "value": "12130"
+        },
+        "topic": "other"
+      },
+      {
+        "area": "unassigned (general)",
+        "complaint_count": {
+          "claim_id": "C0009",
+          "value": "5898"
+        },
+        "issue_id": "OTHER-99",
+        "mean_severity": {
+          "claim_id": "C0011",
+          "value": "2.007460"
+        },
+        "name": "Other other complaints",
+        "rank": 3,
+        "severity_sum": {
+          "claim_id": "C0010",
+          "value": "11840"
+        },
+        "topic": "other"
+      },
+      {
+        "area": "usability",
+        "complaint_count": {
+          "claim_id": "C0013",
+          "value": "5353"
+        },
+        "issue_id": "USABILITY-01",
+        "mean_severity": {
+          "claim_id": "C0015",
+          "value": "2.162899"
+        },
+        "name": "Excessive Advertisements",
+        "rank": 4,
+        "severity_sum": {
+          "claim_id": "C0014",
+          "value": "11578"
+        },
+        "topic": "usability"
+      },
+      {
+        "area": "billing/support",
+        "complaint_count": {
+          "claim_id": "C0017",
+          "value": "4300"
+        },
+        "issue_id": "BILLING-99",
+        "mean_severity": {
+          "claim_id": "C0019",
+          "value": "2.683953"
+        },
+        "name": "Other billing complaints",
+        "rank": 5,
+        "severity_sum": {
+          "claim_id": "C0018",
+          "value": "11541"
+        },
+        "topic": "billing"
+      },
+      {
+        "area": "playback",
+        "complaint_count": {
+          "claim_id": "C0021",
+          "value": "2557"
+        },
+        "issue_id": "PLAYBACK-99",
+        "mean_severity": {
+          "claim_id": "C0023",
+          "value": "3.102855"
+        },
+        "name": "Other playback complaints",
+        "rank": 6,
+        "severity_sum": {
+          "claim_id": "C0022",
+          "value": "7934"
+        },
+        "topic": "playback"
+      },
+      {
+        "area": "billing/support",
+        "complaint_count": {
+          "claim_id": "C0025",
+          "value": "1420"
+        },
+        "issue_id": "BILLING-07",
+        "mean_severity": {
+          "claim_id": "C0027",
+          "value": "2.826761"
+        },
+        "name": "Free Features Require Premium",
+        "rank": 7,
+        "severity_sum": {
+          "claim_id": "C0026",
+          "value": "4014"
+        },
+        "topic": "billing"
+      },
+      {
+        "area": "billing/support",
+        "complaint_count": {
+          "claim_id": "C0029",
+          "value": "1314"
+        },
+        "issue_id": "BILLING-01",
+        "mean_severity": {
+          "claim_id": "C0031",
+          "value": "3.004566"
+        },
+        "name": "Playback Controls Paywalled",
+        "rank": 8,
+        "severity_sum": {
+          "claim_id": "C0030",
+          "value": "3948"
+        },
+        "topic": "billing"
+      },
+      {
+        "area": "usability",
+        "complaint_count": {
+          "claim_id": "C0033",
+          "value": "1175"
+        },
+        "issue_id": "CATALOG-99",
+        "mean_severity": {
+          "claim_id": "C0035",
+          "value": "2.822979"
+        },
+        "name": "Other catalog complaints",
+        "rank": 9,
+        "severity_sum": {
+          "claim_id": "C0034",
+          "value": "3317"
+        },
+        "topic": "catalog"
+      },
+      {
+        "area": "usability",
+        "complaint_count": {
+          "claim_id": "C0037",
+          "value": "1048"
+        },
+        "issue_id": "USABILITY-02",
+        "mean_severity": {
+          "claim_id": "C0039",
+          "value": "2.934160"
+        },
+        "name": "Unwanted Shuffle Playback",
+        "rank": 10,
+        "severity_sum": {
+          "claim_id": "C0038",
+          "value": "3075"
+        },
+        "topic": "usability"
+      },
+      {
+        "area": "playback",
+        "complaint_count": {
+          "claim_id": "C0041",
+          "value": "776"
+        },
+        "issue_id": "PLAYBACK-03",
+        "mean_severity": {
+          "claim_id": "C0043",
+          "value": "3.094072"
+        },
+        "name": "App crashes or freezes",
+        "rank": 11,
+        "severity_sum": {
+          "claim_id": "C0042",
+          "value": "2401"
+        },
+        "topic": "playback"
+      },
+      {
+        "area": "access",
+        "complaint_count": {
+          "claim_id": "C0045",
+          "value": "603"
+        },
+        "issue_id": "ACCESS-06",
+        "mean_severity": {
+          "claim_id": "C0047",
+          "value": "3.862355"
+        },
+        "name": "General Sign-In Failure",
+        "rank": 12,
+        "severity_sum": {
+          "claim_id": "C0046",
+          "value": "2329"
+        },
+        "topic": "access"
+      }
+    ]
+  },
+  "recommended_area": "usability"
+}

@@ -1,0 +1,92 @@
+{
+  "caught_by_verifier": 20,
+  "description": "Copy of first-pass labels with deliberately wrong topics on a declared subset; the real records are unchanged.",
+  "detection_rate": 1.0,
+  "planted": 20,
+  "planted_rows": {
+    "0de0990a-a282-4b5c-baf6-b42371ac3a98": {
+      "original_topic": "other",
+      "planted_topic": "downloads"
+    },
+    "1206e2d9-0246-47b0-a3e7-852b2eef957b": {
+      "original_topic": "catalog",
+      "planted_topic": "usability"
+    },
+    "1afd5b36-9be3-42a9-8f21-ecfa3a6d4114": {
+      "original_topic": "access",
+      "planted_topic": "other"
+    },
+    "32e6105e-218e-482e-a3a8-1abaaf5733d7": {
+      "original_topic": "catalog",
+      "planted_topic": "support"
+    },
+    "3a8edcfc-838a-4ce0-9965-6f51bbf6e883": {
+      "original_topic": "billing",
+      "planted_topic": "usability"
+    },
+    "3c38e7d4-b87d-4398-9635-f1214edb7342": {
+      "original_topic": "other",
+      "planted_topic": "catalog"
+    },
+    "54a736c3-5671-4695-8930-37e4ec8d59ab": {
+      "original_topic": "billing",
+      "planted_topic": "playback"
+    },
+    "5995db85-591f-418b-b1f1-fa9236449294": {
+      "original_topic": "other",
+      "planted_topic": "catalog"
+    },
+    "6c4b1c31-ceb1-4a84-afde-08b807ed9823": {
+      "original_topic": "other",
+      "planted_topic": "downloads"
+    },
+    "6deb1daf-c780-47f9-975a-016ecf078d60": {
+      "original_topic": "catalog",
+      "planted_topic": "billing"
+    },
+    "76bfcbba-9ec5-47d7-a1d8-0dd9b32700b6": {
+      "original_topic": "other",
+      "planted_topic": "playback"
+    },
+    "93761465-b730-4ac9-a9a2-4efcaf6771ab": {
+      "original_topic": "other",
+      "planted_topic": "usability"
+    },
+    "9edba9e5-20b1-49db-8c87-1b4372fa04a0": {
+      "original_topic": "other",
+      "planted_topic": "playback"
+    },
+    "9f810c6a-7ef9-4060-994d-cf15e2dfefb7": {
+      "original_topic": "access",
+      "planted_topic": "catalog"
+    },
+    "afdd08e5-19d8-4a1e-bf81-afd201a86026": {
+      "original_topic": "downloads",
+      "planted_topic": "billing"
+    },
+    "b0214a5f-fa88-43c1-9072-934705af1cc5": {
+      "original_topic": "billing",
+      "planted_topic": "usability"
+    },
+    "cfd97b3c-7b02-42ab-a30e-3f9e33e50f08": {
+      "original_topic": "other",
+      "planted_topic": "billing"
+    },
+    "d2daad87-36f5-4afa-8af7-e305053f174b": {
+      "original_topic": "other",
+      "planted_topic": "billing"
+    },
+    "fe67c15c-b62d-4281-813d-3fba63c74685": {
+      "original_topic": "other",
+      "planted_topic": "playback"
+    },
+    "ff1a7c5f-4759-418b-8c2c-f61900e39d06": {
+      "original_topic": "billing",
+      "planted_topic": "access"
+    }
+  },
+  "seed": "planted-v1",
+  "synthetic": true,
+  "untouched_topic_disagreements": 122,
+  "untouched_verified": 761
+}

@@ -1,0 +1,15 @@
+{
+  "code_git_commit": null,
+  "code_git_dirty": true,
+  "created_utc": "2026-10-07T21:45:50+00:00",
+  "input_file_sha256": "1fc85de68a304dd8978b537cfa58793d5f41cbaf417fa32cb53899f83a2fcef6",
+  "input_path": "/Users/chaekim/Desktop/spotify-reviews-pipeline/data_raw/spotify_reviews_18months.csv",
+  "input_size_bytes": 97400616,
+  "is_full_course_file": true,
+  "pending_queue": "pending_ids.txt",
+  "platform": "macOS-15.7.4-arm64-arm-64bit",
+  "python_version": "3.12.14",
+  "row_count": 660622,
+  "state_db": "state.sqlite",
+  "tool_version": "0.1.0"
+}
