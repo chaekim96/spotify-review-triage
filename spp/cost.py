@@ -39,7 +39,7 @@ def run_pilot(budget_usd=1.0, log=print):
     from .providers import get_spec
 
     csv_path = ROOT / "data_raw" / "cost_100.csv"
-    specs = {"primary": get_spec("luna-none"), "fallback": get_spec("sonnet-low"), "verify": get_spec("haiku"),
+    specs = {"primary": get_spec("luna-low"), "fallback": get_spec("sonnet-low"), "verify": get_spec("haiku"),
              "group": get_spec("luna-low"), "memo": get_spec("sonnet-low")}  # DECISIONS D27/D33
     downstream_cache = ROOT / "runs" / "pilot_downstream_cache"
     summary = {}

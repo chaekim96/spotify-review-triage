@@ -235,8 +235,7 @@ def memo_inputs(run_dir, texts):
     evidence = []
     for r in top[:6]:
         ids = sorted(members[r["issue_id"]], key=lambda x: (-recs[x]["severity"], x))
-        originals = [x for x in ids if "cache_source_id" not in recs[x]][:2]
-        for x in originals:
+        for x in ids[:2]:  # by severity then ID, so identical inputs give an identical pack (and a downstream cache hit)
             evidence.append({"review_id": x, "issue_id": r["issue_id"], "quote": recs[x]["evidence_quote"][:240]})
     payload = {
         "scope": f"{aggregates['scope_reviews']} reviews in the declared classification scope; {aggregates['completed_records']} completed records",

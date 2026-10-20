@@ -97,7 +97,11 @@ def _call_openai(spec, system, user, max_out, schema=BATCH_SCHEMA, name="review_
             store=False,
             text={"format": {"type": "json_schema", "name": name, "schema": schema, "strict": True}},
         )
-    except (openai.RateLimitError, openai.APITimeoutError, openai.APIConnectionError, openai.InternalServerError) as e:
+    except openai.RateLimitError as e:
+        # an empty credit balance is also a 429, but retrying cannot fix it: stop instead of backing off
+        quota = "insufficient_quota" in str(e) or "credit_balance_exhausted" in str(e)
+        return CallResult(False, not quota, None, {}, None, time.perf_counter() - t0, None, f"{type(e).__name__}: {e}")
+    except (openai.APITimeoutError, openai.APIConnectionError, openai.InternalServerError) as e:
         return CallResult(False, True, None, {}, None, time.perf_counter() - t0, None, f"{type(e).__name__}: {e}")
     except openai.APIStatusError as e:
         return CallResult(False, e.status_code >= 500, None, {}, getattr(e, "request_id", None),

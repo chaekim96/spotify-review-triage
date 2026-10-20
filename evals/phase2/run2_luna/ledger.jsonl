@@ -1,0 +1,10 @@
+{"event": "reserve", "token": 1, "usd": "0.0039714", "note": "enrich luna-none n=47", "spent": "0", "reserved": "0.0039714", "cap": "0.5", "t": 1792486202.665427}
+{"event": "settle", "token": 1, "usd": "0.0022429", "note": "resp_0c63ebbf724ffceb016ad72b3b61c087d087e6c986a532b935", "spent": "0.0022429", "reserved": "0E-7", "cap": "0.5", "t": 1792486222.07155}
+{"event": "reserve", "token": 2, "usd": "0.0040757", "note": "enrich luna-none n=47", "spent": "0.0022429", "reserved": "0.0040757", "cap": "0.5", "t": 1792486222.074847}
+{"event": "settle", "token": 2, "usd": "0.00201774", "note": "resp_0f63c795908dff68016ad72b4e32cc87d084db2676368a0165", "spent": "0.00426064", "reserved": "0E-7", "cap": "0.5", "t": 1792486241.3255732}
+{"event": "reserve", "token": 3, "usd": "0.0053214", "note": "enrich luna-low n=47", "spent": "0.00426064", "reserved": "0.0053214", "cap": "0.5", "t": 1792486241.336416}
+{"event": "settle", "token": 3, "usd": "0.0022379", "note": "resp_05438bf99bbad8dd016ad72b61704c87d09e12d5c70e8546d2", "spent": "0.00649854", "reserved": "0E-7", "cap": "0.5", "t": 1792486266.892388}
+{"event": "reserve", "token": 4, "usd": "0.0054257", "note": "enrich luna-low n=47", "spent": "0.00649854", "reserved": "0.0054257", "cap": "0.5", "t": 1792486266.898166}
+{"event": "settle", "token": 4, "usd": "0.00199074", "note": "resp_012c323f1085749f016ad72b7af87887d0a1eee80b613c6acb", "spent": "0.00848928", "reserved": "0E-7", "cap": "0.5", "t": 1792486290.180324}
+{"event": "reserve", "token": 5, "usd": "0.0021060", "note": "enrich luna-low n=1", "spent": "0.00848928", "reserved": "0.0021060", "cap": "0.5", "t": 1792486290.182973}
+{"event": "settle", "token": 5, "usd": "0.00007584", "note": "resp_0c389cbf5a675d30016ad72b92605487d0bfb2d16f07d8ac3d", "spent": "0.00856512", "reserved": "0E-7", "cap": "0.5", "t": 1792486292.3352928}

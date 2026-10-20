@@ -1,0 +1,378 @@
+{
+  "04c8bfff-5ef1-4d67-934d-efec6cd8ff45": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "0a3522dc-1af1-4936-9f2a-1cd00586228d": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "0bf68fb6-2ebc-4035-a0ce-1e306b44f0e9": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "0c5debeb-149c-42a4-a29b-7a965a11edd3": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "0cb5662f-1286-4501-8896-8099f47604b9": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "0d0577f6-be81-413b-863f-507bd7940f63": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "0e43cbb8-ff9e-4288-9b07-067f0b46481a": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "11f31e3f-853f-4382-930b-dde703d6740b": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "125c797c-15c2-41d8-9841-68e9fc20660d": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "12aee9cc-9342-43f7-9027-cf2bce87e3d0": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "1849be6a-17f9-488f-9f4d-990d55034e8f": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "191f2b82-f566-45c9-b3d0-9af6fb4f7019": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "197f2c4c-0b37-4c46-8762-b45640fe6ccc": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "1f1e4e8e-06b3-4961-94cc-a7b51051a3b7": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "1f544c6c-b62b-4289-bb48-2e4446974f09": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "20d6a959-9793-40fb-b160-5abd469f45e3": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "21426c53-3cb5-4f12-a507-dca4a261ce4d": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "23d24a4f-b60a-4d35-b4e2-a97c8d05f5b5": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "2405f015-4b5b-44bb-b1c8-d786c7a4e340": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "26b5c819-608b-4bee-9696-439fd57b1421": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "26ebc91a-2790-4bea-ac63-4edb9f996394": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "27d60da3-2cc6-4c81-ab35-ba70ed419683": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "2bade2f8-b715-4c6e-a3dd-8abcaa36c7b3": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "2d9e1a45-ce02-4412-a600-de38ede37ccd": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "30e334f5-0771-40b3-b8fa-1a982aac6357": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "313846ca-7d1f-4e3a-abf9-30423b9558b3": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "34725e8e-71da-40e6-830e-155a19eed220": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "385230d6-9525-4dd7-ac36-7e5a22d9d921": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "3b6d7be5-c71a-47a3-8490-76bfc48e4279": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "3e8307ec-b7bc-40c5-a167-80004b1976ff": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "452c5561-53a8-421b-9b5a-6f5ad590a027": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "45d07c5b-1110-422a-8c4d-7f128042697c": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "45e44173-3b6f-4778-ae10-8668c505d0aa": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "4899962f-a07c-42a1-befa-863ecc927fe5": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "48cb3713-cb35-4a47-a3ce-c31ec603acbe": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "4a5bec94-c774-4394-bab0-062d42c7e46e": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "4ceaa4ff-d1c5-4f0d-984d-3e3224f4fa65": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "4cedcf82-5ebe-4381-b43d-486c58485e76": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "4db4666e-a16f-4a17-9b6c-dc6acea84f82": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "4eccea0d-df06-4ce7-9fdd-e66744a41109": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "4f1ccb07-5415-4f23-8d41-9c149ed6ca85": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "5101f2e8-f80c-4faa-b6d4-c9f1e11802d7": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "56b239fd-70c7-45a1-9093-c21017449163": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "5ebed082-723b-46fd-8700-0e2171db48fd": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "5fabce90-9bb2-41ca-a8d9-084ad25610a0": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "60dba11a-17fc-4dcf-a1a1-afeee2f9cb2e": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "61f70ee8-8156-4c7c-a9fc-e75d9ff0ecec": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "62a151d1-6cb2-4f3e-8b92-8265124ebf42": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "634045c3-9a77-4a44-8f0e-8bf509426e38": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "63f1e824-2986-40f0-b309-d69ce4d26445": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "66188418-bbbd-426b-8929-4e315bf84a69": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "66dafd9c-a45b-4a2c-99f9-f095621d0b2d": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "6985febf-75fa-47e9-9a86-c62f47a18554": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "6dfc27ea-dc74-4a88-a67e-99d9554063ef": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "6e106ad0-737c-4c9a-b2e4-d966142caeec": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "6f05fbba-981d-41ab-a1ca-6f7fce21153f": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "78aa55af-7a7f-4452-9deb-9004a1da7abe": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "79e01b31-e671-4b35-916c-6ac80b60ce3c": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "7b9bbc48-9f1c-40ec-a510-3c02ae685626": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "7c52da79-0d58-4269-9dfa-75b22d88af14": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "815e7b58-f14d-4d59-8a58-3058322cd6fc": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "819b3fff-37ec-4623-850b-5dd735cd8149": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "839cc9ad-7f44-4942-b593-26c17eed2685": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "887d52d4-0e88-4704-b0ca-1799da6c2bac": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "88e9042c-3c10-4d0b-9074-1f84f0b5c7cf": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "8fd987c9-4d15-4bd7-b62b-cce840df0ecd": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "9138e5f5-0485-4405-bc39-45dbccdccc56": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "935b4fcc-a2f1-49d3-8f0b-38df9a28b844": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "9798961d-7ecf-4387-96f2-93f5a9a3a7ec": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "9b0fbce2-1e76-48eb-b9eb-cbc415744b92": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "9e5b62dd-9ff8-4525-aa14-4f75b26fe2e6": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "a62c808d-e338-43c8-907f-67a199ec986b": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "a6b93f2a-f667-4d7c-a04f-d452cdedf399": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "a7a780a7-cd4c-4ff3-a53b-8c7c1ebd1894": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "a89fcace-c4a8-4f21-a612-1e66f8dc87cb": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "b0b81704-45ad-43f6-9e69-617ff33d5d7b": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "b3f70c20-9f70-4640-93af-ba9e909be1b7": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "b71c4e00-5def-47d0-8425-f5d21fe9cdee": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "ba641951-e4cf-4c47-8813-e070714462c0": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "ba7e368e-196c-4552-bc24-83a2cd853f71": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "bf49fdea-abb6-4d93-bd14-8fb4e60e107c": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "c3963a63-88b3-456e-a99e-e53fcf878627": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "cdf370da-8263-4661-b47c-6f46432c3c78": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "d2259163-18e0-48ac-b7ce-bcc866702e6e": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "d8fda5b3-55b3-43e7-8c39-90545fee90a8": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "d93c4920-e5fc-4982-b339-2be08aff3219": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "dcc037b5-2c82-4f38-89e3-2877a3947e2d": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "e25cdf1b-24c0-41c8-ae6f-3601ec64d820": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "e4371e2b-7208-4c1d-bec9-d4e6f860bf7d": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "f897bac1-66b3-4e26-a279-7aab4fd5311c": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "f8d6fe23-6e19-480b-a76b-53ea9089bdc7": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "fd2c10bb-0159-494b-ae08-24d05003a192": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "fdd14d46-b9d5-4b51-b355-fb766ec54d05": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  },
+  "fe0f86a5-b5e3-4ff1-a09f-8539def3d354": {
+    "attempts": 2,
+    "reason": "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+  }
+}

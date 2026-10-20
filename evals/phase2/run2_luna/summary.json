@@ -1,0 +1,222 @@
+{
+  "configs": {
+    "luna-low": {
+      "confusion": {
+        "access->access": 4,
+        "billing->billing": 16,
+        "catalog->catalog": 9,
+        "downloads->downloads": 2,
+        "other->catalog": 1,
+        "other->other": 24,
+        "other->playback": 1,
+        "playback->catalog": 1,
+        "playback->playback": 10,
+        "playback->usability": 1,
+        "usability->catalog": 1,
+        "usability->playback": 2,
+        "usability->usability": 22
+      },
+      "cost_usd_measured": 0.004304,
+      "estimate_full_run_no_reuse_usd": 30.25,
+      "estimate_full_run_with_reuse_usd": 22.17,
+      "failed_requests": 0,
+      "first_pass_valid_rate": 0.9894,
+      "input_tokens": 14567,
+      "label_config": "gpt-6-luna+low+enrich-v1+labels-v1+schema-v1",
+      "metrics": {
+        "coverage": 1.0,
+        "intent_agreement": 0.9787,
+        "n_predicted": 94,
+        "n_reference": 94,
+        "needs_review_agreement": 0.8936,
+        "sentiment_mae_on_predicted": 0.1138,
+        "sentiment_within_0.25": 0.8617,
+        "sentiment_within_0.5": 0.9787,
+        "severity_exact": 0.8936,
+        "severity_mae_on_predicted": 0.1383,
+        "severity_within_1": 0.9787,
+        "topic_agreement": 0.9255,
+        "topic_macro_f1_present_classes": 0.9334
+      },
+      "model": "gpt-6-luna",
+      "output_tokens": 6669,
+      "per_topic": {
+        "access": {
+          "f1": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "support": 4
+        },
+        "billing": {
+          "f1": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "support": 16
+        },
+        "catalog": {
+          "f1": 0.8571,
+          "precision": 0.75,
+          "recall": 1.0,
+          "support": 9
+        },
+        "downloads": {
+          "f1": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "support": 2
+        },
+        "other": {
+          "f1": 0.96,
+          "precision": 1.0,
+          "recall": 0.9231,
+          "support": 26
+        },
+        "playback": {
+          "f1": 0.8,
+          "precision": 0.7692,
+          "recall": 0.8333,
+          "support": 12
+        },
+        "support": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 0
+        },
+        "usability": {
+          "f1": 0.9167,
+          "precision": 0.9565,
+          "recall": 0.88,
+          "support": 25
+        }
+      },
+      "quarantine_reasons": [],
+      "quarantined": 0,
+      "reasoning_tokens": 0,
+      "requests": 3,
+      "wall_seconds": 51.01
+    },
+    "luna-none": {
+      "confusion": {
+        "access->access": 4,
+        "billing->billing": 14,
+        "billing->other": 1,
+        "billing->usability": 1,
+        "catalog->catalog": 6,
+        "catalog->other": 2,
+        "catalog->usability": 1,
+        "downloads->downloads": 2,
+        "other->catalog": 1,
+        "other->other": 24,
+        "other->usability": 1,
+        "playback->catalog": 1,
+        "playback->playback": 11,
+        "usability->billing": 1,
+        "usability->catalog": 1,
+        "usability->playback": 5,
+        "usability->usability": 18
+      },
+      "cost_usd_measured": 0.004261,
+      "estimate_full_run_no_reuse_usd": 29.94,
+      "estimate_full_run_with_reuse_usd": 21.95,
+      "failed_requests": 0,
+      "first_pass_valid_rate": 1.0,
+      "input_tokens": 11780,
+      "label_config": "gpt-6-luna+none+enrich-v1+labels-v1+schema-v1",
+      "metrics": {
+        "coverage": 1.0,
+        "intent_agreement": 0.9787,
+        "n_predicted": 94,
+        "n_reference": 94,
+        "needs_review_agreement": 0.8936,
+        "sentiment_mae_on_predicted": 0.1117,
+        "sentiment_within_0.25": 0.8511,
+        "sentiment_within_0.5": 0.9681,
+        "severity_exact": 0.9043,
+        "severity_mae_on_predicted": 0.1277,
+        "severity_within_1": 0.9787,
+        "topic_agreement": 0.8404,
+        "topic_macro_f1_present_classes": 0.8634
+      },
+      "model": "gpt-6-luna",
+      "output_tokens": 6652,
+      "per_topic": {
+        "access": {
+          "f1": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "support": 4
+        },
+        "billing": {
+          "f1": 0.9032,
+          "precision": 0.9333,
+          "recall": 0.875,
+          "support": 16
+        },
+        "catalog": {
+          "f1": 0.6667,
+          "precision": 0.6667,
+          "recall": 0.6667,
+          "support": 9
+        },
+        "downloads": {
+          "f1": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "support": 2
+        },
+        "other": {
+          "f1": 0.9057,
+          "precision": 0.8889,
+          "recall": 0.9231,
+          "support": 26
+        },
+        "playback": {
+          "f1": 0.7857,
+          "precision": 0.6875,
+          "recall": 0.9167,
+          "support": 12
+        },
+        "support": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 0
+        },
+        "usability": {
+          "f1": 0.7826,
+          "precision": 0.8571,
+          "recall": 0.72,
+          "support": 25
+        }
+      },
+      "quarantine_reasons": [],
+      "quarantined": 0,
+      "reasoning_tokens": 0,
+      "requests": 2,
+      "wall_seconds": 38.67
+    }
+  },
+  "pairwise": {
+    "luna-none~luna-low": {
+      "intent": 0.9787,
+      "n_shared": 94,
+      "needs_review": 0.9362,
+      "sentiment_mae": 0.0532,
+      "severity": 0.9468,
+      "topic": 0.8723
+    }
+  },
+  "selected": {
+    "config": "luna-low",
+    "eligible": [
+      "luna-low"
+    ],
+    "why": "cheapest configuration meeting the declared rule"
+  },
+  "selection_rule": {
+    "agreement_margin": 0.05,
+    "first_pass_valid_min": 0.98,
+    "severity_within_1_min": 0.85
+  }
+}

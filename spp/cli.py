@@ -33,7 +33,7 @@ def main(argv=None):
                    help="comma list from scope,enrich,verify,group,rank,memo")
     r.add_argument("--scope-n", type=int, help="declared number of nonempty reviews to classify (default: all)")
     r.add_argument("--include", type=Path, nargs="*", default=[], help="CSVs whose IDs are always in scope")
-    r.add_argument("--primary", default="luna-none")
+    r.add_argument("--primary", default="luna-low")
     r.add_argument("--fallback", default="sonnet-low", help="allowlisted fallback config, or none")
     r.add_argument("--fallback-fraction", type=float, default=0.02)
     r.add_argument("--verifier", default="haiku")

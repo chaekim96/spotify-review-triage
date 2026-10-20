@@ -1,0 +1,1223 @@
+[
+  {
+    "fields": [
+      "topic",
+      "severity"
+    ],
+    "pred": {
+      "entities": [],
+      "evidence_quote": "when I tap play it plays a different song",
+      "intent": "complaint",
+      "needs_review": false,
+      "sentiment": -0.8,
+      "severity": 4,
+      "topic": "playback"
+    },
+    "ref": {
+      "entities": [],
+      "evidence_quote": "when I tap play it plays a different song",
+      "intent": "complaint",
+      "needs_review": false,
+      "sentiment": -0.8,
+      "severity": 3,
+      "topic": "usability"
+    },
+    "review_id": "a62c808d-e338-43c8-907f-67a199ec986b"
+  },
+  {
+    "fields": [
+      "severity",
+      "needs_review"
+    ],
+    "pred": {
+      "entities": [],
+      "evidence_quote": "cannot let me play middle past of song",
+      "intent": "complaint",
+      "needs_review": true,
+      "sentiment": -0.7,
+      "severity": 2,
+      "topic": "usability"
+    },
+    "ref": {
+      "entities": [],
+      "evidence_quote": "This app now cannot let me play middle past of song",
+      "intent": "complaint",
+      "needs_review": false,
+      "sentiment": -0.6,
+      "severity": 3,
+      "topic": "usability"
+    },
+    "review_id": "bf49fdea-abb6-4d93-bd14-8fb4e60e107c"
+  },
+  {
+    "fields": [
+      "needs_review",
+      "sentiment"
+    ],
+    "pred": {
+      "entities": [],
+      "evidence_quote": "when I play a song and turn off the Wafia the songs turn off",
+      "intent": "complaint",
+      "needs_review": true,
+      "sentiment": -0.5,
+      "severity": 3,
+      "topic": "playback"
+    },
+    "ref": {
+      "entities": [],
+      "evidence_quote": "when I play a song and turn off the Wafia the songs turn off",
+      "intent": "complaint",
+      "needs_review": false,
+      "sentiment": 0.2,
+      "severity": 3,
+      "topic": "playback"
+    },
+    "review_id": "a6b93f2a-f667-4d7c-a04f-d452cdedf399"
+  },
+  {
+    "fields": [
+      "sentiment"
+    ],
+    "pred": {
+      "entities": [
+        "spotify premium"
+      ],
+      "evidence_quote": "i cant pay for spotify premium for a whole year and have to pay monthly",
+      "intent": "complaint",
+      "needs_review": false,
+      "sentiment": -0.6,
+      "severity": 2,
+      "topic": "billing"
+    },
+    "ref": {
+      "entities": [
+        "spotify premium"
+      ],
+      "evidence_quote": "i cant pay for spotify premium for a whole year and have to pay monthly",
+      "intent": "complaint",
+      "needs_review": false,
+      "sentiment": 0.1,
+      "severity": 2,
+      "topic": "billing"
+    },
+    "review_id": "887d52d4-0e88-4704-b0ca-1799da6c2bac"
+  },
+  {
+    "fields": [
+      "intent",
+      "severity"
+    ],
+    "pred": {
+      "entities": [],
+      "evidence_quote": "There is no point in offering an app if you take away all the controls from the user.",
+      "intent": "request",
+      "needs_review": true,
+      "sentiment": -0.5,
+      "severity": 1,
+      "topic": "usability"
+    },
+    "ref": {
+      "entities": [],
+      "evidence_quote": "you take away all the controls from the user",
+      "intent": "complaint",
+      "needs_review": true,
+      "sentiment": -0.7,
+      "severity": 3,
+      "topic": "usability"
+    },
+    "review_id": "0a3522dc-1af1-4936-9f2a-1cd00586228d"
+  },
+  {
+    "fields": [
+      "topic"
+    ],
+    "pred": {
+      "entities": [
+        "premium"
+      ],
+      "evidence_quote": "Love this app. I have the premium for me and my family and it's so worth it!",
+      "intent": "praise",
+      "needs_review": false,
+      "sentiment": 0.9,
+      "severity": 1,
+      "topic": "other"
+    },
+    "ref": {
+      "entities": [
+        "premium"
+      ],
+      "evidence_quote": "I have the premium for me and my family and it's so worth it!",
+      "intent": "praise",
+      "needs_review": false,
+      "sentiment": 0.9,
+      "severity": 1,
+      "topic": "billing"
+    },
+    "review_id": "66dafd9c-a45b-4a2c-99f9-f095621d0b2d"
+  },
+  {
+    "fields": [
+      "needs_review"
+    ],
+    "pred": {
+      "entities": [],
+      "evidence_quote": "Bicot",
+      "intent": "unclear",
+      "needs_review": true,
+      "sentiment": 0.0,
+      "severity": 1,
+      "topic": "other"
+    },
+    "ref": {
+      "entities": [],
+      "evidence_quote": "Bicot",
+      "intent": "unclear",
+      "needs_review": false,
+      "sentiment": -0.3,
+      "severity": 1,
+      "topic": "other"
+    },
+    "review_id": "2bade2f8-b715-4c6e-a3dd-8abcaa36c7b3"
+  },
+  {
+    "fields": [
+      "needs_review"
+    ],
+    "pred": {
+      "entities": [],
+      "evidence_quote": "something went wrong",
+      "intent": "complaint",
+      "needs_review": false,
+      "sentiment": -0.3,
+      "severity": 2,
+      "topic": "other"
+    },
+    "ref": {
+      "entities": [],
+      "evidence_quote": "something went wrong",
+      "intent": "complaint",
+      "needs_review": true,
+      "sentiment": 0.0,
+      "severity": 2,
+      "topic": "other"
+    },
+    "review_id": "4f1ccb07-5415-4f23-8d41-9c149ed6ca85"
+  },
+  {
+    "fields": [
+      "topic"
+    ],
+    "pred": {
+      "entities": [
+        "Apple"
+      ],
+      "evidence_quote": "Top 5% of Americans who listen and Spotify turned me on to more than 140 genres of music.",
+      "intent": "praise",
+      "needs_review": false,
+      "sentiment": 0.9,
+      "severity": 1,
+      "topic": "other"
+    },
+    "ref": {
+      "entities": [
+        "Apple"
+      ],
+      "evidence_quote": "Spotify turned me on to more than 140 genres of music",
+      "intent": "praise",
+      "needs_review": false,
+      "sentiment": 0.9,
+      "severity": 1,
+      "topic": "catalog"
+    },
+    "review_id": "56b239fd-70c7-45a1-9093-c21017449163"
+  },
+  {
+    "fields": [
+      "topic"
+    ],
+    "pred": {
+      "entities": [
+        "SoundCloud"
+      ],
+      "evidence_quote": "the progress bar is not working i tried alot to move progress bar",
+      "intent": "complaint",
+      "needs_review": false,
+      "sentiment": -0.8,
+      "severity": 3,
+      "topic": "playback"
+    },
+    "ref": {
+      "entities": [
+        "SoundCloud"
+      ],
+      "evidence_quote": "the progress bar is not working",
+      "intent": "complaint",
+      "needs_review": false,
+      "sentiment": -0.8,
+      "severity": 3,
+      "topic": "usability"
+    },
+    "review_id": "5fabce90-9bb2-41ca-a8d9-084ad25610a0"
+  },
+  {
+    "fields": [
+      "topic"
+    ],
+    "pred": {
+      "entities": [],
+      "evidence_quote": "Can't pick specific songs to play.",
+      "intent": "complaint",
+      "needs_review": false,
+      "sentiment": -0.7,
+      "severity": 3,
+      "topic": "billing"
+    },
+    "ref": {
+      "entities": [],
+      "evidence_quote": "Can't pick specific songs to play.",
+      "intent": "complaint",
+      "needs_review": false,
+      "sentiment": -0.6,
+      "severity": 3,
+      "topic": "usability"
+    },
+    "review_id": "6e106ad0-737c-4c9a-b2e4-d966142caeec"
+  },
+  {
+    "fields": [
+      "topic"
+    ],
+    "pred": {
+      "entities": [
+        "mini premium"
+      ],
+      "evidence_quote": "paid for it 2x yet i wasn't able to have the said 1 day subscription",
+      "intent": "complaint",
+      "needs_review": false,
+      "sentiment": -0.8,
+      "severity": 4,
+      "topic": "billing"
+    },
+    "ref": {
+      "entities": [
+        "mini premium"
+      ],
+      "evidence_quote": "It abruptly stops and can't play songs anymore.",
+      "intent": "complaint",
+      "needs_review": false,
+      "sentiment": -0.8,
+      "severity": 4,
+      "topic": "playback"
+    },
+    "review_id": "0bf68fb6-2ebc-4035-a0ce-1e306b44f0e9"
+  },
+  {
+    "fields": [
+      "missing"
+    ],
+    "pred": null,
+    "ref": {
+      "entities": [],
+      "evidence_quote": "Now I can’t click on an artist to see their top 5-10 songs?",
+      "intent": "complaint",
+      "needs_review": false,
+      "sentiment": -0.8,
+      "severity": 3,
+      "topic": "usability"
+    },
+    "review_id": "e25cdf1b-24c0-41c8-ae6f-3601ec64d820"
+  },
+  {
+    "fields": [
+      "severity",
+      "needs_review"
+    ],
+    "pred": {
+      "entities": [],
+      "evidence_quote": "Not working",
+      "intent": "complaint",
+      "needs_review": false,
+      "sentiment": -0.8,
+      "severity": 2,
+      "topic": "other"
+    },
+    "ref": {
+      "entities": [],
+      "evidence_quote": "Not working",
+      "intent": "complaint",
+      "needs_review": true,
+      "sentiment": -0.7,
+      "severity": 3,
+      "topic": "other"
+    },
+    "review_id": "1849be6a-17f9-488f-9f4d-990d55034e8f"
+  },
+  {
+    "fields": [
+      "severity"
+    ],
+    "pred": {
+      "entities": [],
+      "evidence_quote": "Have lost all sound on my music.",
+      "intent": "complaint",
+      "needs_review": false,
+      "sentiment": -0.6,
+      "severity": 3,
+      "topic": "playback"
+    },
+    "ref": {
+      "entities": [],
+      "evidence_quote": "Have lost all sound on my music.",
+      "intent": "complaint",
+      "needs_review": false,
+      "sentiment": -0.3,
+      "severity": 4,
+      "topic": "playback"
+    },
+    "review_id": "815e7b58-f14d-4d59-8a58-3058322cd6fc"
+  },
+  {
+    "fields": [
+      "topic"
+    ],
+    "pred": {
+      "entities": [],
+      "evidence_quote": "the app has this problem of playing songs you don't want to listen to",
+      "intent": "complaint",
+      "needs_review": false,
+      "sentiment": -0.4,
+      "severity": 3,
+      "topic": "playback"
+    },
+    "ref": {
+      "entities": [],
+      "evidence_quote": "the app has this problem of playing songs you don't want to listen to",
+      "intent": "complaint",
+      "needs_review": false,
+      "sentiment": -0.2,
+      "severity": 3,
+      "topic": "usability"
+    },
+    "review_id": "30e334f5-0771-40b3-b8fa-1a982aac6357"
+  },
+  {
+    "fields": [
+      "missing"
+    ],
+    "pred": null,
+    "ref": {
+      "entities": [],
+      "evidence_quote": "I love this app",
+      "intent": "praise",
+      "needs_review": false,
+      "sentiment": 0.9,
+      "severity": 1,
+      "topic": "other"
+    },
+    "review_id": "23d24a4f-b60a-4d35-b4e2-a97c8d05f5b5"
+  },
+  {
+    "fields": [
+      "severity"
+    ],
+    "pred": {
+      "entities": [],
+      "evidence_quote": "I hate how I have to Shuffle through all my music on my phone",
+      "intent": "complaint",
+      "needs_review": false,
+      "sentiment": -0.6,
+      "severity": 2,
+      "topic": "usability"
+    },
+    "ref": {
+      "entities": [],
+      "evidence_quote": "I hate how I have to Shuffle through all my music on my phone",
+      "intent": "complaint",
+      "needs_review": false,
+      "sentiment": -0.6,
+      "severity": 3,
+      "topic": "usability"
+    },
+    "review_id": "a7a780a7-cd4c-4ff3-a53b-8c7c1ebd1894"
+  },
+  {
+    "fields": [
+      "severity"
+    ],
+    "pred": {
+      "entities": [],
+      "evidence_quote": "couldnt load the lyric for this song !!!",
+      "intent": "complaint",
+      "needs_review": false,
+      "sentiment": -0.7,
+      "severity": 2,
+      "topic": "catalog"
+    },
+    "ref": {
+      "entities": [],
+      "evidence_quote": "couldnt load the lyric for this song",
+      "intent": "complaint",
+      "needs_review": false,
+      "sentiment": -0.6,
+      "severity": 3,
+      "topic": "catalog"
+    },
+    "review_id": "78aa55af-7a7f-4452-9deb-9004a1da7abe"
+  },
+  {
+    "fields": [
+      "topic"
+    ],
+    "pred": {
+      "entities": [],
+      "evidence_quote": "Sure would be nice to have a changelog for updates",
+      "intent": "request",
+      "needs_review": false,
+      "sentiment": -0.3,
+      "severity": 1,
+      "topic": "support"
+    },
+    "ref": {
+      "entities": [],
+      "evidence_quote": "Sure would be nice to have a changelog for updates",
+      "intent": "request",
+      "needs_review": false,
+      "sentiment": 0.0,
+      "severity": 1,
+      "topic": "other"
+    },
+    "review_id": "26b5c819-608b-4bee-9696-439fd57b1421"
+  },
+  {
+    "fields": [
+      "severity"
+    ],
+    "pred": {
+      "entities": [],
+      "evidence_quote": "NUEVAMENTE LE COBRARON A JAIME ROSALES, QUE ES GRATIS SUPUESTAMENTE",
+      "intent": "complaint",
+      "needs_review": true,
+      "sentiment": 0.3,
+      "severity": 4,
+      "topic": "billing"
+    },
+    "ref": {
+      "entities": [],
+      "evidence_quote": "NUEVAMENTE LE COBRARON",
+      "intent": "complaint",
+      "needs_review": true,
+      "sentiment": 0.0,
+      "severity": 5,
+      "topic": "billing"
+    },
+    "review_id": "6985febf-75fa-47e9-9a86-c62f47a18554"
+  },
+  {
+    "fields": [
+      "severity"
+    ],
+    "pred": {
+      "entities": [],
+      "evidence_quote": "If you're gonna lock every possible feature you have",
+      "intent": "complaint",
+      "needs_review": false,
+      "sentiment": -0.8,
+      "severity": 3,
+      "topic": "billing"
+    },
+    "ref": {
+      "entities": [],
+      "evidence_quote": "If you're gonna lock every possible feature you have",
+      "intent": "complaint",
+      "needs_review": false,
+      "sentiment": -0.6,
+      "severity": 2,
+      "topic": "billing"
+    },
+    "review_id": "62a151d1-6cb2-4f3e-8b92-8265124ebf42"
+  },
+  {
+    "fields": [
+      "intent"
+    ],
+    "pred": {
+      "entities": [],
+      "evidence_quote": "App band karne ki ninja technique in the name of premium. They stop many features",
+      "intent": "complaint",
+      "needs_review": false,
+      "sentiment": -0.8,
+      "severity": 3,
+      "topic": "billing"
+    },
+    "ref": {
+      "entities": [
+        "premium"
+      ],
+      "evidence_quote": "They stop many features, Infact u can't move in the middle of songs.",
+      "intent": "cancellation",
+      "needs_review": false,
+      "sentiment": -0.9,
+      "severity": 3,
+      "topic": "billing"
+    },
+    "review_id": "21426c53-3cb5-4f12-a507-dca4a261ce4d"
+  },
+  {
+    "fields": [
+      "severity"
+    ],
+    "pred": {
+      "entities": [],
+      "evidence_quote": "Impossible to sort lists",
+      "intent": "complaint",
+      "needs_review": false,
+      "sentiment": -0.6,
+      "severity": 2,
+      "topic": "usability"
+    },
+    "ref": {
+      "entities": [
+        "Bluetooth"
+      ],
+      "evidence_quote": "Impossible to sort lists.",
+      "intent": "complaint",
+      "needs_review": false,
+      "sentiment": -0.6,
+      "severity": 3,
+      "topic": "usability"
+    },
+    "review_id": "6dfc27ea-dc74-4a88-a67e-99d9554063ef"
+  },
+  {
+    "fields": [
+      "severity",
+      "needs_review"
+    ],
+    "pred": {
+      "entities": [],
+      "evidence_quote": "При переходе из раздела в раздел крутится колесо",
+      "intent": "complaint",
+      "needs_review": true,
+      "sentiment": -0.7,
+      "severity": 2,
+      "topic": "playback"
+    },
+    "ref": {
+      "entities": [
+        "яндекс.музыка"
+      ],
+      "evidence_quote": "Тупит сильно.",
+      "intent": "complaint",
+      "needs_review": false,
+      "sentiment": -0.7,
+      "severity": 3,
+      "topic": "playback"
+    },
+    "review_id": "6f05fbba-981d-41ab-a1ca-6f7fce21153f"
+  },
+  {
+    "fields": [
+      "topic"
+    ],
+    "pred": {
+      "entities": [],
+      "evidence_quote": "Great app for music lovers and they've got the best recommendations",
+      "intent": "praise",
+      "needs_review": false,
+      "sentiment": 1.0,
+      "severity": 1,
+      "topic": "other"
+    },
+    "ref": {
+      "entities": [],
+      "evidence_quote": "they've got the best recommendations",
+      "intent": "praise",
+      "needs_review": false,
+      "sentiment": 1.0,
+      "severity": 1,
+      "topic": "catalog"
+    },
+    "review_id": "3e8307ec-b7bc-40c5-a167-80004b1976ff"
+  },
+  {
+    "fields": [
+      "topic"
+    ],
+    "pred": {
+      "entities": [],
+      "evidence_quote": "Wow! I can now open other application while listening to music 🎶. Love it!!",
+      "intent": "praise",
+      "needs_review": false,
+      "sentiment": 0.9,
+      "severity": 1,
+      "topic": "other"
+    },
+    "ref": {
+      "entities": [],
+      "evidence_quote": "I can now open other application while listening to music",
+      "intent": "praise",
+      "needs_review": false,
+      "sentiment": 0.9,
+      "severity": 1,
+      "topic": "playback"
+    },
+    "review_id": "ba641951-e4cf-4c47-8813-e070714462c0"
+  },
+  {
+    "fields": [
+      "severity"
+    ],
+    "pred": {
+      "entities": [
+        "Jam"
+      ],
+      "evidence_quote": "The Jam feature is so buggy asf",
+      "intent": "complaint",
+      "needs_review": false,
+      "sentiment": -0.4,
+      "severity": 2,
+      "topic": "usability"
+    },
+    "ref": {
+      "entities": [
+        "Jam"
+      ],
+      "evidence_quote": "The Jam feature is so buggy asf",
+      "intent": "complaint",
+      "needs_review": false,
+      "sentiment": -0.5,
+      "severity": 3,
+      "topic": "usability"
+    },
+    "review_id": "b71c4e00-5def-47d0-8425-f5d21fe9cdee"
+  },
+  {
+    "fields": [
+      "topic",
+      "severity"
+    ],
+    "pred": {
+      "entities": [],
+      "evidence_quote": "No songs, only home option only their",
+      "intent": "complaint",
+      "needs_review": true,
+      "sentiment": -0.8,
+      "severity": 3,
+      "topic": "catalog"
+    },
+    "ref": {
+      "entities": [],
+      "evidence_quote": "No songs, only home option only their",
+      "intent": "complaint",
+      "needs_review": true,
+      "sentiment": -0.6,
+      "severity": 2,
+      "topic": "other"
+    },
+    "review_id": "e4371e2b-7208-4c1d-bec9-d4e6f860bf7d"
+  },
+  {
+    "fields": [
+      "topic",
+      "severity"
+    ],
+    "pred": {
+      "entities": [],
+      "evidence_quote": "it plays a different song fix the bug man pls",
+      "intent": "complaint",
+      "needs_review": false,
+      "sentiment": -0.7,
+      "severity": 2,
+      "topic": "playback"
+    },
+    "ref": {
+      "entities": [],
+      "evidence_quote": "it plays a different song",
+      "intent": "complaint",
+      "needs_review": false,
+      "sentiment": -0.5,
+      "severity": 3,
+      "topic": "usability"
+    },
+    "review_id": "a89fcace-c4a8-4f21-a612-1e66f8dc87cb"
+  },
+  {
+    "fields": [
+      "topic",
+      "severity"
+    ],
+    "pred": {
+      "entities": [],
+      "evidence_quote": "the shuffle is totally bugged",
+      "intent": "complaint",
+      "needs_review": false,
+      "sentiment": -0.5,
+      "severity": 2,
+      "topic": "playback"
+    },
+    "ref": {
+      "entities": [],
+      "evidence_quote": "the shuffle is totally bugged",
+      "intent": "complaint",
+      "needs_review": false,
+      "sentiment": -0.4,
+      "severity": 3,
+      "topic": "usability"
+    },
+    "review_id": "9b0fbce2-1e76-48eb-b9eb-cbc415744b92"
+  },
+  {
+    "fields": [
+      "topic"
+    ],
+    "pred": {
+      "entities": [],
+      "evidence_quote": "very nice app. very useful.lot of music collection",
+      "intent": "praise",
+      "needs_review": false,
+      "sentiment": 0.8,
+      "severity": 1,
+      "topic": "other"
+    },
+    "ref": {
+      "entities": [],
+      "evidence_quote": "lot of music collection",
+      "intent": "praise",
+      "needs_review": false,
+      "sentiment": 0.9,
+      "severity": 1,
+      "topic": "catalog"
+    },
+    "review_id": "d8fda5b3-55b3-43e7-8c39-90545fee90a8"
+  },
+  {
+    "fields": [
+      "topic"
+    ],
+    "pred": {
+      "entities": [],
+      "evidence_quote": "the ads are only in the hindi language... Requesting to include all the south indian languages",
+      "intent": "request",
+      "needs_review": false,
+      "sentiment": 0.5,
+      "severity": 1,
+      "topic": "other"
+    },
+    "ref": {
+      "entities": [],
+      "evidence_quote": "Requesting to include all the south indian languages",
+      "intent": "request",
+      "needs_review": false,
+      "sentiment": 0.5,
+      "severity": 1,
+      "topic": "usability"
+    },
+    "review_id": "34725e8e-71da-40e6-830e-155a19eed220"
+  },
+  {
+    "fields": [
+      "needs_review"
+    ],
+    "pred": {
+      "entities": [],
+      "evidence_quote": "biased they are towards certain artists",
+      "intent": "complaint",
+      "needs_review": true,
+      "sentiment": -0.7,
+      "severity": 2,
+      "topic": "catalog"
+    },
+    "ref": {
+      "entities": [],
+      "evidence_quote": "biased they are towards certain artists",
+      "intent": "complaint",
+      "needs_review": false,
+      "sentiment": -0.7,
+      "severity": 2,
+      "topic": "catalog"
+    },
+    "review_id": "4ceaa4ff-d1c5-4f0d-984d-3e3224f4fa65"
+  },
+  {
+    "fields": [
+      "topic"
+    ],
+    "pred": {
+      "entities": [
+        "family plan"
+      ],
+      "evidence_quote": "No way to escape ads. I'm a paying subscriber with the family plan and even though I'm paying more now than I did when I signed up I'm still having advertisements foisted upon me",
+      "intent": "complaint",
+      "needs_review": false,
+      "sentiment": -0.8,
+      "severity": 3,
+      "topic": "usability"
+    },
+    "ref": {
+      "entities": [
+        "family plan"
+      ],
+      "evidence_quote": "I'm still having advertisements foisted upon me against my will",
+      "intent": "complaint",
+      "needs_review": false,
+      "sentiment": -0.8,
+      "severity": 3,
+      "topic": "billing"
+    },
+    "review_id": "3b6d7be5-c71a-47a3-8490-76bfc48e4279"
+  },
+  {
+    "fields": [
+      "topic"
+    ],
+    "pred": {
+      "entities": [],
+      "evidence_quote": "Wonderfull hearing stories like l heard on the radio when I was a child. Something for everyone. Well done!",
+      "intent": "praise",
+      "needs_review": false,
+      "sentiment": 0.9,
+      "severity": 1,
+      "topic": "other"
+    },
+    "ref": {
+      "entities": [],
+      "evidence_quote": "Something for everyone",
+      "intent": "praise",
+      "needs_review": false,
+      "sentiment": 0.9,
+      "severity": 1,
+      "topic": "catalog"
+    },
+    "review_id": "385230d6-9525-4dd7-ac36-7e5a22d9d921"
+  },
+  {
+    "fields": [
+      "topic"
+    ],
+    "pred": {
+      "entities": [],
+      "evidence_quote": "Terrific how much great music is on Spotify, and so easy to use",
+      "intent": "praise",
+      "needs_review": false,
+      "sentiment": 0.8,
+      "severity": 1,
+      "topic": "other"
+    },
+    "ref": {
+      "entities": [],
+      "evidence_quote": "how much great music is on Spotify",
+      "intent": "praise",
+      "needs_review": false,
+      "sentiment": 1.0,
+      "severity": 1,
+      "topic": "catalog"
+    },
+    "review_id": "2d9e1a45-ce02-4412-a600-de38ede37ccd"
+  },
+  {
+    "fields": [
+      "needs_review"
+    ],
+    "pred": {
+      "entities": [
+        "South Africa"
+      ],
+      "evidence_quote": "Now South Africa claiming money to use. How sad",
+      "intent": "complaint",
+      "needs_review": true,
+      "sentiment": -0.7,
+      "severity": 2,
+      "topic": "billing"
+    },
+    "ref": {
+      "entities": [
+        "South Africa"
+      ],
+      "evidence_quote": "Now South Africa claiming money to use.",
+      "intent": "complaint",
+      "needs_review": false,
+      "sentiment": -0.6,
+      "severity": 2,
+      "topic": "billing"
+    },
+    "review_id": "9e5b62dd-9ff8-4525-aa14-4f75b26fe2e6"
+  },
+  {
+    "fields": [
+      "severity"
+    ],
+    "pred": {
+      "entities": [
+        "google play"
+      ],
+      "evidence_quote": "The subscription isn't available in your google play country",
+      "intent": "complaint",
+      "needs_review": false,
+      "sentiment": -0.6,
+      "severity": 3,
+      "topic": "billing"
+    },
+    "ref": {
+      "entities": [
+        "google play"
+      ],
+      "evidence_quote": "The subscription isn't available in your google play country",
+      "intent": "complaint",
+      "needs_review": false,
+      "sentiment": -0.2,
+      "severity": 4,
+      "topic": "billing"
+    },
+    "review_id": "634045c3-9a77-4a44-8f0e-8bf509426e38"
+  },
+  {
+    "fields": [
+      "needs_review"
+    ],
+    "pred": {
+      "entities": [],
+      "evidence_quote": "many songs are being deleted or either removed",
+      "intent": "complaint",
+      "needs_review": false,
+      "sentiment": -0.3,
+      "severity": 3,
+      "topic": "catalog"
+    },
+    "ref": {
+      "entities": [],
+      "evidence_quote": "why many songs are being deleted or either removed??",
+      "intent": "complaint",
+      "needs_review": true,
+      "sentiment": -0.5,
+      "severity": 3,
+      "topic": "catalog"
+    },
+    "review_id": "4db4666e-a16f-4a17-9b6c-dc6acea84f82"
+  },
+  {
+    "fields": [
+      "severity"
+    ],
+    "pred": {
+      "entities": [],
+      "evidence_quote": "some of the song are getting removed and add",
+      "intent": "complaint",
+      "needs_review": false,
+      "sentiment": -0.2,
+      "severity": 2,
+      "topic": "catalog"
+    },
+    "ref": {
+      "entities": [],
+      "evidence_quote": "some of the song are getting removed",
+      "intent": "complaint",
+      "needs_review": false,
+      "sentiment": -0.2,
+      "severity": 3,
+      "topic": "catalog"
+    },
+    "review_id": "cdf370da-8263-4661-b47c-6f46432c3c78"
+  },
+  {
+    "fields": [
+      "severity"
+    ],
+    "pred": {
+      "entities": [],
+      "evidence_quote": "my account was logged out and when I was again trying to login with my phone number it didn't worked",
+      "intent": "complaint",
+      "needs_review": false,
+      "sentiment": -0.7,
+      "severity": 3,
+      "topic": "access"
+    },
+    "ref": {
+      "entities": [],
+      "evidence_quote": "when I was again trying to login with my phone number it didn't worked",
+      "intent": "complaint",
+      "needs_review": false,
+      "sentiment": -0.5,
+      "severity": 4,
+      "topic": "access"
+    },
+    "review_id": "60dba11a-17fc-4dcf-a1a1-afeee2f9cb2e"
+  },
+  {
+    "fields": [
+      "topic",
+      "severity",
+      "needs_review"
+    ],
+    "pred": {
+      "entities": [],
+      "evidence_quote": "My account was hacked and your webchat, Facebook and Twitter team are not helping me",
+      "intent": "complaint",
+      "needs_review": true,
+      "sentiment": -0.8,
+      "severity": 4,
+      "topic": "support"
+    },
+    "ref": {
+      "entities": [
+        "family account"
+      ],
+      "evidence_quote": "My account was hacked",
+      "intent": "complaint",
+      "needs_review": false,
+      "sentiment": -0.9,
+      "severity": 5,
+      "topic": "access"
+    },
+    "review_id": "45d07c5b-1110-422a-8c4d-7f128042697c"
+  },
+  {
+    "fields": [
+      "intent",
+      "severity"
+    ],
+    "pred": {
+      "entities": [],
+      "evidence_quote": "If a playlist or album is downloaded it should be accessible even when offline",
+      "intent": "request",
+      "needs_review": false,
+      "sentiment": -0.3,
+      "severity": 2,
+      "topic": "downloads"
+    },
+    "ref": {
+      "entities": [],
+      "evidence_quote": "If a playlist or album is downloaded it should be accessible even when offline",
+      "intent": "complaint",
+      "needs_review": false,
+      "sentiment": -0.5,
+      "severity": 3,
+      "topic": "downloads"
+    },
+    "review_id": "27d60da3-2cc6-4c81-ab35-ba70ed419683"
+  },
+  {
+    "fields": [
+      "severity"
+    ],
+    "pred": {
+      "entities": [],
+      "evidence_quote": "I have been getting error messages whenever I try to share a song",
+      "intent": "complaint",
+      "needs_review": false,
+      "sentiment": -0.6,
+      "severity": 2,
+      "topic": "usability"
+    },
+    "ref": {
+      "entities": [],
+      "evidence_quote": "I have been getting error messages whenever I try to share a song.",
+      "intent": "complaint",
+      "needs_review": false,
+      "sentiment": -0.3,
+      "severity": 3,
+      "topic": "usability"
+    },
+    "review_id": "ba7e368e-196c-4552-bc24-83a2cd853f71"
+  },
+  {
+    "fields": [
+      "topic"
+    ],
+    "pred": {
+      "entities": [],
+      "evidence_quote": "going to uninstall ur app",
+      "intent": "cancellation",
+      "needs_review": false,
+      "sentiment": -0.7,
+      "severity": 2,
+      "topic": "usability"
+    },
+    "ref": {
+      "entities": [
+        "primium"
+      ],
+      "evidence_quote": "irritating to purchase primium going to uninstall ur app",
+      "intent": "cancellation",
+      "needs_review": false,
+      "sentiment": -0.7,
+      "severity": 2,
+      "topic": "billing"
+    },
+    "review_id": "2405f015-4b5b-44bb-b1c8-d786c7a4e340"
+  },
+  {
+    "fields": [
+      "intent",
+      "needs_review"
+    ],
+    "pred": {
+      "entities": [],
+      "evidence_quote": "never provide ad otherwise I will uninstall it",
+      "intent": "complaint",
+      "needs_review": false,
+      "sentiment": 0.3,
+      "severity": 2,
+      "topic": "usability"
+    },
+    "ref": {
+      "entities": [],
+      "evidence_quote": "never provide ad otherwise I will uninstall it",
+      "intent": "cancellation",
+      "needs_review": true,
+      "sentiment": 0.1,
+      "severity": 2,
+      "topic": "usability"
+    },
+    "review_id": "1f544c6c-b62b-4289-bb48-2e4446974f09"
+  },
+  {
+    "fields": [
+      "severity"
+    ],
+    "pred": {
+      "entities": [],
+      "evidence_quote": "all it does is stop playing constantly glitching",
+      "intent": "cancellation",
+      "needs_review": false,
+      "sentiment": -0.9,
+      "severity": 4,
+      "topic": "playback"
+    },
+    "ref": {
+      "entities": [],
+      "evidence_quote": "Definitely will be canceling this garbage.",
+      "intent": "cancellation",
+      "needs_review": false,
+      "sentiment": -0.9,
+      "severity": 3,
+      "topic": "playback"
+    },
+    "review_id": "45e44173-3b6f-4778-ae10-8668c505d0aa"
+  },
+  {
+    "fields": [
+      "needs_review"
+    ],
+    "pred": {
+      "entities": [],
+      "evidence_quote": "I am thinking to uninstall this app",
+      "intent": "cancellation",
+      "needs_review": false,
+      "sentiment": -0.8,
+      "severity": 3,
+      "topic": "billing"
+    },
+    "ref": {
+      "entities": [
+        "premium"
+      ],
+      "evidence_quote": "I am thinking to uninstall this app.",
+      "intent": "cancellation",
+      "needs_review": true,
+      "sentiment": -0.8,
+      "severity": 3,
+      "topic": "billing"
+    },
+    "review_id": "5ebed082-723b-46fd-8700-0e2171db48fd"
+  }
+]

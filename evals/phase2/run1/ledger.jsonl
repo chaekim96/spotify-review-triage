@@ -1,0 +1,76 @@
+{"event": "reserve", "token": 1, "usd": "0.0039714", "note": "enrich luna-none n=47", "spent": "0", "reserved": "0.0039714", "cap": "2.0", "t": 1792485152.3589919}
+{"event": "settle", "token": 1, "usd": "0", "note": "no-request-id", "spent": "0", "reserved": "0E-7", "cap": "2.0", "t": 1792485155.3044999}
+{"event": "reserve", "token": 2, "usd": "0.0039714", "note": "enrich luna-none n=47", "spent": "0", "reserved": "0.0039714", "cap": "2.0", "t": 1792485156.2033558}
+{"event": "settle", "token": 2, "usd": "0", "note": "no-request-id", "spent": "0", "reserved": "0E-7", "cap": "2.0", "t": 1792485157.0836968}
+{"event": "reserve", "token": 3, "usd": "0.0039714", "note": "enrich luna-none n=47", "spent": "0", "reserved": "0.0039714", "cap": "2.0", "t": 1792485157.972291}
+{"event": "settle", "token": 3, "usd": "0", "note": "no-request-id", "spent": "0", "reserved": "0E-7", "cap": "2.0", "t": 1792485160.087677}
+{"event": "reserve", "token": 4, "usd": "0.0039714", "note": "enrich luna-none n=47", "spent": "0", "reserved": "0.0039714", "cap": "2.0", "t": 1792485162.703146}
+{"event": "settle", "token": 4, "usd": "0", "note": "no-request-id", "spent": "0", "reserved": "0E-7", "cap": "2.0", "t": 1792485163.633318}
+{"event": "reserve", "token": 5, "usd": "0.0039714", "note": "enrich luna-none n=47", "spent": "0", "reserved": "0.0039714", "cap": "2.0", "t": 1792485165.202353}
+{"event": "settle", "token": 5, "usd": "0", "note": "no-request-id", "spent": "0", "reserved": "0E-7", "cap": "2.0", "t": 1792485165.714505}
+{"event": "reserve", "token": 6, "usd": "0.0039714", "note": "enrich luna-none n=47", "spent": "0", "reserved": "0.0039714", "cap": "2.0", "t": 1792485166.686701}
+{"event": "settle", "token": 6, "usd": "0", "note": "no-request-id", "spent": "0", "reserved": "0E-7", "cap": "2.0", "t": 1792485167.827445}
+{"event": "reserve", "token": 7, "usd": "0.0039714", "note": "enrich luna-none n=47", "spent": "0", "reserved": "0.0039714", "cap": "2.0", "t": 1792485169.7217228}
+{"event": "settle", "token": 7, "usd": "0", "note": "no-request-id", "spent": "0", "reserved": "0E-7", "cap": "2.0", "t": 1792485170.217367}
+{"event": "reserve", "token": 8, "usd": "0.0039714", "note": "enrich luna-none n=47", "spent": "0", "reserved": "0.0039714", "cap": "2.0", "t": 1792485171.834962}
+{"event": "settle", "token": 8, "usd": "0", "note": "no-request-id", "spent": "0", "reserved": "0E-7", "cap": "2.0", "t": 1792485172.489971}
+{"event": "reserve", "token": 9, "usd": "0.0040757", "note": "enrich luna-none n=47", "spent": "0", "reserved": "0.0040757", "cap": "2.0", "t": 1792485179.136936}
+{"event": "settle", "token": 9, "usd": "0", "note": "no-request-id", "spent": "0", "reserved": "0E-7", "cap": "2.0", "t": 1792485179.977513}
+{"event": "reserve", "token": 10, "usd": "0.0040757", "note": "enrich luna-none n=47", "spent": "0", "reserved": "0.0040757", "cap": "2.0", "t": 1792485180.485715}
+{"event": "settle", "token": 10, "usd": "0", "note": "no-request-id", "spent": "0", "reserved": "0E-7", "cap": "2.0", "t": 1792485181.994015}
+{"event": "reserve", "token": 11, "usd": "0.0040757", "note": "enrich luna-none n=47", "spent": "0", "reserved": "0.0040757", "cap": "2.0", "t": 1792485182.105518}
+{"event": "settle", "token": 11, "usd": "0", "note": "no-request-id", "spent": "0", "reserved": "0E-7", "cap": "2.0", "t": 1792485184.079469}
+{"event": "reserve", "token": 12, "usd": "0.0040757", "note": "enrich luna-none n=47", "spent": "0", "reserved": "0.0040757", "cap": "2.0", "t": 1792485184.261536}
+{"event": "settle", "token": 12, "usd": "0", "note": "no-request-id", "spent": "0", "reserved": "0E-7", "cap": "2.0", "t": 1792485185.6182249}
+{"event": "reserve", "token": 13, "usd": "0.0040757", "note": "enrich luna-none n=47", "spent": "0", "reserved": "0.0040757", "cap": "2.0", "t": 1792485185.6476648}
+{"event": "settle", "token": 13, "usd": "0", "note": "no-request-id", "spent": "0", "reserved": "0E-7", "cap": "2.0", "t": 1792485187.675775}
+{"event": "reserve", "token": 14, "usd": "0.0040757", "note": "enrich luna-none n=47", "spent": "0", "reserved": "0.0040757", "cap": "2.0", "t": 1792485187.973145}
+{"event": "settle", "token": 14, "usd": "0", "note": "no-request-id", "spent": "0", "reserved": "0E-7", "cap": "2.0", "t": 1792485189.665023}
+{"event": "reserve", "token": 15, "usd": "0.0040757", "note": "enrich luna-none n=47", "spent": "0", "reserved": "0.0040757", "cap": "2.0", "t": 1792485191.34759}
+{"event": "settle", "token": 15, "usd": "0", "note": "no-request-id", "spent": "0", "reserved": "0E-7", "cap": "2.0", "t": 1792485191.884125}
+{"event": "reserve", "token": 16, "usd": "0.0040757", "note": "enrich luna-none n=47", "spent": "0", "reserved": "0.0040757", "cap": "2.0", "t": 1792485195.381943}
+{"event": "settle", "token": 16, "usd": "0", "note": "no-request-id", "spent": "0", "reserved": "0E-7", "cap": "2.0", "t": 1792485196.147913}
+{"event": "reserve", "token": 17, "usd": "0.0053214", "note": "enrich luna-low n=47", "spent": "0", "reserved": "0.0053214", "cap": "2.0", "t": 1792485199.1321821}
+{"event": "settle", "token": 17, "usd": "0", "note": "no-request-id", "spent": "0", "reserved": "0E-7", "cap": "2.0", "t": 1792485199.664459}
+{"event": "reserve", "token": 18, "usd": "0.0053214", "note": "enrich luna-low n=47", "spent": "0", "reserved": "0.0053214", "cap": "2.0", "t": 1792485200.493778}
+{"event": "settle", "token": 18, "usd": "0", "note": "no-request-id", "spent": "0", "reserved": "0E-7", "cap": "2.0", "t": 1792485201.62221}
+{"event": "reserve", "token": 19, "usd": "0.0053214", "note": "enrich luna-low n=47", "spent": "0", "reserved": "0.0053214", "cap": "2.0", "t": 1792485201.931545}
+{"event": "settle", "token": 19, "usd": "0", "note": "no-request-id", "spent": "0", "reserved": "0E-7", "cap": "2.0", "t": 1792485204.1165829}
+{"event": "reserve", "token": 20, "usd": "0.0053214", "note": "enrich luna-low n=47", "spent": "0", "reserved": "0.0053214", "cap": "2.0", "t": 1792485206.20049}
+{"event": "settle", "token": 20, "usd": "0", "note": "no-request-id", "spent": "0", "reserved": "0E-7", "cap": "2.0", "t": 1792485207.960856}
+{"event": "reserve", "token": 21, "usd": "0.0053214", "note": "enrich luna-low n=47", "spent": "0", "reserved": "0.0053214", "cap": "2.0", "t": 1792485213.7357209}
+{"event": "settle", "token": 21, "usd": "0", "note": "no-request-id", "spent": "0", "reserved": "0E-7", "cap": "2.0", "t": 1792485214.290105}
+{"event": "reserve", "token": 22, "usd": "0.0053214", "note": "enrich luna-low n=47", "spent": "0", "reserved": "0.0053214", "cap": "2.0", "t": 1792485214.5601568}
+{"event": "settle", "token": 22, "usd": "0", "note": "no-request-id", "spent": "0", "reserved": "0E-7", "cap": "2.0", "t": 1792485216.5230908}
+{"event": "reserve", "token": 23, "usd": "0.0053214", "note": "enrich luna-low n=47", "spent": "0", "reserved": "0.0053214", "cap": "2.0", "t": 1792485218.523127}
+{"event": "settle", "token": 23, "usd": "0", "note": "no-request-id", "spent": "0", "reserved": "0E-7", "cap": "2.0", "t": 1792485219.0210948}
+{"event": "reserve", "token": 24, "usd": "0.0053214", "note": "enrich luna-low n=47", "spent": "0", "reserved": "0.0053214", "cap": "2.0", "t": 1792485222.131116}
+{"event": "settle", "token": 24, "usd": "0", "note": "no-request-id", "spent": "0", "reserved": "0E-7", "cap": "2.0", "t": 1792485222.850522}
+{"event": "reserve", "token": 25, "usd": "0.0054257", "note": "enrich luna-low n=47", "spent": "0", "reserved": "0.0054257", "cap": "2.0", "t": 1792485224.8842418}
+{"event": "settle", "token": 25, "usd": "0", "note": "no-request-id", "spent": "0", "reserved": "0E-7", "cap": "2.0", "t": 1792485225.383408}
+{"event": "reserve", "token": 26, "usd": "0.0054257", "note": "enrich luna-low n=47", "spent": "0", "reserved": "0.0054257", "cap": "2.0", "t": 1792485225.828895}
+{"event": "settle", "token": 26, "usd": "0", "note": "no-request-id", "spent": "0", "reserved": "0E-7", "cap": "2.0", "t": 1792485227.540425}
+{"event": "reserve", "token": 27, "usd": "0.0054257", "note": "enrich luna-low n=47", "spent": "0", "reserved": "0.0054257", "cap": "2.0", "t": 1792485227.778219}
+{"event": "settle", "token": 27, "usd": "0", "note": "no-request-id", "spent": "0", "reserved": "0E-7", "cap": "2.0", "t": 1792485229.671625}
+{"event": "reserve", "token": 28, "usd": "0.0054257", "note": "enrich luna-low n=47", "spent": "0", "reserved": "0.0054257", "cap": "2.0", "t": 1792485231.0862331}
+{"event": "settle", "token": 28, "usd": "0", "note": "no-request-id", "spent": "0", "reserved": "0E-7", "cap": "2.0", "t": 1792485231.6814551}
+{"event": "reserve", "token": 29, "usd": "0.0054257", "note": "enrich luna-low n=47", "spent": "0", "reserved": "0.0054257", "cap": "2.0", "t": 1792485234.117891}
+{"event": "settle", "token": 29, "usd": "0", "note": "no-request-id", "spent": "0", "reserved": "0E-7", "cap": "2.0", "t": 1792485234.656598}
+{"event": "reserve", "token": 30, "usd": "0.0054257", "note": "enrich luna-low n=47", "spent": "0", "reserved": "0.0054257", "cap": "2.0", "t": 1792485235.304522}
+{"event": "settle", "token": 30, "usd": "0", "note": "no-request-id", "spent": "0", "reserved": "0E-7", "cap": "2.0", "t": 1792485236.743615}
+{"event": "reserve", "token": 31, "usd": "0.0054257", "note": "enrich luna-low n=47", "spent": "0", "reserved": "0.0054257", "cap": "2.0", "t": 1792485238.123093}
+{"event": "settle", "token": 31, "usd": "0", "note": "no-request-id", "spent": "0", "reserved": "0E-7", "cap": "2.0", "t": 1792485238.598028}
+{"event": "reserve", "token": 32, "usd": "0.0054257", "note": "enrich luna-low n=47", "spent": "0", "reserved": "0.0054257", "cap": "2.0", "t": 1792485240.693434}
+{"event": "settle", "token": 32, "usd": "0", "note": "no-request-id", "spent": "0", "reserved": "0E-7", "cap": "2.0", "t": 1792485241.153246}
+{"event": "reserve", "token": 33, "usd": "0.039714", "note": "enrich haiku n=47", "spent": "0", "reserved": "0.0397140", "cap": "2.0", "t": 1792485248.462503}
+{"event": "settle", "token": 33, "usd": "0.024875", "note": "req_011CgDBTZsDBvvU5ULLWbnjS", "spent": "0.024875", "reserved": "0E-7", "cap": "2.0", "t": 1792485287.269939}
+{"event": "reserve", "token": 34, "usd": "0.008543", "note": "enrich haiku n=2", "spent": "0.024875", "reserved": "0.0085430", "cap": "2.0", "t": 1792485287.272345}
+{"event": "settle", "token": 34, "usd": "0.004590", "note": "req_011CgDBWMwwX7iqsF1ASBzcW", "spent": "0.029465", "reserved": "0E-7", "cap": "2.0", "t": 1792485289.94282}
+{"event": "reserve", "token": 35, "usd": "0.040757", "note": "enrich haiku n=47", "spent": "0.029465", "reserved": "0.0407570", "cap": "2.0", "t": 1792485289.9471092}
+{"event": "settle", "token": 35, "usd": "0.025644", "note": "req_011CgDBWZPX175ATCPUV6jER", "spent": "0.055109", "reserved": "0E-7", "cap": "2.0", "t": 1792485326.65759}
+{"event": "reserve", "token": 36, "usd": "0.007602", "note": "enrich haiku n=1", "spent": "0.055109", "reserved": "0.0076020", "cap": "2.0", "t": 1792485326.6630678}
+{"event": "settle", "token": 36, "usd": "0.003839", "note": "req_011CgDBZGUN6acosCXnSLek7", "spent": "0.058948", "reserved": "0E-7", "cap": "2.0", "t": 1792485328.382328}
+{"event": "reserve", "token": 37, "usd": "0.106428", "note": "enrich sonnet-low n=47", "spent": "0.058948", "reserved": "0.1064280", "cap": "2.0", "t": 1792485328.389212}
+{"event": "settle", "token": 37, "usd": "0.064848", "note": "req_011CgDBZQybYVfzfPrjFGWMW", "spent": "0.123796", "reserved": "0E-7", "cap": "2.0", "t": 1792485354.86658}
+{"event": "reserve", "token": 38, "usd": "0.108514", "note": "enrich sonnet-low n=47", "spent": "0.123796", "reserved": "0.1085140", "cap": "2.0", "t": 1792485354.876582}
+{"event": "settle", "token": 38, "usd": "0.067048", "note": "req_011CgDBbM1Gvx55Ab81dkHza", "spent": "0.190844", "reserved": "0E-7", "cap": "2.0", "t": 1792485391.863094}

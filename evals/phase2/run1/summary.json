@@ -1,0 +1,429 @@
+{
+  "configs": {
+    "haiku": {
+      "confusion": {
+        "access->access": 3,
+        "access->support": 1,
+        "billing->billing": 13,
+        "billing->other": 1,
+        "billing->usability": 2,
+        "catalog->catalog": 4,
+        "catalog->other": 5,
+        "downloads->downloads": 2,
+        "other-><missing>": 1,
+        "other->catalog": 1,
+        "other->other": 23,
+        "other->support": 1,
+        "playback->billing": 1,
+        "playback->other": 1,
+        "playback->playback": 10,
+        "usability-><missing>": 1,
+        "usability->billing": 1,
+        "usability->other": 1,
+        "usability->playback": 5,
+        "usability->usability": 17
+      },
+      "cost_usd_measured": 0.058948,
+      "estimate_full_run_no_reuse_usd": 414.27,
+      "estimate_full_run_with_reuse_usd": 303.64,
+      "failed_requests": 0,
+      "first_pass_valid_rate": 0.9681,
+      "input_tokens": 20948,
+      "label_config": "claude-haiku-4-5-20251001+default+enrich-v1+labels-v1+schema-v1",
+      "metrics": {
+        "coverage": 0.9787,
+        "intent_agreement": 0.9362,
+        "n_predicted": 92,
+        "n_reference": 94,
+        "needs_review_agreement": 0.8511,
+        "sentiment_mae_on_predicted": 0.1185,
+        "sentiment_within_0.25": 0.8511,
+        "sentiment_within_0.5": 0.9574,
+        "severity_exact": 0.7447,
+        "severity_mae_on_predicted": 0.25,
+        "severity_within_1": 0.9681,
+        "topic_agreement": 0.766,
+        "topic_macro_f1_present_classes": 0.7982
+      },
+      "model": "claude-haiku-4-5-20251001",
+      "output_tokens": 7600,
+      "per_topic": {
+        "access": {
+          "f1": 0.8571,
+          "precision": 1.0,
+          "recall": 0.75,
+          "support": 4
+        },
+        "billing": {
+          "f1": 0.8387,
+          "precision": 0.8667,
+          "recall": 0.8125,
+          "support": 16
+        },
+        "catalog": {
+          "f1": 0.5714,
+          "precision": 0.8,
+          "recall": 0.4444,
+          "support": 9
+        },
+        "downloads": {
+          "f1": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "support": 2
+        },
+        "other": {
+          "f1": 0.807,
+          "precision": 0.7419,
+          "recall": 0.8846,
+          "support": 26
+        },
+        "playback": {
+          "f1": 0.7407,
+          "precision": 0.6667,
+          "recall": 0.8333,
+          "support": 12
+        },
+        "support": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 0
+        },
+        "usability": {
+          "f1": 0.7727,
+          "precision": 0.8947,
+          "recall": 0.68,
+          "support": 25
+        }
+      },
+      "quarantine_reasons": [
+        "quote_not_substring"
+      ],
+      "quarantined": 2,
+      "reasoning_tokens": 0,
+      "requests": 4,
+      "wall_seconds": 79.93
+    },
+    "luna-low": {
+      "confusion": {
+        "access-><missing>": 4,
+        "billing-><missing>": 16,
+        "catalog-><missing>": 9,
+        "downloads-><missing>": 2,
+        "other-><missing>": 26,
+        "playback-><missing>": 12,
+        "usability-><missing>": 25
+      },
+      "cost_usd_measured": 0.0,
+      "estimate_full_run_no_reuse_usd": 0.0,
+      "estimate_full_run_with_reuse_usd": 0.0,
+      "failed_requests": 16,
+      "first_pass_valid_rate": 0.0,
+      "input_tokens": 0,
+      "label_config": "gpt-6-luna+low+enrich-v1+labels-v1+schema-v1",
+      "metrics": {
+        "coverage": 0.0,
+        "intent_agreement": 0.0,
+        "n_predicted": 0,
+        "n_reference": 94,
+        "needs_review_agreement": 0.0,
+        "sentiment_mae_on_predicted": null,
+        "sentiment_within_0.25": 0.0,
+        "sentiment_within_0.5": 0.0,
+        "severity_exact": 0.0,
+        "severity_mae_on_predicted": null,
+        "severity_within_1": 0.0,
+        "topic_agreement": 0.0,
+        "topic_macro_f1_present_classes": 0.0
+      },
+      "model": "gpt-6-luna",
+      "output_tokens": 0,
+      "per_topic": {
+        "access": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 4
+        },
+        "billing": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 16
+        },
+        "catalog": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 9
+        },
+        "downloads": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 2
+        },
+        "other": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 26
+        },
+        "playback": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 12
+        },
+        "support": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 0
+        },
+        "usability": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 25
+        }
+      },
+      "quarantine_reasons": [
+        "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+      ],
+      "quarantined": 94,
+      "reasoning_tokens": 0,
+      "requests": 16,
+      "wall_seconds": 49.33
+    },
+    "luna-none": {
+      "confusion": {
+        "access-><missing>": 4,
+        "billing-><missing>": 16,
+        "catalog-><missing>": 9,
+        "downloads-><missing>": 2,
+        "other-><missing>": 26,
+        "playback-><missing>": 12,
+        "usability-><missing>": 25
+      },
+      "cost_usd_measured": 0.0,
+      "estimate_full_run_no_reuse_usd": 0.0,
+      "estimate_full_run_with_reuse_usd": 0.0,
+      "failed_requests": 16,
+      "first_pass_valid_rate": 0.0,
+      "input_tokens": 0,
+      "label_config": "gpt-6-luna+none+enrich-v1+labels-v1+schema-v1",
+      "metrics": {
+        "coverage": 0.0,
+        "intent_agreement": 0.0,
+        "n_predicted": 0,
+        "n_reference": 94,
+        "needs_review_agreement": 0.0,
+        "sentiment_mae_on_predicted": null,
+        "sentiment_within_0.25": 0.0,
+        "sentiment_within_0.5": 0.0,
+        "severity_exact": 0.0,
+        "severity_mae_on_predicted": null,
+        "severity_within_1": 0.0,
+        "topic_agreement": 0.0,
+        "topic_macro_f1_present_classes": 0.0
+      },
+      "model": "gpt-6-luna",
+      "output_tokens": 0,
+      "per_topic": {
+        "access": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 4
+        },
+        "billing": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 16
+        },
+        "catalog": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 9
+        },
+        "downloads": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 2
+        },
+        "other": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 26
+        },
+        "playback": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 12
+        },
+        "support": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 0
+        },
+        "usability": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 25
+        }
+      },
+      "quarantine_reasons": [
+        "transport_failed: RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': '"
+      ],
+      "quarantined": 94,
+      "reasoning_tokens": 0,
+      "requests": 16,
+      "wall_seconds": 46.77
+    },
+    "sonnet-low": {
+      "confusion": {
+        "access->access": 3,
+        "access->support": 1,
+        "billing->billing": 15,
+        "billing->usability": 1,
+        "catalog->catalog": 9,
+        "downloads->downloads": 2,
+        "other->catalog": 1,
+        "other->other": 24,
+        "other->playback": 1,
+        "playback->playback": 10,
+        "playback->usability": 2,
+        "usability->billing": 2,
+        "usability->catalog": 1,
+        "usability->other": 1,
+        "usability->playback": 3,
+        "usability->usability": 18
+      },
+      "cost_usd_measured": 0.131896,
+      "estimate_full_run_no_reuse_usd": 926.93,
+      "estimate_full_run_with_reuse_usd": 679.39,
+      "failed_requests": 0,
+      "first_pass_valid_rate": 1.0,
+      "input_tokens": 17553,
+      "label_config": "claude-sonnet-5-5+low+enrich-v1+labels-v1+schema-v1",
+      "metrics": {
+        "coverage": 1.0,
+        "intent_agreement": 1.0,
+        "n_predicted": 94,
+        "n_reference": 94,
+        "needs_review_agreement": 0.8511,
+        "sentiment_mae_on_predicted": 0.0766,
+        "sentiment_within_0.25": 0.9255,
+        "sentiment_within_0.5": 1.0,
+        "severity_exact": 0.883,
+        "severity_mae_on_predicted": 0.1277,
+        "severity_within_1": 0.9894,
+        "topic_agreement": 0.8617,
+        "topic_macro_f1_present_classes": 0.8799
+      },
+      "model": "claude-sonnet-5-5",
+      "output_tokens": 9679,
+      "per_topic": {
+        "access": {
+          "f1": 0.8571,
+          "precision": 1.0,
+          "recall": 0.75,
+          "support": 4
+        },
+        "billing": {
+          "f1": 0.9091,
+          "precision": 0.8824,
+          "recall": 0.9375,
+          "support": 16
+        },
+        "catalog": {
+          "f1": 0.9,
+          "precision": 0.8182,
+          "recall": 1.0,
+          "support": 9
+        },
+        "downloads": {
+          "f1": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "support": 2
+        },
+        "other": {
+          "f1": 0.9412,
+          "precision": 0.96,
+          "recall": 0.9231,
+          "support": 26
+        },
+        "playback": {
+          "f1": 0.7692,
+          "precision": 0.7143,
+          "recall": 0.8333,
+          "support": 12
+        },
+        "support": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 0
+        },
+        "usability": {
+          "f1": 0.7826,
+          "precision": 0.8571,
+          "recall": 0.72,
+          "support": 25
+        }
+      },
+      "quarantine_reasons": [],
+      "quarantined": 0,
+      "reasoning_tokens": 0,
+      "requests": 2,
+      "wall_seconds": 63.48
+    }
+  },
+  "pairwise": {
+    "haiku~sonnet-low": {
+      "intent": 0.9565,
+      "n_shared": 92,
+      "needs_review": 0.8478,
+      "sentiment_mae": 0.1163,
+      "severity": 0.8152,
+      "topic": 0.8043
+    },
+    "luna-low~haiku": {
+      "n_shared": 0
+    },
+    "luna-low~sonnet-low": {
+      "n_shared": 0
+    },
+    "luna-none~haiku": {
+      "n_shared": 0
+    },
+    "luna-none~luna-low": {
+      "n_shared": 0
+    },
+    "luna-none~sonnet-low": {
+      "n_shared": 0
+    }
+  },
+  "selected": {
+    "config": "sonnet-low",
+    "eligible": [
+      "sonnet-low"
+    ],
+    "why": "cheapest configuration meeting the declared rule"
+  },
+  "selection_rule": {
+    "agreement_margin": 0.05,
+    "first_pass_valid_min": 0.98,
+    "severity_within_1_min": 0.85
+  }
+}
