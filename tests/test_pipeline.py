@@ -133,3 +133,11 @@ def test_memo_checker_rejects_invented_numbers_and_ids():
     assert ok == []
     bad = analysis.check_memo("Fix PLAYBACK-02: 4,000 users churned [C0009].", claims, issues, set(), {"40"})
     assert any("C0009" in p for p in bad) and any("PLAYBACK-02" in p for p in bad) and any("4,000" in p for p in bad)
+
+
+def test_rerank_from_grading_matches_export(tmp_path):
+    test_full_pipeline_with_interrupt_resume_and_checker(tmp_path)
+    g = tmp_path / "grading"
+    rank_txt, claims_txt = analysis.rerank_from_grading(g)
+    assert rank_txt == (g / "ranking.csv").read_text()
+    assert claims_txt == (g / "claims.csv").read_text()

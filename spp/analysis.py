@@ -373,3 +373,35 @@ def export(run_dir, grading_dir, ingestion_src):
         if src.exists():
             shutil.copyfile(src, g / name)
     return {"records": len(lines), "calls": len(calls)}
+
+
+def rerank_from_grading(grading_dir):
+    """Recompute ranking.csv and claims.csv from grading/records.jsonl(.gz) + membership.csv alone (no state, no
+    model). Returns (ranking_text, claims_text) so callers can compare them byte for byte with the saved files."""
+    import gzip
+    g = Path(grading_dir)
+    path = g / "records.jsonl.gz"
+    opener = gzip.open if path.exists() else open
+    sev = {}
+    with opener(path if path.exists() else g / "records.jsonl", "rt", encoding="utf-8") as f:
+        for line in f:
+            r = json.loads(line)
+            if r.get("status") == "completed":
+                sev[r["review_id"]] = r["severity"]
+    by_issue = defaultdict(list)
+    with open(g / "membership.csv", newline="", encoding="utf-8") as f:
+        for r in csv.DictReader(f):
+            by_issue[r["issue_id"]].append(sev[r["review_id"]])
+    rows = [{"issue_id": i, "complaint_count": len(v), "severity_sum": sum(v), "mean_severity": mean_string(sum(v), len(v)),
+             "priority_score": sum(v)} for i, v in by_issue.items()]
+    rows.sort(key=lambda x: (-x["priority_score"], x["issue_id"]))
+    cols = ["rank", "issue_id", "complaint_count", "severity_sum", "mean_severity", "priority_score"]
+    for k, r in enumerate(rows, 1):
+        r["rank"] = k
+    claims, n = [], 0
+    for r in rows:
+        for m in ("complaint_count", "severity_sum", "mean_severity", "priority_score"):
+            n += 1
+            claims.append([f"C{n:04d}", r["issue_id"], m, str(r[m])])
+    return (_csv_text(cols, [[r[c] for c in cols] for r in rows]),
+            _csv_text(["claim_id", "issue_id", "metric", "value"], claims))

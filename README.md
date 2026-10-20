@@ -85,7 +85,7 @@ Offline (no key, no model call):
 ```sh
 uv run python -m spp prepare --csv data_raw/spotify_reviews_18months.csv --run-dir runs/full   # any CSV path
 uv run python -m spp cost                      # calculator replay -> cost/report.md
-uv run python -m spp rerank --run-dir runs/full   # ranking/claims/aggregates from saved files (byte-identical)
+uv run python -m spp rerank --grading-dir grading   # recompute ranking + claims from committed files; prints "identical: True"
 uv run python -m spp export --run-dir runs/full --grading-dir grading
 uv run python -m spp golden --run-dir runs/full
 uv run python -m spp status --run-dir runs/full

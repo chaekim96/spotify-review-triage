@@ -53,7 +53,8 @@ def main(argv=None):
     k.add_argument("--name", required=True, choices=["checkpoint_before", "checkpoint_after"])
 
     rr = sub.add_parser("rerank", help="Regenerate ranking, claims and aggregates from saved files (no model call)")
-    rr.add_argument("--run-dir", required=True, type=Path)
+    rr.add_argument("--run-dir", type=Path, help="rebuild from a run folder's state")
+    rr.add_argument("--grading-dir", type=Path, help="or recompute from grading/ files alone and compare bytes")
 
     ex = sub.add_parser("export", help="Write the grading/ folder from a run folder (no model call)")
     ex.add_argument("--run-dir", required=True, type=Path)
@@ -184,6 +185,12 @@ def _pipeline_cmd(args):
         n = pipeline.checkpoint(args.run_dir, args.run_dir / "checkpoints" / f"{args.name}.json")
         print(f"{args.name}: {n} completed IDs")
         return 0
+    if args.command == "rerank" and args.grading_dir:
+        rank_txt, claims_txt = analysis.rerank_from_grading(args.grading_dir)
+        same_r = rank_txt == (args.grading_dir / "ranking.csv").read_text(encoding="utf-8")
+        same_c = claims_txt == (args.grading_dir / "claims.csv").read_text(encoding="utf-8")
+        print(f"ranking.csv identical: {same_r}; claims.csv identical: {same_c} (recomputed from records + membership, no model)")
+        return 0 if same_r and same_c else 1
     if args.command == "rerank":
         rows, claims, _, _ = analysis.rank(args.run_dir)
         import hashlib
