@@ -1,0 +1,47 @@
+{
+  "run_dir": "runs/full (local SQLite state, not committed; all exports are)",
+  "input_sha256": "1fc85de68a304dd8978b537cfa58793d5f41cbaf417fa32cb53899f83a2fcef6",
+  "records_total": 660622,
+  "statuses": {
+    "pending": 560609,
+    "completed": 99936,
+    "quarantined": 77,
+    "note": "pending = outside the declared 100k scope; exported as quarantined not_classified_outside_declared_scope"
+  },
+  "in_scope": 100000,
+  "completed": 99936,
+  "cache_aliases": 21780,
+  "quarantine_reasons": {
+    "empty_review_text": 13,
+    "missing_id": 1,
+    "quote_not_substring": 60,
+    "unparseable_response": 3
+  },
+  "calls": {
+    "total": 2354,
+    "failed": 385,
+    "by_role": {
+      "enrich": 2305,
+      "verify": 22,
+      "group": 24,
+      "memo": 3
+    }
+  },
+  "tokens": {
+    "input": 10028526,
+    "output": 6090521
+  },
+  "actual_api_cost_usd": "4.36102133",
+  "cost_basis": "provider-reported usage x cost/rates.csv (dated 2026-10-07); not reconciled with provider invoices",
+  "spending_limit_usd": 10,
+  "fallback_cap_fraction": 0.02,
+  "fallback_used_texts": 199,
+  "resume_evidence": {
+    "checkpoint_before_completed": 18777,
+    "checkpoint_after_completed": 99936,
+    "recording": "resume screen recording (see README)",
+    "resume_requests_containing_before_ids": 0
+  },
+  "stage_log": "outputs/run_log.jsonl",
+  "call_log": "grading/calls.jsonl"
+}

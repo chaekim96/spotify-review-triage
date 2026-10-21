@@ -4,11 +4,26 @@ A multi-agent LLM pipeline over 660,622 Spotify app reviews (2022-05-17 to 2023-
 
 **Business question:** Where should Spotify put next quarter's product effort: access, usability, playback, or billing/support?
 
-**Answer (from saved evidence, scope below):** **usability**. It carries 35.5% of total complaint severity (severity sum 40,335 across 15,613 complaint/cancellation records), ahead of billing/support (19.1%), playback (16.8%) and access (5.0%). Playback and access are more severe per complaint (mean 3.12 and 3.81 vs 2.58) and are recommended as small parallel fast-fix tracks. Full memo: [outputs/memo.md](outputs/memo.md).
+**Answer (from saved evidence, scope below):** **usability**. It carries 35.5% of total complaint severity (severity sum 40,335 across 15,613 complaint/cancellation records), ahead of billing/support (19.1%), playback (16.8%) and access (5.0%). Playback and access are more severe per complaint (mean 3.12 and 3.81 vs 2.58) and are recommended as small parallel fast-fix tracks. Full memo: [memo.md](memo.md).
 
 - **Live dashboard:** https://spotify-review-triage.vercel.app (public, no login). Backend: `/api/summary`, `/api/ranking`, `/api/claims`, `/api/recommendation`, `/api/issue?id=PLAYBACK-99`, `/api/review?id=<review_id>`.
 - **Grading export:** [grading/](grading/) (contract format; `records.jsonl.gz`). Course self-check: [evals/checker/self-check.json](evals/checker/self-check.json).
 - **Cost calculator:** [cost/](cost/) ([report](cost/report.md)). **Decisions:** [DECISIONS.md](DECISIONS.md).
+
+## Rubric-to-evidence map
+
+| Rubric item | Evidence |
+|---|---|
+| **D1 Accessible code, setup, artifacts** | [Setup and commands](#setup-and-commands); `uv.lock`; [.env.example](.env.example) (blank); [.gitignore](.gitignore); 50 offline tests in [tests/](tests/); clean-clone test with no key passes (tests, `spp cost`, `spp rerank --grading-dir grading`); all outputs committed: [grading/](grading/), [outputs/](outputs/), [evals/](evals/), [cost/](cost/) |
+| **D2 Architecture, shared schema, provenance** | [Architecture](#architecture); schema and validation [spp/labels.py](spp/labels.py), DB [db/schema.sql](db/schema.sql); row hashes via the course `row_sha` ([spp/vendored.py](spp/vendored.py)); `label_config` on every record; every call in [grading/calls.jsonl](grading/calls.jsonl); stage log [outputs/run_log.jsonl](outputs/run_log.jsonl) and [outputs/run_summary.json](outputs/run_summary.json); ingestion [outputs/ingestion_report.json](outputs/ingestion_report.json), [outputs/data_manifest.json](outputs/data_manifest.json); decisions [DECISIONS.md](DECISIONS.md) |
+| **D3 Memo numbers linked to calculations and evidence** | [memo.md](memo.md) cites claim IDs from [grading/claims.csv](grading/claims.csv), issue IDs from [outputs/issues.json](outputs/issues.json), review IDs from the evidence pack in [outputs/memo_meta.json](outputs/memo_meta.json), and area figures from [outputs/aggregates.csv](outputs/aggregates.csv); code rejects any ID or number not in those files (`check_memo` in [spp/analysis.py](spp/analysis.py)); the course checker recomputes every claim (no `claim_mismatch`) |
+| **D4 Coherent recommendation, alternatives, limitations** | [memo.md](memo.md) (Recommendation, Why, Alternatives considered for all four areas, Risks and limitations, Next steps); [Limitations](#limitations) |
+| **T1 50 human labels, per-field comparison, error analysis** | [evals/golden/golden_50_labeled.csv](evals/golden/golden_50_labeled.csv) (all 50 hand-labeled); [Golden evaluation](#golden-evaluation); [evals/golden/golden_eval.md](evals/golden/golden_eval.md) (per field, per topic, confusion, every disagreement); checker `--gold` [evals/checker/self-check-with-gold.json](evals/checker/self-check-with-gold.json) |
+| **T2 Independent verification, planted-error and injection tests** | [evals/verification/verification.json](evals/verification/verification.json) (Claude Haiku, blind 1% sample, 781 reviews); [evals/synthetic/planted_error_test.json](evals/synthetic/planted_error_test.json) (20/20 caught); [evals/synthetic/injection_test.json](evals/synthetic/injection_test.json) (5/5) with its own call log; malformed-output, missing-ID, retry and quarantine tests in [tests/test_phase2.py](tests/test_phase2.py) |
+| **T3 Real 100-review cold/warm pilot, offline calculator, retry/spend/recovery controls** | [cost/report.md](cost/report.md), [cost/pilot_calls.jsonl](cost/pilot_calls.jsonl), [cost/pilot_records.jsonl](cost/pilot_records.jsonl), [cost/usage.csv](cost/usage.csv), [cost/rates.csv](cost/rates.csv), [cost/README.md](cost/README.md); replay: `uv run python -m spp cost`; rate-doubling test in [tests/test_cost.py](tests/test_cost.py); controls shown in the real run: 385 rate-limit failures retried with bounded backoff and logged, spend ledger [outputs/ledger.jsonl](outputs/ledger.jsonl) (worst-case reservation per request, $10 cap, $4.36 spent), requeue and resume ([One failure case](#one-failure-case)) |
+| **W1 Full ingestion, coverage, classification** | [grading/ingestion.json](grading/ingestion.json) equals the course profile; all 660,622 IDs in [grading/records.jsonl.gz](grading/records.jsonl.gz); **declared partial scope**: 99,936 of 660,609 nonempty reviews classified (the at-least-100,000 option, within the $10 cap); checker coverage point candidate 0.4908 ([evals/checker/self-check.json](evals/checker/self-check.json)); quarantine log [outputs/quarantine.jsonl](outputs/quarantine.jsonl) |
+| **W2 Runnable staged program, bounded calls, saved handoffs, demonstrated resume** | `python -m spp prepare/run` take any CSV path ([spp/cli.py](spp/cli.py)); at most 50 reviews per request (checker: no `unbounded_batch`); every stage saves its outputs; [grading/checkpoint_before.json](grading/checkpoint_before.json) (18,777) and [grading/checkpoint_after.json](grading/checkpoint_after.json) (99,936); 1,788 `resume`-phase calls, none re-labeling a before ID; resume screen recording (2 min 46 s, made 12:02 PDT during the first resume process; see [Interruption and resume](#setup-and-commands)) |
+| **W3 Reproducible ranking, deployed dashboard + backend + database, grounded AI recommendation** | `uv run python -m spp rerank --grading-dir grading` prints `identical: True`; dashboard https://spotify-review-triage.vercel.app (Vercel), backend [dashboard/api/](dashboard/api/) reading Supabase Postgres ([db/schema.sql](db/schema.sql)); the stored, offline-generated memo with clickable claim, issue and review IDs; [evals/dashboard_check.json](evals/dashboard_check.json) (live numbers equal saved files) |
 
 ## Results summary
 
@@ -78,7 +93,7 @@ cp .env.example .env            # OPENAI_API_KEY, ANTHROPIC_API_KEY (TYPESAFE_AP
 uv run pytest                   # 49 offline tests, no key needed
 ```
 
-Data: download the course ZIP and place its files in `data_raw/` ([placement and checksums](data_raw/README_PLACEMENT.md)). Full file: `spotify_reviews_18months.csv`, 97,400,616 bytes, SHA-256 `1fc85de68a304dd8978b537cfa58793d5f41cbaf417fa32cb53899f83a2fcef6`. The CSV is not committed.
+Data: the course ZIP (Google Drive link on the assignment page; original source [Kaggle: 3.4M Spotify Google Play reviews](https://www.kaggle.com/datasets/bwandowando/3-4-million-spotify-google-store-reviews), version 2). Place its files in `data_raw/` ([placement and checksums](data_raw/README_PLACEMENT.md)). Full file: `spotify_reviews_18months.csv`, 97,400,616 bytes, SHA-256 `1fc85de68a304dd8978b537cfa58793d5f41cbaf417fa32cb53899f83a2fcef6`. The CSV is not committed.
 
 Offline (no key, no model call):
 
@@ -104,7 +119,7 @@ uv run python -m spp compare --confirm --budget 2      # Phase 2 model compariso
 uv run python -m spp synthetic --run-dir runs/full --confirm
 ```
 
-Interruption and resume: the 100k run was stopped deliberately after 150 requests (`--stop-after-batches 150`), rate-limited reviews were re-queued (`spp requeue`), `checkpoint_before.json` was saved (18,777 completed IDs), and the same command resumed with phase `resume` (screen recording: `resume_demo.mov`, submitted separately). It was stopped and resumed once more to raise concurrency. No resume request contains a checkpoint-before ID (checker: no `reprocessed_checkpoint`); `checkpoint_after.json` holds 99,936 IDs.
+Interruption and resume: the 100k run was stopped deliberately after 150 requests (`--stop-after-batches 150`), rate-limited reviews were re-queued (`spp requeue`), `checkpoint_before.json` was saved (18,777 completed IDs), and the same command resumed with phase `resume` (screen recording, 2 min 46 s, 12:02 PDT: submitted with the bCourses entry; the matching 46 resume requests from 19:02 to 19:08 UTC are the first resume process in [outputs/run_log.jsonl](outputs/run_log.jsonl)). It was stopped and resumed once more to raise concurrency. No resume request contains a checkpoint-before ID (checker: no `reprocessed_checkpoint`); `checkpoint_after.json` holds 99,936 IDs.
 
 ## Design choices (details and measurements in [DECISIONS.md](DECISIONS.md))
 
