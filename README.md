@@ -29,7 +29,7 @@ A multi-agent LLM pipeline over 660,622 Spotify app reviews (2022-05-17 to 2023-
 | Verifier (Claude Haiku 4.5, 1% declared sample, 781 reviews) | topic 84.4%, intent 91.0%, severity exact 83.6%, within ±1 98.9%, sentiment within ±0.5 98.1% | measured |
 | Planted wrong labels caught by verifier | 20 / 20 | measured (synthetic copy) |
 | Prompt-injection reviews resisted | 5 / 5 | measured (synthetic) |
-| Golden 50 (human labels) | see [Golden evaluation](#golden-evaluation) | measured |
+| Golden 50 (human labels, n = 50) | topic 42%, intent 80%, severity exact 64% / within ±1 94%, sentiment within ±0.5 82% | measured ([details](#golden-evaluation)) |
 
 ## Architecture
 
@@ -139,7 +139,27 @@ All 2 + 8 calls stay in `grading/calls.jsonl`. 60 of the 64 in-scope quarantines
 
 ## Golden evaluation
 
-GOLDEN_SECTION
+Hand labels: [evals/golden/golden_50_labeled.csv](evals/golden/golden_50_labeled.csv), all 50 labeled by the student with [tools/label_golden.py](tools/label_golden.py). Following D36, topic, intent, severity, sentiment and needs_review were chosen by hand, while the quote is the whole review and entities are `[]`. The labels were read only after classification; they never entered a prompt, example, threshold or grouping step (a test enforces this). Report: [evals/golden/golden_eval.md](evals/golden/golden_eval.md). The course checker in `--gold` mode gives the same agreement figures ([evals/checker/self-check-with-gold.json](evals/checker/self-check-with-gold.json)).
+
+| Field | Agreement with hand labels (n = 50, 0 missing) |
+|---|---|
+| Topic | 42% (macro F1 0.27) |
+| Intent | 80% (checker macro F1 0.73) |
+| Severity, exact | 64% |
+| Severity, within ±1 | 94% (MAE 0.44) |
+| Sentiment MAE | 0.294 |
+| Sentiment, within ±0.5 (predeclared) | 82% |
+| Sentiment, within ±0.25 (stricter) | 56% |
+| needs_review | 82% |
+
+**Error analysis.**
+- **Topic.** 13 of the 29 topic disagreements are one pattern. The hand labels put general praise or general dislike under `usability` ("Excellent", "Great app use it every chance I get", "Hate This application"). The model put these under `other`, which is the contract's rule: "general praise is `other`". The hand labels used `usability` for 27 of 50 reviews, against 9 for the model.
+- **Remaining topic misses.** Most come from multi-issue reviews that land on a neighbouring topic: usability → catalog 3, usability → billing 2, usability → playback 2, and support → billing/catalog/playback. One example is a review about banned songs and staff, labeled `support` by hand and `catalog` by the model.
+- **Severity.** The model is conservative at the top. The 3 hand-labeled severity-5 reviews got 2, 3 and 4, and it often scores 3 where the hand label is 2: 9 predicted 3s against 1 in the hand labels.
+- **Intent.** `unclear` is under-predicted (recall 4 of 9): the model reads short slogans as complaints.
+- **Every disagreement**, with its text, is listed in the report.
+
+**What this means.** Topic agreement is the weakest field, and much of the gap is a definitional disagreement about general praise rather than misreading. The hand labels were not changed after seeing the model's answers. Because the instructor's private benchmark uses the contract definitions, the contract's rule is kept in the prompt.
 
 ## System evaluations
 
