@@ -1,4 +1,11 @@
-# Spotify Review Triage
+<a href="https://spotify-review-triage.vercel.app">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="brand/readme/header-dark.png">
+  <img src="brand/readme/header-light.png" alt="Spotify Review Triage: Turning a flood of app reviews into one clear product priority.">
+</picture>
+</a>
+
+**[Try it live →](https://spotify-review-triage.vercel.app)**
 
 A multi-agent LLM pipeline over 660,622 Spotify app reviews (2022-05-17 to 2023-11-15). Code ingests and accounts for every review, a small model classifies a declared 100,000-review scope under a $10 cap, an independent model verifies a sample, a model names issues from bounded evidence, code groups and ranks them, and a model writes a memo that code checks number by number. Results load into Postgres (Supabase) behind a Vercel backend and dashboard.
 
@@ -213,3 +220,7 @@ Hand labels: [evals/golden/golden_50_labeled.csv](evals/golden/golden_50_labeled
 - **Severity calls.** Severity 5 is sometimes assigned to strong but hedged harm claims (see the trace above).
 - **Partial months.** The first and last months are partial (2022-05 from the 17th, 2023-11 to the 15th); no trend analysis is claimed.
 - **Account rate limits.** The new OpenAI account's limits (10 requests/min) dominated runtime; parallelism helped only up to that cap.
+
+---
+
+<p align="center"><a href="https://chaekim.vercel.app"><img src="brand/readme/seal.svg" width="10" height="10" alt=""> <sub>a Chae Kim build</sub></a></p>
